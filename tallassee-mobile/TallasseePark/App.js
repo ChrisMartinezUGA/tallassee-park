@@ -17,9 +17,14 @@ import {
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 import MapScreen from './data/screens/Map';
-import ActivitiesScreen from './data/screens/Activities';
-import ExploreScreen from './data/screens/Explore';
 import InfoScreen from './data/screens/Info';
+
+import ActivitiesScreen from './data/screens/Activities';
+import ActivityDetailsScreen from './data/screens/ActivityDetails';
+
+import ExploreScreen from './data/screens/Explore';
+import ExploreListScreen from './data/screens/ExploreList';
+import ExploreDetailsScreen from './data/screens/ExploreDetails';
 import ProgressScreen from './data/screens/Progress';
 
 function HomeScreen({ navigation }) {
@@ -79,10 +84,16 @@ function App() {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen}/>
         <Stack.Screen name="Map" component={MapScreen}/>
-        <Stack.Screen name="Activities" component={ActivitiesScreen}/>
-        <Stack.Screen name="Explore" component={ExploreScreen}/>
         <Stack.Screen name="Info" component={InfoScreen}/>
+
+        <Stack.Screen name="Activities" component={ActivitiesScreen}/>
+        <Stack.Screen name="ActivityDetails" component={ActivityDetailsScreen}/>
+
+        <Stack.Screen name="Explore" component={ExploreScreen}/>
+        <Stack.Screen name="ExploreList" component={ExploreListScreen}/>
+        <Stack.Screen name="ExploreDetails" component={ExploreDetailsScreen}/>
         <Stack.Screen name="Progress" component={ProgressScreen}/>
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
