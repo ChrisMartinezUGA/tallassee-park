@@ -16,6 +16,12 @@ import {
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
+import MapScreen from './data/screens/Map';
+import ActivitiesScreen from './data/screens/Activities';
+import ExploreScreen from './data/screens/Explore';
+import InfoScreen from './data/screens/Info';
+import ProgressScreen from './data/screens/Progress';
+
 function HomeScreen({ navigation }) {
   return (
     <>
@@ -54,7 +60,7 @@ function HomeScreen({ navigation }) {
             </View>
 
             <View style={styles.sectionContainer}>
-              <Button title="Login" onPress={() => navigation.navigate('Details')}></Button>
+              <Button title="Login" onPress={() => navigation.replace('Map')}></Button>
             </View>
           </View>
         </ScrollView>
@@ -63,13 +69,7 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function DetailsScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-    </View>
-  );
-}
+<MapScreen></MapScreen>
 
 const Stack = createStackNavigator();
 
@@ -77,8 +77,12 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="Home" component={HomeScreen}/>
+        <Stack.Screen name="Map" component={MapScreen}/>
+        <Stack.Screen name="Activities" component={ActivitiesScreen}/>
+        <Stack.Screen name="Explore" component={ExploreScreen}/>
+        <Stack.Screen name="Info" component={InfoScreen}/>
+        <Stack.Screen name="Progress" component={ProgressScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -109,9 +113,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '400',
     color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
   },
   footer: {
     color: Colors.dark,
