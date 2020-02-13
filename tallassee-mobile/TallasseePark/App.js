@@ -14,6 +14,9 @@ import {
   View,
   Text,
   StatusBar,
+  TextInput,
+  Button,
+  Image
 } from 'react-native';
 
 import {
@@ -32,39 +35,36 @@ const App: () => React$Node = () => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <Header />
           {global.HermesInternal == null ? null : (
             <View style={styles.engine}>
               <Text style={styles.footer}>Engine: Hermes</Text>
             </View>
           )}
           <View style={styles.body}>
+          <View style={styles.sectionContainer}>
+              <Image style={{width: 300, height: 100}} source={require('./data/images/oconee-river-land-trust.png')}></Image>
+              </View>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step 1!</Text>
+              <Text style={styles.sectionTitle}>Tallasee Park</Text>
               <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
+                Subtitle
               </Text>
             </View>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
+              <Text style={styles.sectionTitle}>Password</Text>
+              <TextInput secureTextEntry={true} style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}>Password</TextInput>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Disclaimer</Text>
               <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
+                Tallasee Park is not open to the public. 
+                This land is under preservation and is only open to approved land trust employees. 
+                This app is solely for testing new activities and should only be accessed by approved users.
               </Text>
             </View>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
+              <Button title="Login"></Button>
             </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
           </View>
         </ScrollView>
       </SafeAreaView>
