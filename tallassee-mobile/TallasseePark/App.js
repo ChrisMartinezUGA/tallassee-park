@@ -11,8 +11,10 @@ import {
   StatusBar,
   TextInput,
   Button,
-  Image
+  Image,
 } from 'react-native';
+
+import { ThemeProvider } from 'react-native-elements';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
@@ -42,7 +44,7 @@ function HomeScreen({ navigation }) {
           )}
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Image style={{ width: 300, height: 100 }} source={require('./data/images/oconee-river-land-trust.png')}></Image>
+              <Image style={{ width: 300, height: 100 }} source={require('./data/images/oconee-river-land-trust.png')}/>
             </View>
 
             <View style={styles.sectionContainer}>
@@ -73,8 +75,6 @@ function HomeScreen({ navigation }) {
     </>
   );
 }
-
-<MapScreen></MapScreen>
 
 const Stack = createStackNavigator();
 
