@@ -4,7 +4,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import {
   SafeAreaView,
-  StyleSheet,
   ScrollView,
   View,
   Text,
@@ -16,8 +15,6 @@ import {
 
 import { ThemeProvider } from 'react-native-elements';
 
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-
 import MapScreen from './data/screens/Map';
 import InfoScreen from './data/screens/Info';
 
@@ -28,6 +25,7 @@ import ExploreScreen from './data/screens/Explore';
 import ExploreListScreen from './data/screens/ExploreList';
 import ExploreDetailsScreen from './data/screens/ExploreDetails';
 import ProgressScreen from './data/screens/Progress';
+import MainStyle from './data/styles/MainStyle';
 
 function HomeScreen({ navigation }) {
   return (
@@ -99,40 +97,6 @@ function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+const styles = MainStyle;
 
 export default App;

@@ -6,12 +6,11 @@ import {
   Text,
   Image,
   Linking,
-  StyleSheet,
   StatusBar,
   ScrollView
 } from 'react-native';
 
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import MainStyle from '../styles/MainStyle';
 
 let hours = ['Monday - Friday: 7 AM - 5 PM', 'Saturday & Sunday: 7 AM - 5 PM'];
 
@@ -60,42 +59,6 @@ function InfoScreen({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  textURL: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: 'blue',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+const styles = MainStyle;
 
 export default InfoScreen;
