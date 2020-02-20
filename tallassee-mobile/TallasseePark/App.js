@@ -1,48 +1,34 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-import {
-  SafeAreaView,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  TextInput,
-  Button,
-  Image,
-} from 'react-native';
-
+import { SafeAreaView, ScrollView, View, Text, StatusBar, TextInput, Button, Image } from 'react-native';
 import { ThemeProvider } from 'react-native-elements';
 
+// Import Screens from the data folder
 import MapScreen from './data/screens/Map';
 import InfoScreen from './data/screens/Info';
-
 import ActivitiesScreen from './data/screens/Activities';
 import ActivityDetailsScreen from './data/screens/ActivityDetails';
-
 import ExploreScreen from './data/screens/Explore';
 import ExploreListScreen from './data/screens/ExploreList';
 import ExploreDetailsScreen from './data/screens/ExploreDetails';
 import ProgressScreen from './data/screens/Progress';
+
 import MainStyle from './data/styles/MainStyle';
+
+const styles = MainStyle;
+const Stack = createStackNavigator();
 
 function HomeScreen({ navigation }) {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Image style={{ width: 300, height: 100 }} source={require('./data/images/oconee-river-land-trust.png')}/>
+              <Image style={{ width: 300, height: 100 }} source={require('./data/images/oconee-river-land-trust.png')} />
             </View>
 
             <View style={styles.sectionContainer}>
@@ -65,7 +51,7 @@ function HomeScreen({ navigation }) {
             </View>
 
             <View style={styles.sectionContainer}>
-              <Button title="Login" onPress={() => navigation.replace('Map')}></Button>
+              <Button title="Login" onPress={() => navigation.replace('Map')} />
             </View>
           </View>
         </ScrollView>
@@ -74,29 +60,25 @@ function HomeScreen({ navigation }) {
   );
 }
 
-const Stack = createStackNavigator();
-
 function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen}/>
-        <Stack.Screen name="Map" component={MapScreen} options={{ title: 'Tallassee Park' }}/>
-        <Stack.Screen name="Info" component={InfoScreen}/>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Map" component={MapScreen} options={{ title: 'Tallassee Park' }} />
+        <Stack.Screen name="Info" component={InfoScreen} />
 
-        <Stack.Screen name="Activities" component={ActivitiesScreen}/>
-        <Stack.Screen name="ActivityDetails" component={ActivityDetailsScreen}/>
+        <Stack.Screen name="Activities" component={ActivitiesScreen} />
+        <Stack.Screen name="ActivityDetails" component={ActivityDetailsScreen} />
 
-        <Stack.Screen name="Explore" component={ExploreScreen}/>
-        <Stack.Screen name="ExploreList" component={ExploreListScreen}/>
-        <Stack.Screen name="ExploreDetails" component={ExploreDetailsScreen}/>
-        <Stack.Screen name="Progress" component={ProgressScreen}/>
-        
+        <Stack.Screen name="Explore" component={ExploreScreen} />
+        <Stack.Screen name="ExploreList" component={ExploreListScreen} />
+        <Stack.Screen name="ExploreDetails" component={ExploreDetailsScreen} />
+        <Stack.Screen name="Progress" component={ProgressScreen} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = MainStyle;
 
 export default App;
