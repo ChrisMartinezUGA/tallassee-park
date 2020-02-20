@@ -17,14 +17,14 @@ const actions = [
     text: "Activities",
     icon: require('../icons/running.png'),
     name: "bt_activities",
-    position: 1,
+    position: 2,
     color: "#3D6B9B"
   },
   {
     text: "Explore",
     icon: require('../icons/compass.png'),
     name: "bt_explore",
-    position: 2,
+    position: 1,
     color: "#3D6B9B",
   },
   {

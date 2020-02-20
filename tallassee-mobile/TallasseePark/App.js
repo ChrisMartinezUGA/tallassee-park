@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaView, ScrollView, View, Text, StatusBar, TextInput, Button, Image } from 'react-native';
-import { ThemeProvider } from 'react-native-elements';
+import { ThemeProvider,Header } from 'react-native-elements';
 
 // Import Screens from the data folder
 import MapScreen from './data/screens/Map';
@@ -72,7 +72,7 @@ function App() {
         <Stack.Screen name="ActivityDetails" component={ActivityDetailsScreen} />
 
         <Stack.Screen name="Explore" component={ExploreScreen} />
-        <Stack.Screen name="ExploreList" component={ExploreListScreen} />
+        <Stack.Screen name="ExploreList" component={ExploreListScreen} options={{}} />
         <Stack.Screen name="ExploreDetails" component={ExploreDetailsScreen} />
         <Stack.Screen name="Progress" component={ProgressScreen} />
 
