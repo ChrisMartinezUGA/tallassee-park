@@ -83,7 +83,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen}/>
-        <Stack.Screen name="Map" component={MapScreen}/>
+        <Stack.Screen name="Map" component={MapScreen} options={{ title: 'Tallassee Park' }}/>
         <Stack.Screen name="Info" component={InfoScreen}/>
 
         <Stack.Screen name="Activities" component={ActivitiesScreen}/>
