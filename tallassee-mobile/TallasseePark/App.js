@@ -49,7 +49,7 @@ function HomeScreen({ navigation }) {
 
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Tallasee Park</Text>
-              <Text style={styles.sectionDescription}>Subtitle</Text>
+              <Text style={styles.sectionDescription}>Project by the Oconee River Land Trust</Text>
             </View>
 
             <View style={styles.sectionContainer}>
