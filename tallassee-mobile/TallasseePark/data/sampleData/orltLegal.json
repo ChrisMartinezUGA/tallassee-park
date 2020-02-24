@@ -1,0 +1,15 @@
+{
+    "accDisclaimer": "...",
+    "disclaimer": "...",
+    "missionStatement": "...",
+    "contactInfo": "...",
+    "url": "...",
+    "parkHours": [
+        {
+            "Monday - Friday": "6 AM - 8 AM"
+        },
+        {
+            "Saturday - Sunday": "8 AM - 10 PM"
+        }
+    ]
+}

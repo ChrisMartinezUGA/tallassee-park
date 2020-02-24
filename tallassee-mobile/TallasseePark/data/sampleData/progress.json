@@ -1,0 +1,37 @@
+{
+    "ranks": [
+        "Cacoon",
+        "Tadpool",
+        "Fawn",
+        "Spaling",
+        "...",
+        "Buck",
+        "Oak"
+    ],
+    "badges": {
+        "flora": [
+            {
+                "badgeTitle": "Sapling",
+                "requirements": "..."
+            }
+        ],
+        "fauna": [
+            {
+                "badgeTitle": "Sapling",
+                "requirements": "..."
+            }
+        ],
+        "history": [
+            {
+                "badgeTitle": "Sapling",
+                "requirements": "..."
+            }
+        ],
+        "geology": [
+            {
+                "badgeTitle": "Sapling",
+                "requirements": "..."
+            }
+        ]
+    }
+}

@@ -20,10 +20,10 @@ function ProgressScreen({ navigation }) {
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Badges</Text>
-              <View style={{flexDirection: 'row'}}>
-                <Image style={{ width: 100, height: 100}} source={require('./../../data/images/star.png')} />
-                <Image style={{ width: 100, height: 100}} source={require('./../../data/images/tree.png')} />
-                <Image style={{ width: 100, height: 100}} source={require('./../../data/images/river.png')} />
+              <View style={{ flexDirection: 'row' }}>
+                <Image style={{ width: 100, height: 100 }} source={require('./../../data/images/star.png')} />
+                <Image style={{ width: 100, height: 100 }} source={require('./../../data/images/tree.png')} />
+                <Image style={{ width: 100, height: 100 }} source={require('./../../data/images/river.png')} />
               </View>
             </View>
           </View>

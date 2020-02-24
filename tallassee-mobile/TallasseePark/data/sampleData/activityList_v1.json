@@ -1,0 +1,68 @@
+{
+    "soloCount": 2,
+    "groupCount": 4,
+    "soloActivities": [
+        {
+            "title": "Identify The Leaf",
+            "estimatedTime": "10 minutes",
+            "supplies": [
+                "Leaf",
+                "Pencil"
+            ],
+            "participants": 1,
+            "instructions": "..."
+        },
+        {
+            "title": "_",
+            "estimatedTime": "_",
+            "supplies": [
+                "_",
+                "_"
+            ],
+            "participants": 0,
+            "instructions": "..."
+        }
+    ],
+    "groupActivities": [
+        {
+            "title": "First to find",
+            "estimatedTime": "10 minutes",
+            "supplies": [
+                "Checklist",
+                "Pencil"
+            ],
+            "participants": 3,
+            "instructions": "..."
+        },
+        {
+            "title": "_",
+            "estimatedTime": "_",
+            "supplies": [
+                "_",
+                "_"
+            ],
+            "participants": 0,
+            "instructions": "..."
+        },
+        {
+            "title": "_",
+            "estimatedTime": "_",
+            "supplies": [
+                "_",
+                "_"
+            ],
+            "participants": 0,
+            "instructions": "..."
+        },
+        {
+            "title": "_",
+            "estimatedTime": "_",
+            "supplies": [
+                "_",
+                "_"
+            ],
+            "participants": 0,
+            "instructions": "..."
+        }
+    ]
+}
