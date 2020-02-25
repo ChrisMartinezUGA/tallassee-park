@@ -5,6 +5,9 @@ export default StyleSheet.create({
   scrollView: {
     backgroundColor: Colors.lighter,
   },
+  wrapper: {
+    ...StyleSheet.absoluteFill,
+  },
   engine: {
     position: 'absolute',
     right: 0,
@@ -45,12 +48,17 @@ export default StyleSheet.create({
     flex: 1,
   },
   item: {
-    backgroundColor: '#A9F7FD',
+    backgroundColor: '#C0C6C9',
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
   },
   title: {
     fontSize: 32,
-  }
+  },
+  exploreButton: {
+    margin: 10,
+    width: 140,
+    height: 140
+  },
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, Text, Button, FlatList } from 'react-native';
+import { SafeAreaView, View, Text, Button, FlatList, StatusBar} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Header } from 'react-native-elements';
 import MainStyle from '../styles/MainStyle';
@@ -46,6 +46,10 @@ function ExploreListScreen({ route, navigation }) {
   const { typeId } = route.params;
   const { type } = route.params;
   navigation.setOptions({
+    title: type,
+  });
+  /*
+  navigation.setOptions({
     header: props => <Header
       backgroundImage={require('../images/trails.jpg')}
       statusBarProps={{ barStyle: 'light-content' }}
@@ -78,10 +82,10 @@ function ExploreListScreen({ route, navigation }) {
       }}
     />
   });
+  */
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start' }}>
-      <Text>Explore List Screen</Text>
-      <Text>Viewing: {type}</Text>
+      <StatusBar barStyle="light-content" />
       <ExploreList typeId={typeId} />
     </View>
   );

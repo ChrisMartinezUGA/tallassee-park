@@ -161,7 +161,6 @@
 				4D936834099CC700BF559675 /* Pods-TallasseeParkTests.debug.xcconfig */,
 				61FEAC3E2656698357F08979 /* Pods-TallasseeParkTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -309,6 +308,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

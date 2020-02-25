@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { SafeAreaView, ScrollView, View, Text, StatusBar, TextInput, Button, Image } from 'react-native';
+import { SafeAreaView, ScrollView, View, Text, StatusBar, TextInput, Button, Image, StyleSheet } from 'react-native';
 import { ThemeProvider, Header } from 'react-native-elements';
 
 // Import Screens from the data folder
@@ -37,6 +37,7 @@ class Home extends React.Component {
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"
             style={styles.scrollView}>
+            <StatusBar barStyle="light-content" />
             <View style={styles.body}>
               <View style={styles.sectionContainer}>
                 <Image style={{ width: 300, height: 100 }} source={require('./data/images/oconee-river-land-trust.png')} />
@@ -83,17 +84,65 @@ function HomeScreen({ navigation }) {
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Home" screenOptions={{
+        headerStyle: {
+          backgroundColor: '#363C24',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}>
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Map" component={MapScreen} options={{ title: 'Tallassee Park' }} />
-        <Stack.Screen name="Info" component={InfoScreen} />
-
-        <Stack.Screen name="Activities" component={ActivitiesScreen} />
+        <Stack.Screen name="Map" component={MapScreen} 
+          options={{ 
+            title: 'Tallassee Park'
+          }} />
+        <Stack.Screen name="Info" component={InfoScreen} 
+          options={{ 
+            title: 'Tallassee Park Info',
+            headerBackTitle: 'Map'
+          }} />
+        <Stack.Screen name="Activities" component={ActivitiesScreen}
+          options={{ 
+            title: 'Games & Activities',
+            headerBackTitle: 'Map'
+          }} />
         <Stack.Screen name="ActivityDetails" component={ActivityDetailsScreen} />
 
-        <Stack.Screen name="Explore" component={ExploreScreen} />
-        <Stack.Screen name="ExploreList" component={ExploreListScreen} options={{}} />
-        <Stack.Screen name="ExploreDetails" component={ExploreDetailsScreen} />
+        <Stack.Screen name="Explore" component={ExploreScreen}
+          options={{ 
+            title: 'Explore Tallassee Park',
+            headerBackTitle: 'Map'
+          }} />
+        <Stack.Screen name="ExploreList" component={ExploreListScreen}
+          options={{
+            title: '[Category]',
+            headerStyle: {
+              backgroundColor: '#36464D',
+              height: 240,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              fontSize: 30
+            },
+            headerBackTitle: 'Explore'
+          }} />
+        <Stack.Screen name="ExploreDetails" component={ExploreDetailsScreen}
+          options={{
+            title: '[Item]',
+            headerStyle: {
+              backgroundColor: '#ABB1A4',
+              height: 240,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              fontSize: 22
+            },
+            headerBackTitle: 'Back'
+          }} />
         <Stack.Screen name="Progress" component={ProgressScreen} />
 
       </Stack.Navigator>

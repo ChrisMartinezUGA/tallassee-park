@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, ScrollView } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 import MainStyle from '../styles/MainStyle';
 
 const styles = MainStyle;
@@ -18,6 +18,7 @@ function ActivitiesDetailsScreen({ route, navigation }) {
   return (
     <>
       <SafeAreaView>
+        <StatusBar barStyle="light-content" />  
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, ScrollView, Image } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, Image, StatusBar } from 'react-native';
 import * as Progress from 'react-native-progress';
 import MainStyle from '../styles/MainStyle';
 
@@ -9,6 +9,7 @@ function ProgressScreen({ navigation }) {
   return (
     <>
       <SafeAreaView>
+        <StatusBar barStyle="light-content" />
         <ScrollView>
           <View style={styles.body}>
             <View style={styles.sectionContainer}>

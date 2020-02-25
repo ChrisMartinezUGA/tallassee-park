@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, Button, FlatList } from 'react-native';
+import { SafeAreaView, View, Button, FlatList, StatusBar} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MainStyle from '../styles/MainStyle';
 
@@ -32,6 +32,7 @@ class ActivityList extends React.Component {
     return (
       <>
         <SafeAreaView>
+          <StatusBar barStyle="light-content" />
           <View style={styles.body}>
             <FlatList
               data={this.state.data}
