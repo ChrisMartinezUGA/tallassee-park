@@ -1,0 +1,38 @@
+{
+    "soloActivities": [
+        {
+            "id": "1",
+            "title": "Identify The Leaf",
+            "estimatedTime": "10 minutes",
+            "supplies": "Leaf",
+            "participants": "1",
+            "instructions": "Here's how to identity a leaf"
+        },
+        {
+            "id": "2",
+            "title": "The Water Cycle Around Us",
+            "estimatedTime": "15 minutes",
+            "supplies": "Paper, Water",
+            "participants": "1",
+            "instructions": "Here's how the water cycle works"
+        }
+    ],
+    "groupActivities": [
+        {
+            "id": "3",
+            "title": "First to find",
+            "estimatedTime": "10 minutes",
+            "supplies": "Checklist, Paper",
+            "participants": "3 per group",
+            "instructions": "Find the things on the check list"
+        },
+        {
+            "id": "4",
+            "title": "Down The River",
+            "estimatedTime": "30 minutes",
+            "supplies": "Hiking Boots",
+            "participants": "At least two, you should always hike with a buddy.",
+            "instructions": "Hike to the river"
+        }
+    ]
+}

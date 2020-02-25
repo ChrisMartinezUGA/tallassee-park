@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaView, ScrollView, View, Text, StatusBar, TextInput, Button, Image } from 'react-native';
-import { ThemeProvider,Header } from 'react-native-elements';
+import { ThemeProvider, Header } from 'react-native-elements';
 
 // Import Screens from the data folder
 import MapScreen from './data/screens/Map';
@@ -18,46 +18,66 @@ import MainStyle from './data/styles/MainStyle';
 
 const styles = MainStyle;
 const Stack = createStackNavigator();
+const orltLegal = require('./data/sampleData/orltLegal.json');
+
+const correctPassword = "UGA";
+
+class Home extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      password: ''
+    }
+  }
+
+  render() {
+    return (
+      <>
+        <SafeAreaView>
+          <ScrollView
+            contentInsetAdjustmentBehavior="automatic"
+            style={styles.scrollView}>
+            <View style={styles.body}>
+              <View style={styles.sectionContainer}>
+                <Image style={{ width: 300, height: 100 }} source={require('./data/images/oconee-river-land-trust.png')} />
+              </View>
+
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Tallasee Park</Text>
+                <Text style={styles.sectionDescription}>Project by the Oconee River Land Trust</Text>
+              </View>
+
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Password</Text>
+                <TextInput
+                  secureTextEntry={true}
+                  style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                  onChangeText={(password) => this.setState({ password })}
+                  value={this.state.password} />
+              </View>
+
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Athens Clarke County Government Discliamer</Text>
+                <Text style={styles.sectionDescription}>{orltLegal.accDisclaimer}</Text>
+              </View>
+
+              <View style={styles.sectionContainer}>
+                <Button title="Login" onPress={() => {
+                  if (this.state.password == correctPassword) {
+                    this.props.navigation.replace('Map')
+                  }
+                }} />
+              </View>
+            </View>
+          </ScrollView>
+        </SafeAreaView>
+      </>
+    )
+  }
+}
 
 function HomeScreen({ navigation }) {
-  return (
-    <>
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Image style={{ width: 300, height: 100 }} source={require('./data/images/oconee-river-land-trust.png')} />
-            </View>
-
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Tallasee Park</Text>
-              <Text style={styles.sectionDescription}>Project by the Oconee River Land Trust</Text>
-            </View>
-
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Password</Text>
-              <TextInput secureTextEntry={true} style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}>Password</TextInput>
-            </View>
-
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Disclaimer</Text>
-              <Text style={styles.sectionDescription}>
-                Tallasee Park is not open to the public.
-                This land is under preservation and is only open to approved land trust employees.
-                This app is solely for testing new activities and should only be accessed by approved users.
-              </Text>
-            </View>
-
-            <View style={styles.sectionContainer}>
-              <Button title="Login" onPress={() => navigation.replace('Map')} />
-            </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
+  return <Home navigation={navigation} />
 }
 
 function App() {

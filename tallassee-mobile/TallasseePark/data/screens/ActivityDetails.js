@@ -3,8 +3,19 @@ import { View, Text, SafeAreaView, ScrollView } from 'react-native';
 import MainStyle from '../styles/MainStyle';
 
 const styles = MainStyle;
+const activityList = require('../sampleData/activityList.json');
+const ALL_DATA = activityList.soloActivities.concat(activityList.groupActivities);
 
-function ActivitiesDetailsScreen({ navigation }) {
+function ActivitiesDetailsScreen({ route, navigation }) {
+  const { itemId } = route.params;
+  console.log(itemId);
+  var currentItem;
+  for (var item of ALL_DATA) {
+    if (item.id == itemId) {
+      currentItem = item;
+      break;
+    }
+  }
   return (
     <>
       <SafeAreaView>
@@ -13,21 +24,18 @@ function ActivitiesDetailsScreen({ navigation }) {
           style={styles.scrollView}>
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>First to Find!</Text>
+              <Text style={styles.sectionTitle}>{currentItem.title}</Text>
 
               <Text style={styles.sectionDescription}>
-                Estimated Time: 10 minutes{"\n"}
-                Supplies: Checklist, Pencil{"\n"}
-                Number of Particpants: 3 per group{"\n"}
+                Estimated Time: {currentItem.estimatedTime}{"\n"}
+                Supplies: {currentItem.supplies}{"\n"}
+                Number of Particpants: {currentItem.participants}{"\n"}
               </Text>
             </View>
 
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Instructions</Text>
-              <Text style={styles.sectionDescription}>With your group, explore the area and find the items on your checklist.</Text>
-              <Text style={styles.sectionDescription}>Keep track of your progress on your sheet, and when your group is ready
-              bring the items and checklist to your teacher.</Text>
-              <Text style={styles.sectionDescription}>First group to find every item wins!</Text>
+              <Text style={styles.sectionDescription}>{currentItem.instructions}</Text>
             </View>
 
           </View>

@@ -7,16 +7,20 @@ function ExploreScreen({ navigation }) {
       <Text>Explore Screen</Text>
       <Button title="Flora" onPress={() => navigation.navigate('ExploreList', {
         typeId: 0,
-        type: "Flora"})} />
+        type: "Flora"
+      })} />
       <Button title="Fauna" onPress={() => navigation.navigate('ExploreList', {
         typeId: 1,
-        type: "Fauna"})} />
+        type: "Fauna"
+      })} />
       <Button title="Geology" onPress={() => navigation.navigate('ExploreList', {
         typeId: 2,
-        type: "Geology"})} />
+        type: "Geology"
+      })} />
       <Button title="History" onPress={() => navigation.navigate('ExploreList', {
         typeId: 3,
-        type: "History"})} />
+        type: "History"
+      })} />
       <Button title="Progress" onPress={() => navigation.navigate('Progress')} />
     </View>
   );

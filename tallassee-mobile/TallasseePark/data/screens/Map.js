@@ -5,11 +5,11 @@ import { FloatingAction } from "react-native-floating-action";
 import ImageZoom from 'react-native-image-pan-zoom';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {
-    View,
-    Text,
-    Image,
-    Dimensions,
-  } from 'react-native';
+  View,
+  Text,
+  Image,
+  Dimensions,
+} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
 const actions = [
@@ -45,30 +45,30 @@ const images = [{
 }]
 
 function MapScreen({ navigation }) {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <ScrollView minimumZoomScale={1} maximumZoomScale={5} showsHorizontalScrollIndicator={true} style={{flex: 1}} >
-          <Image source={require('../images/topo-map.png')} />
-        </ScrollView>
-        <FloatingAction actions={actions} onPressItem={
-          name => { 
-            if(name == "bt_activities") {navigation.navigate('Activities')}
-            else if(name == "bt_explore") {navigation.navigate('Explore')}
-            else if(name == "bt_info") {navigation.navigate('Info')}
-           }
-          } color="#3D6B9B" />
-      </View>
-    );
-  }
-  /*
-    <ScrollView minimumZoomScale={1} maximumZoomScale={5} showsHorizontalScrollIndicator={true} style={{flex: 1}} >
-      <Image source={require('../images/topo-map.png')} />
-    </ScrollView>
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <ScrollView minimumZoomScale={1} maximumZoomScale={5} showsHorizontalScrollIndicator={true} style={{ flex: 1 }} >
+        <Image source={require('../images/topo-map.png')} />
+      </ScrollView>
+      <FloatingAction actions={actions} onPressItem={
+        name => {
+          if (name == "bt_activities") { navigation.navigate('Activities') }
+          else if (name == "bt_explore") { navigation.navigate('Explore') }
+          else if (name == "bt_info") { navigation.navigate('Info') }
+        }
+      } color="#3D6B9B" />
+    </View>
+  );
+}
+/*
+  <ScrollView minimumZoomScale={1} maximumZoomScale={5} showsHorizontalScrollIndicator={true} style={{flex: 1}} >
+    <Image source={require('../images/topo-map.png')} />
+  </ScrollView>
 
-            <ImageZoom cropWidth={Dimensions.get('window').width}
-          cropHeight={Dimensions.get('window').height}>
-          <Image style={{width:200, height:200}}
-          source={require('../images/topo-map.png')}/>
-        </ImageZoom>
-  */
-  export default MapScreen;
+          <ImageZoom cropWidth={Dimensions.get('window').width}
+        cropHeight={Dimensions.get('window').height}>
+        <Image style={{width:200, height:200}}
+        source={require('../images/topo-map.png')}/>
+      </ImageZoom>
+*/
+export default MapScreen;

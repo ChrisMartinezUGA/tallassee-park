@@ -4,23 +4,18 @@ import { useNavigation } from '@react-navigation/native';
 import MainStyle from '../styles/MainStyle';
 
 const styles = MainStyle;
+const activityList = require('../sampleData/activityList.json');
 
-const SOLO_DATA = [
-  { id: 'activity1', title: 'Identify The Leaf' },
-  { id: 'activity3', title: 'The Water Cycle Around Us' }
-];
+const SOLO_DATA = activityList.soloActivities;
+const GROUP_DATA = activityList.groupActivities;
+const ALL_DATA = activityList.soloActivities.concat(activityList.groupActivities);
 
-const GROUP_DATA = [
-  { id: 'activity2', title: 'First To Find!' },
-  { id: 'activity4', title: 'Down The River' }
-];
-
-function Item({ title }) {
+function Item({ title, id }) {
   const navigation = useNavigation();
 
   return (
     <View style={styles.item}>
-      <Button style={styles.title} title={title} onPress={() => navigation.navigate('ActivityDetails')} />
+      <Button style={styles.title} title={title} onPress={() => navigation.navigate('ActivityDetails', { itemId: id })} />
     </View>
   );
 }
@@ -40,12 +35,13 @@ class ActivityList extends React.Component {
           <View style={styles.body}>
             <FlatList
               data={this.state.data}
-              renderItem={({ item }) => <Item title={item.title} />}
+              renderItem={({ item }) => <Item title={item.title} id={item.id} />}
               keyExtractor={item => item.id}
             />
             <View style={{ flexDirection: 'row' }}>
               <Button title="Solo" onPress={() => this.setState({ data: SOLO_DATA })} />
               <Button title="Group" onPress={() => this.setState({ data: GROUP_DATA })} />
+              <Button title="All" onPress={() => this.setState({ data: ALL_DATA })} />
             </View>
           </View>
         </SafeAreaView>
