@@ -8,7 +8,6 @@ const ALL_DATA = activityList.soloActivities.concat(activityList.groupActivities
 
 function ActivitiesDetailsScreen({ route, navigation }) {
   const { itemId } = route.params;
-  console.log(itemId);
   var currentItem;
   for (var item of ALL_DATA) {
     if (item.id == itemId) {

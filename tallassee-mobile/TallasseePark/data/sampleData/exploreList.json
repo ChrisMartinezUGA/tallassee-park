@@ -1,0 +1,69 @@
+{
+    "categories": [
+        {
+            "type": "Flora",
+            "items": [
+                {
+                    "id": "1",
+                    "title": "Trees",
+                    "content": "..."
+                },
+                {
+                    "id": "2",
+                    "title": "Flowers",
+                    "content": "..."
+                },
+                {
+                    "id": "3",
+                    "title": "Mushrooms",
+                    "content": "..."
+                }
+            ]
+        },
+        {
+            "type": "Fauna",
+            "items": [
+                {
+                    "id": "1",
+                    "title": "Birds",
+                    "content": "..."
+                },
+                {
+                    "id": "2",
+                    "title": "Deer",
+                    "content": "..."
+                },
+                {
+                    "id": "3",
+                    "title": "Snakes",
+                    "content": "..."
+                }
+            ]
+        },
+        {
+            "type": "Geology",
+            "items": [
+                {
+                    "id": "1",
+                    "title": "Crystals",
+                    "content": "..."
+                },
+                {
+                    "id": "2",
+                    "title": "Power Lines and Erosion",
+                    "content": "..."
+                }
+            ]
+        },
+        {
+            "type": "History",
+            "items": [
+                {
+                    "id": "1",
+                    "title": "Native Americans",
+                    "content": "..."
+                }
+            ]
+        }
+    ]
+}

@@ -1,6 +1,46 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { SafeAreaView, View, Text, Button, FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { Header } from 'react-native-elements';
+import MainStyle from '../styles/MainStyle';
+
+const styles = MainStyle;
+const exploreData = require('../sampleData/exploreList.json');
+
+function Item({ title, id, typeId }) {
+  const navigation = useNavigation();
+
+  return (
+    <View style={styles.item}>
+      <Button style={styles.title} title={title} onPress={() => navigation.navigate('ExploreDetails', { typeId: typeId, itemId: id })} />
+    </View>
+  );
+}
+
+class ExploreList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: exploreData.categories[props.typeId].items
+    }
+  }
+
+  render() {
+    return (
+      <>
+        <SafeAreaView>
+          <View style={styles.body}>
+            <FlatList
+              data={this.state.data}
+              renderItem={({ item }) => <Item title={item.title} id={item.id} typeId={this.props.typeId} />}
+              keyExtractor={item => item.id}
+            />
+          </View>
+        </SafeAreaView>
+      </>
+    )
+  }
+}
 
 function ExploreListScreen({ route, navigation }) {
   const { typeId } = route.params;
@@ -42,8 +82,7 @@ function ExploreListScreen({ route, navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start' }}>
       <Text>Explore List Screen</Text>
       <Text>Viewing: {type}</Text>
-      <Button title="Explore 1 Details" onPress={() => navigation.navigate('ExploreDetails')}></Button>
-      <Button title="Explore 2 Details" onPress={() => navigation.navigate('ExploreDetails')}></Button>
+      <ExploreList typeId={typeId} />
     </View>
   );
 }
