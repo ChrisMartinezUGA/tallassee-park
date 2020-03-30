@@ -1,0 +1,19 @@
+{
+  "name": "tallassee-admin",
+  "version": "1.0.0",
+  "description": "Admin back-end page for Tallassee Park mobile app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css-build": "node-sass --omit-source-map-url sass/styles.scss css/styles.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bulma": "^0.8.1",
+    "bulma-switch": "^2.0.0",
+    "node-sass": "^4.13.1"
+  }
+}
