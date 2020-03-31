@@ -1,32 +1,4 @@
 {
-    "completedActivities": [
-        {
-            "type": "flora",
-            "completedIDs": [
-                3
-            ]
-        },
-        {
-            "type": "fauna",
-            "completedIDs": [
-                1,
-                2,
-                3
-            ]
-        },
-        {
-            "type": "geology",
-            "completedIDs": [
-                2
-            ]
-        },
-        {
-            "type": "hydrology",
-            "completedIDs": [
-                1
-            ]
-        }
-    ],
     "ranks": [
         "Cacoon",
         "Tadpool",
