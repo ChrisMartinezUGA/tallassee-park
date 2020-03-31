@@ -8,12 +8,12 @@ const styles = MainStyle;
 
 function ExploreScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', flexWrap: 'wrap', alignContent: 'center'}}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', flexWrap: 'wrap', alignContent: 'center' }}>
       <StatusBar barStyle="light-content" />
       <Button title="Flora" onPress={() => navigation.navigate('ExploreList', {
         typeId: 0,
         type: "Flora"
-        })}
+      })}
         buttonStyle={{
           backgroundColor: '#36464D',
           margin: 20,
@@ -24,8 +24,8 @@ function ExploreScreen({ navigation }) {
       <Button title="Fauna" onPress={() => navigation.navigate('ExploreList', {
         typeId: 1,
         type: "Fauna"
-      })} 
-      buttonStyle={{
+      })}
+        buttonStyle={{
           backgroundColor: '#36464D',
           margin: 20,
           width: 140,
@@ -35,19 +35,19 @@ function ExploreScreen({ navigation }) {
       <Button title="Earth Science" onPress={() => navigation.navigate('ExploreList', {
         typeId: 2,
         type: "Earth Science"
-      })} 
-      buttonStyle={{
+      })}
+        buttonStyle={{
           backgroundColor: '#36464D',
           margin: 20,
           width: 140,
           height: 80
         }}
       />
-      <Button title="History" onPress={() => navigation.navigate('ExploreList', {
+      <Button title="Hydrology" onPress={() => navigation.navigate('ExploreList', {
         typeId: 3,
-        type: "History"
-      })} 
-      buttonStyle={{
+        type: "Hydrology"
+      })}
+        buttonStyle={{
           backgroundColor: '#36464D',
           margin: 20,
           width: 140,

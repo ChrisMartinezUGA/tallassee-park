@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, Button, FlatList, StatusBar} from 'react-native';
+import { SafeAreaView, View, Button, FlatList, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MainStyle from '../styles/MainStyle';
 

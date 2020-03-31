@@ -1,37 +1,56 @@
 {
+    "completedActivities": [
+        {
+            "type": "flora",
+            "completedIDs": [
+                3
+            ]
+        },
+        {
+            "type": "fauna",
+            "completedIDs": [
+                1,
+                2,
+                3
+            ]
+        },
+        {
+            "type": "geology",
+            "completedIDs": [
+                2
+            ]
+        },
+        {
+            "type": "hydrology",
+            "completedIDs": [
+                1
+            ]
+        }
+    ],
     "ranks": [
         "Cacoon",
         "Tadpool",
         "Fawn",
-        "Spaling",
-        "...",
+        "Sapling",
         "Buck",
         "Oak"
     ],
-    "badges": {
-        "flora": [
-            {
-                "badgeTitle": "Sapling",
-                "requirements": "..."
-            }
-        ],
-        "fauna": [
-            {
-                "badgeTitle": "Sapling",
-                "requirements": "..."
-            }
-        ],
-        "history": [
-            {
-                "badgeTitle": "Sapling",
-                "requirements": "..."
-            }
-        ],
-        "geology": [
-            {
-                "badgeTitle": "Sapling",
-                "requirements": "..."
-            }
-        ]
-    }
+    "badges": [
+        {
+            "type": "flora",
+            "url": "./../../data/images/star.png"
+        },
+        {
+            "type": "fauna",
+            "url": "./../../data/images/star.png"
+        },
+        {
+            "type": "geology",
+            "url": "./../../data/images/star.png"
+        },
+        {
+            "type": "hydrology",
+            "url": "./../../data/images/star.png"
+        }
+    ]
 }

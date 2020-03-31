@@ -18,7 +18,7 @@ function ActivitiesDetailsScreen({ route, navigation }) {
   return (
     <>
       <SafeAreaView>
-        <StatusBar barStyle="light-content" />  
+        <StatusBar barStyle="light-content" />
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>

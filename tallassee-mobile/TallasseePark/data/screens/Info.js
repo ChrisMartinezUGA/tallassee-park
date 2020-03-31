@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, Text, Image, Linking, ScrollView, StatusBar} from 'react-native';
+import { SafeAreaView, View, Text, Image, Linking, ScrollView, StatusBar } from 'react-native';
 import MainStyle from '../styles/MainStyle';
 
 const styles = MainStyle;
