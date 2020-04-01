@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Explore | Tallassee Park Admin</title>
+    <script src="https://kit.fontawesome.com/9aef0c2001.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <p style="padding: 6px;"><img src="assets/logos/t-logo.png" style="width: 2em"></p>
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                data-target="mainNavbar">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="mainNavbar" class="navbar-menu">
+            <div class="navbar-start"></div>
+            <div class="navbar-end">
+                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item" href="info.html">Park Info</a>
+                <a class="navbar-item" href="activities.html">Activities</a>
+                <a class="navbar-item" href="explore.html">Explore</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero is-primary is-small">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">Explore - Content Manager</h1>
+            </div>
+        </div>
+    </section>
+
+    <div id="exploreModal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Now Editing: <span id="exploreModalTitle">0000</span></p>
+                <button class="delete" aria-label="close" onclick="closeEditModal()"></button>
+            </header>
+            <section class="modal-card-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Potenti nullam ac tortor vitae purus faucibus ornare. Sed euismod nisi porta lorem mollis aliquam. Feugiat nibh sed pulvinar proin gravida hendrerit lectus a. Laoreet sit amet cursus sit. Scelerisque fermentum dui faucibus in ornare. Non tellus orci ac auctor augue mauris augue neque. Dignissim diam quis enim lobortis. Ipsum suspendisse ultrices gravida dictum fusce. Sit amet purus gravida quis. Mi quis hendrerit dolor magna. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Nullam vehicula ipsum a arcu cursus vitae congue.</p>
+                <p>Nec ullamcorper sit amet risus nullam eget felis. Eget duis at tellus at. Egestas sed sed risus pretium quam. Diam ut venenatis tellus in metus vulputate eu scelerisque felis. Id aliquet risus feugiat in ante metus dictum. Volutpat maecenas volutpat blandit aliquam etiam. Quam viverra orci sagittis eu. Sed lectus vestibulum mattis ullamcorper. Vestibulum lectus mauris ultrices eros in. Turpis massa tincidunt dui ut. Sapien pellentesque habitant morbi tristique. Placerat duis ultricies lacus sed turpis tincidunt id.</p>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-success" onclick="saveEditModal()">Save changes</button>
+                <button class="button" onclick="closeEditModal()">Cancel</button>
+            </footer>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="content">
+            <table class="table is-striped is-narrow">
+                <thead>
+                    <tr>
+                        <th><abbr title="Unique Entry ID">ID</abbr></th>
+                        <th>Entry Title</th>
+                        <th>Category</th>
+                        <th>Content</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0001</td>
+                        <td class="is-italic has-text-weight-bold">Trees</td>
+                        <td>Flora</td>
+                        <td>Lorem ipsum dolor sit amet...</td>
+                        <td>
+                            <button type="button" onclick="launchEditModal('Trees')" class="button is-warning"><i class="fas fa-edit"></i></button>
+                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>0002</td>
+                        <td class="is-italic has-text-weight-bold">Flowers</td>
+                        <td>Flora</td>
+                        <td>Lorem ipsum dolor sit amet...</td>
+                        <td>
+                            <button type="button" onclick="launchEditModal('Flowers')" class="button is-warning"><i class="fas fa-edit"></i></button>
+                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>0003</td>
+                        <td class="is-italic has-text-weight-bold">Mushrooms</td>
+                        <td>Flora</td>
+                        <td>Lorem ipsum dolor sit amet...</td>
+                        <td>
+                            <button type="button" onclick="launchEditModal('Mushrooms')" class="button is-warning"><i class="fas fa-edit"></i></button>
+                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>0004</td>
+                        <td class="is-italic has-text-weight-bold">Birds</td>
+                        <td>Fauna</td>
+                        <td>Lorem ipsum dolor sit amet...</td>
+                        <td>
+                            <button type="button" onclick="launchEditModal('Birds')" class="button is-warning"><i class="fas fa-edit"></i></button>
+                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>0005</td>
+                        <td class="is-italic has-text-weight-bold">Deer</td>
+                        <td>Fauna</td>
+                        <td>Lorem ipsum dolor sit amet...</td>
+                        <td>
+                            <button type="button" onclick="launchEditModal('Deer')" class="button is-warning"><i class="fas fa-edit"></i></button>
+                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>0006</td>
+                        <td class="is-italic has-text-weight-bold">Snakes</td>
+                        <td>Fauna</td>
+                        <td>Lorem ipsum dolor sit amet...</td>
+                        <td>
+                            <button type="button" onclick="launchEditModal('Snakes')" class="button is-warning"><i class="fas fa-edit"></i></button>
+                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>0007</td>
+                        <td class="is-italic has-text-weight-bold">Quartz Crystals</td>
+                        <td>Earth Science</td>
+                        <td>Lorem ipsum dolor sit amet...</td>
+                        <td>
+                            <button type="button" onclick="launchEditModal('Quartz Crystals')" class="button is-warning"><i class="fas fa-edit"></i></button>
+                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>0008</td>
+                        <td class="is-italic has-text-weight-bold">Power Lines & Erosion</td>
+                        <td>Earth Science</td>
+                        <td>Lorem ipsum dolor sit amet...</td>
+                        <td>
+                            <button type="button" onclick="launchEditModal('Power Lines & Erosion')" class="button is-warning"><i class="fas fa-edit"></i></button>
+                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>0009</td>
+                        <td class="is-italic has-text-weight-bold">Native Americans</td>
+                        <td>History</td>
+                        <td>Lorem ipsum dolor sit amet...</td>
+                        <td>
+                            <button type="button" onclick="launchEditModal('Native Americans')" class="button is-warning"><i class="fas fa-edit"></i></button>
+                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="has-text-centered">
+                <a class="button is-link"><i class="fas fa-plus-circle"></i>&nbsp;New Entry</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/explore.js"></script>
+</body>
+
+</html>
