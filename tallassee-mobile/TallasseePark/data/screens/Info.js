@@ -16,7 +16,7 @@ function InfoScreen({ navigation }) {
           style={styles.scrollView}>
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Image style={{ width: 300, height: 100 }} source={{ uri: "https://tallassee.mynmi.net/images/oconee-river-land-trust.png" }} />
+              <Image style={{ width: 300, height: 100 }} source={{ uri: "https://tallassee.mynmi.net/images/oconee-river-land-trust.jpg" }} />
             </View>
 
             <View style={styles.sectionContainer}>

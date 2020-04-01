@@ -38,7 +38,7 @@ class Home extends React.Component {
             <StatusBar barStyle="light-content" />
             <View style={styles.body}>
               <View style={styles.sectionContainer}>
-                <Image style={{ width: 300, height: 100 }} source={{ uri: "http://tallassee.mynmi.net/images/oconee-river-land-trust.png" }} />
+                <Image style={{ width: 300, height: 100 }} source={{ uri: "http://tallassee.mynmi.net/images/oconee-river-land-trust.jpg" }} />
               </View>
 
               <View style={styles.sectionContainer}>
