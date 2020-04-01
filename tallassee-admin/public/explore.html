@@ -7,6 +7,7 @@
     <title>Explore | Tallassee Park Admin</title>
     <script src="https://kit.fontawesome.com/9aef0c2001.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -40,135 +41,195 @@
         </div>
     </section>
 
-    <div id="exploreModal" class="modal">
+    <div id="newModal" class="modal">
         <div class="modal-background"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <p class="modal-card-title">Now Editing: <span id="exploreModalTitle">0000</span></p>
-                <button class="delete" aria-label="close" onclick="closeEditModal()"></button>
+                <p class="modal-card-title">Explore - New Entry</p>
+                <button class="delete" aria-label="close" onclick="closeNewModal()"></button>
             </header>
             <section class="modal-card-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Potenti nullam ac tortor vitae purus faucibus ornare. Sed euismod nisi porta lorem mollis aliquam. Feugiat nibh sed pulvinar proin gravida hendrerit lectus a. Laoreet sit amet cursus sit. Scelerisque fermentum dui faucibus in ornare. Non tellus orci ac auctor augue mauris augue neque. Dignissim diam quis enim lobortis. Ipsum suspendisse ultrices gravida dictum fusce. Sit amet purus gravida quis. Mi quis hendrerit dolor magna. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Nullam vehicula ipsum a arcu cursus vitae congue.</p>
-                <p>Nec ullamcorper sit amet risus nullam eget felis. Eget duis at tellus at. Egestas sed sed risus pretium quam. Diam ut venenatis tellus in metus vulputate eu scelerisque felis. Id aliquet risus feugiat in ante metus dictum. Volutpat maecenas volutpat blandit aliquam etiam. Quam viverra orci sagittis eu. Sed lectus vestibulum mattis ullamcorper. Vestibulum lectus mauris ultrices eros in. Turpis massa tincidunt dui ut. Sapien pellentesque habitant morbi tristique. Placerat duis ultricies lacus sed turpis tincidunt id.</p>
+                <form id="newEntryForm" action="javascript:submitNewEntry" class="form">
+                    <div class="field">
+                        <label class="label">Entry Title</label>
+                        <div class="control">
+                            <input class="input" name="newTitle" id="newTitle" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Entry Subtitle</label>
+                        <div class="control">
+                            <input class="input" name="newSubtitle" id="newSubtitle" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Category</label>
+                        <div class="control">
+                            <div name="newCategory" id="newCategory" class="select">
+                                <select>
+                                    <option value="Flora">Flora</option>
+                                    <option value="Fauna">Fauna</option>
+                                    <option value="Earth Science">Earth Science</option>
+                                    <option value="Big Picture">Big Picture</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Content</label>
+                        <div class="control">
+                            <textarea name="newContent" id="newContent" class="textarea" placeholder=""></textarea>
+                        </div>
+                    </div>
+                </form>
             </section>
             <footer class="modal-card-foot">
-                <button class="button is-success" onclick="saveEditModal()">Save changes</button>
-                <button class="button" onclick="closeEditModal()">Cancel</button>
+                <button class="button is-primary" onclick="submitNewEntry()">Save New Entry</button>
+                <!--<button class="button is-primary" type="submit" form="newEntryForm">Save changes</button>-->
+                <button class="button" onclick="closeNewModal()">Cancel</button>
             </footer>
         </div>
     </div>
 
     <section class="section">
         <div class="content">
-            <table class="table is-striped is-narrow">
+            <table id="exploreTable" class="table is-striped is-narrow">
                 <thead>
                     <tr>
                         <th><abbr title="Unique Entry ID">ID</abbr></th>
                         <th>Entry Title</th>
+                        <th>Subtitle</th>
                         <th>Category</th>
                         <th>Content</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>0001</td>
-                        <td class="is-italic has-text-weight-bold">Trees</td>
-                        <td>Flora</td>
-                        <td>Lorem ipsum dolor sit amet...</td>
+                    <tr v-for="(entry,index) in allEntries">
+                        <td><abbr :title="allIDs[index]">{{allIDs[index].substring(0,4)}}</abbr></td>
+                        <td class="has-text-weight-bold">{{entry.title}}</td>
+                        <td class="is-italic">{{entry.subtitle.substring(0,24)}}</td>
+                        <td>{{entry.category}}</td>
+                        <td>{{entry.content.substring(0,50)}}...</td>
                         <td>
-                            <button type="button" onclick="launchEditModal('Trees')" class="button is-warning"><i class="fas fa-edit"></i></button>
-                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0002</td>
-                        <td class="is-italic has-text-weight-bold">Flowers</td>
-                        <td>Flora</td>
-                        <td>Lorem ipsum dolor sit amet...</td>
-                        <td>
-                            <button type="button" onclick="launchEditModal('Flowers')" class="button is-warning"><i class="fas fa-edit"></i></button>
-                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0003</td>
-                        <td class="is-italic has-text-weight-bold">Mushrooms</td>
-                        <td>Flora</td>
-                        <td>Lorem ipsum dolor sit amet...</td>
-                        <td>
-                            <button type="button" onclick="launchEditModal('Mushrooms')" class="button is-warning"><i class="fas fa-edit"></i></button>
-                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0004</td>
-                        <td class="is-italic has-text-weight-bold">Birds</td>
-                        <td>Fauna</td>
-                        <td>Lorem ipsum dolor sit amet...</td>
-                        <td>
-                            <button type="button" onclick="launchEditModal('Birds')" class="button is-warning"><i class="fas fa-edit"></i></button>
-                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0005</td>
-                        <td class="is-italic has-text-weight-bold">Deer</td>
-                        <td>Fauna</td>
-                        <td>Lorem ipsum dolor sit amet...</td>
-                        <td>
-                            <button type="button" onclick="launchEditModal('Deer')" class="button is-warning"><i class="fas fa-edit"></i></button>
-                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0006</td>
-                        <td class="is-italic has-text-weight-bold">Snakes</td>
-                        <td>Fauna</td>
-                        <td>Lorem ipsum dolor sit amet...</td>
-                        <td>
-                            <button type="button" onclick="launchEditModal('Snakes')" class="button is-warning"><i class="fas fa-edit"></i></button>
-                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0007</td>
-                        <td class="is-italic has-text-weight-bold">Quartz Crystals</td>
-                        <td>Earth Science</td>
-                        <td>Lorem ipsum dolor sit amet...</td>
-                        <td>
-                            <button type="button" onclick="launchEditModal('Quartz Crystals')" class="button is-warning"><i class="fas fa-edit"></i></button>
-                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0008</td>
-                        <td class="is-italic has-text-weight-bold">Power Lines & Erosion</td>
-                        <td>Earth Science</td>
-                        <td>Lorem ipsum dolor sit amet...</td>
-                        <td>
-                            <button type="button" onclick="launchEditModal('Power Lines & Erosion')" class="button is-warning"><i class="fas fa-edit"></i></button>
-                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>0009</td>
-                        <td class="is-italic has-text-weight-bold">Native Americans</td>
-                        <td>History</td>
-                        <td>Lorem ipsum dolor sit amet...</td>
-                        <td>
-                            <button type="button" onclick="launchEditModal('Native Americans')" class="button is-warning"><i class="fas fa-edit"></i></button>
-                            <button type="submit" class="button is-danger"><i class="fas fa-trash-alt"></i></button>
+                            <button type="button" v-on:click="launchEditModal(allIDs[index])"
+                                class="button is-warning"><i class="fas fa-edit"></i></button>
+                            <button type="button" v-on:click="launchDeleteModal(allIDs[index])"
+                                class="button is-danger"><i class="fas fa-trash-alt"></i></button>
+                            <!-- DELETE MODAL -->
+                            <div :id="'deleteModal-' + allIDs[index]" class="modal">
+                                <div class="modal-background"></div>
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <p class="modal-card-title">Confirm Delete</p>
+                                        <button class="delete" aria-label="close"
+                                            v-on:click="closeDeleteModal(allIDs[index])"></button>
+                                    </header>
+                                    <section class="modal-card-body">
+                                        <p>Are you sure you want to delete <span
+                                                class="has-text-weight-bold">{{entry.title}}</span></p>
+                                    </section>
+                                    <footer class="modal-card-foot">
+                                        <button class="button is-danger"
+                                            v-on:click="deleteEntry(allIDs[index])">Delete</button>
+                                        <button class="button"
+                                            v-on:click="closeDeleteModal(allIDs[index])">Cancel</button>
+                                    </footer>
+                                </div>
+                            </div>
+                            <!-- EDIT MODAL -->
+                            <div :id="'editModal-' + allIDs[index]" class="modal">
+                                <div class="modal-background"></div>
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <p class="modal-card-title">Editing Entry: <span
+                                                class="has-text-weight-bold">{{entry.title}}</span></p>
+                                        <button class="delete" aria-label="close"
+                                            v-on:click="closeEditModal(allIDs[index])"></button>
+                                    </header>
+                                    <section class="modal-card-body">
+                                        <form :id="'editEntryForm-' + allIDs[index]" action="javascript:editEntry" class="form">
+                                            <div class="field">
+                                                <label class="label">Entry Title</label>
+                                                <div class="control">
+                                                    <input class="input" name="editTitle" id="editTitle" type="text"
+                                                        :value="entry.title">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Entry Subtitle</label>
+                                                <div class="control">
+                                                    <input class="input" name="editSubtitle" id="editSubtitle"
+                                                        type="text" :value="entry.subtitle">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Category</label>
+                                                <div class="control">
+                                                    <div name="editCategory" id="editCategory" class="select">
+                                                        <select>
+                                                            <option value="Flora" v-bind:selected="entry.category == 'Flora' ? true : false">Flora</option>
+                                                            <option value="Fauna" v-bind:selected="entry.category == 'Fauna' ? true : false">Fauna</option>
+                                                            <option value="Earth Science" v-bind:selected="entry.category == 'Earth Science' ? true : false">Earth Science</option>
+                                                            <option value="Big Picture" v-bind:selected="entry.category == 'Big Picture' ? true : false">Big Picture</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Content</label>
+                                                <div class="control">
+                                                    <textarea name="editContent" id="editContent" class="textarea"
+                                                        :value="entry.content"></textarea>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </section>
+                                    <footer class="modal-card-foot">
+                                        <button class="button is-primary" v-on:click="editEntry(allIDs[index])">Save
+                                            Changes</button>
+                                        <button class="button"
+                                            v-on:click="closeEditModal(allIDs[index])">Cancel</button>
+                                    </footer>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div class="has-text-centered">
-                <a class="button is-link"><i class="fas fa-plus-circle"></i>&nbsp;New Entry</a>
+                <a id="newEntryButton" class="button is-link" onclick="launchNewModal()"><i class="fas fa-plus-circle"></i>&nbsp;New
+                    Entry</a>
             </div>
         </div>
     </section>
+    <!-- ! FIREBASE SDK SCRIPTS -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
 
+    <!-- TODO: Add SDKs for Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBpfnYdTTe5J_N_SO9p9BgRtKSmLtdv2w0",
+            authDomain: "tallassee-park-app.firebaseapp.com",
+            databaseURL: "https://tallassee-park-app.firebaseio.com",
+            projectId: "tallassee-park-app",
+            storageBucket: "tallassee-park-app.appspot.com",
+            messagingSenderId: "22066638918",
+            appId: "1:22066638918:web:f4c675eec904f649b01a47",
+            measurementId: "G-70125R43XL"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+
+    <!-- ! LOCAL SCRIPTS -->
     <script src="js/explore.js"></script>
 </body>
 

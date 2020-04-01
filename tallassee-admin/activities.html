@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Explore | Tallassee Park Admin</title>
+    <title>Activities | Tallassee Park Admin</title>
     <script src="https://kit.fontawesome.com/9aef0c2001.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -36,7 +36,7 @@
     <section class="hero is-primary is-small">
         <div class="hero-body">
             <div class="container has-text-centered">
-                <h1 class="title">Explore - Content Manager</h1>
+                <h1 class="title">Activities - Content Manager</h1>
             </div>
         </div>
     </section>
@@ -45,46 +45,51 @@
         <div class="modal-background"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <p class="modal-card-title">Explore - New Entry</p>
+                <p class="modal-card-title">Activities - New Activity</p>
                 <button class="delete" aria-label="close" onclick="closeNewModal()"></button>
             </header>
             <section class="modal-card-body">
                 <form id="newEntryForm" action="javascript:submitNewEntry" class="form">
                     <div class="field">
-                        <label class="label">Entry Title</label>
+                        <label class="label">Activity</label>
                         <div class="control">
                             <input class="input" name="newTitle" id="newTitle" type="text" placeholder="">
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label">Entry Subtitle</label>
+                        <label class="label">Participants</label>
                         <div class="control">
-                            <input class="input" name="newSubtitle" id="newSubtitle" type="text" placeholder="">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Category</label>
-                        <div class="control">
-                            <div name="newCategory" id="newCategory" class="select">
+                            <div name="newParticipants" id="newParticipants" class="select">
                                 <select>
-                                    <option value="Flora">Flora</option>
-                                    <option value="Fauna">Fauna</option>
-                                    <option value="Earth Science">Earth Science</option>
-                                    <option value="Big Picture">Big Picture</option>
+                                    <option value="1">Solo Activity</option>
+                                    <option value="2">Group Activity</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label">Content</label>
+                        <label class="label">Estimated Time</label>
                         <div class="control">
-                            <textarea name="newContent" id="newContent" class="textarea" placeholder=""></textarea>
+                            <input class="input" name="newTime" id="newTime" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Supplies Required for Activity</label>
+                        <div class="control">
+                            <input class="input" name="newSupplies" id="newSupplies" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Activity Instructions</label>
+                        <div class="control">
+                            <textarea name="newInstructions" id="newInstructions" class="textarea"
+                                placeholder=""></textarea>
                         </div>
                     </div>
                 </form>
             </section>
             <footer class="modal-card-foot">
-                <button class="button is-primary" onclick="submitNewEntry()">Save New Entry</button>
+                <button class="button is-primary" onclick="submitNewEntry()">Save New Activity</button>
                 <!--<button class="button is-primary" type="submit" form="newEntryForm">Save changes</button>-->
                 <button class="button" onclick="closeNewModal()">Cancel</button>
             </footer>
@@ -93,13 +98,14 @@
 
     <section class="section">
         <div class="content">
-            <table id="exploreTable" class="table is-striped is-narrow">
+            <table id="activitiesTable" class="table is-striped is-narrow">
                 <thead>
                     <tr>
                         <th><abbr title="Unique Entry ID">ID</abbr></th>
-                        <th>Entry Title</th>
-                        <th>Subtitle</th>
-                        <th>Category</th>
+                        <th>Activity</th>
+                        <th>Group Activity?</th>
+                        <th>Time</th>
+                        <th>Supplies</th>
                         <th>Content</th>
                         <th>Edit</th>
                     </tr>
@@ -108,8 +114,9 @@
                     <tr v-for="(entry,index) in allEntries">
                         <td><abbr :title="allIDs[index]">{{allIDs[index].substring(0,4)}}</abbr></td>
                         <td class="has-text-weight-bold">{{entry.title}}</td>
-                        <td class="is-italic">{{entry.subtitle.substring(0,24)}}</td>
-                        <td>{{entry.category}}</td>
+                        <td class="">{{entry.group}}</td>
+                        <td>{{entry.time}}</td>
+                        <td>{{entry.supplies.substring(0,30)}}</td>
                         <td>{{entry.content.substring(0,50)}}...</td>
                         <td>
                             <button type="button" v-on:click="launchEditModal(allIDs[index])"
@@ -148,36 +155,46 @@
                                             v-on:click="closeEditModal(allIDs[index])"></button>
                                     </header>
                                     <section class="modal-card-body">
-                                        <form :id="'editEntryForm-' + allIDs[index]" action="javascript:editEntry" class="form">
+                                        <form :id="'editEntryForm-' + allIDs[index]" action="javascript:editEntry"
+                                            class="form">
                                             <div class="field">
-                                                <label class="label">Entry Title</label>
+                                                <label class="label">Activity Title</label>
                                                 <div class="control">
                                                     <input class="input" name="editTitle" id="editTitle" type="text"
                                                         :value="entry.title">
                                                 </div>
                                             </div>
                                             <div class="field">
-                                                <label class="label">Entry Subtitle</label>
-                                                <div class="control">
-                                                    <input class="input" name="editSubtitle" id="editSubtitle"
-                                                        type="text" :value="entry.subtitle">
-                                                </div>
-                                            </div>
-                                            <div class="field">
-                                                <label class="label">Category</label>
+                                                <label class="label">Participants</label>
                                                 <div class="control">
                                                     <div name="editCategory" id="editCategory" class="select">
                                                         <select>
-                                                            <option value="Flora" v-bind:selected="entry.category == 'Flora' ? true : false">Flora</option>
-                                                            <option value="Fauna" v-bind:selected="entry.category == 'Fauna' ? true : false">Fauna</option>
-                                                            <option value="Earth Science" v-bind:selected="entry.category == 'Earth Science' ? true : false">Earth Science</option>
-                                                            <option value="Big Picture" v-bind:selected="entry.category == 'Big Picture' ? true : false">Big Picture</option>
+                                                            <option value="1"
+                                                                v-bind:selected="entry.group == false ? true : false">
+                                                                Solo Activity</option>
+                                                            <option value="2"
+                                                                v-bind:selected="entry.group == true ? true : false">
+                                                                Group Activity</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="field">
-                                                <label class="label">Content</label>
+                                                <label class="label">Estimated Time</label>
+                                                <div class="control">
+                                                    <input class="input" name="editTime" id="editTime" type="text"
+                                                        :value="entry.time">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Supplies</label>
+                                                <div class="control">
+                                                    <input class="input" name="editSupplies" id="editSupplies"
+                                                        type="text" :value="entry.supplies">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Activity Instructions</label>
                                                 <div class="control">
                                                     <textarea name="editContent" id="editContent" class="textarea"
                                                         :value="entry.content"></textarea>
@@ -198,8 +215,9 @@
                 </tbody>
             </table>
             <div class="has-text-centered">
-                <a id="newEntryButton" class="button is-link" onclick="launchNewModal()"><i class="fas fa-plus-circle"></i>&nbsp;New
-                    Entry</a>
+                <a id="newEntryButton" class="button is-link" onclick="launchNewModal()"><i
+                        class="fas fa-plus-circle"></i>&nbsp;New
+                    Activity</a>
             </div>
         </div>
     </section>
@@ -230,7 +248,7 @@
     </script>
 
     <!-- ! LOCAL SCRIPTS -->
-    <script src="js/explore.js"></script>
+    <script src="js/activities.js"></script>
 </body>
 
 </html>

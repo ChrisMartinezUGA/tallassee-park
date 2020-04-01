@@ -1,8 +1,8 @@
 var db = firebase.firestore();
 
-db.collection("explore")
+db.collection("activities")
     .onSnapshot(function (querySnapshot) {
-        exploreVue.reloadEntries();
+        activitiesVue.reloadEntries();
     });
 
 function launchNewModal() {
@@ -12,20 +12,24 @@ function launchNewModal() {
 function closeNewModal() {
     $("#newModal").toggleClass("is-active");
     document.forms[0].elements[0].value = "";
-    document.forms[0].elements[1].value = "";
+    document.forms[0].elements[2].value = "";
     document.forms[0].elements[3].value = "";
+    document.forms[0].elements[4].value = "";
 }
 
 function submitNewEntry() {
-    let entryTitle = document.forms[0].elements[0].value;
-    let entrySubtitle = document.forms[0].elements[1].value;
-    let entryCategory = document.forms[0].elements[2].value;
-    let entryContent = document.forms[0].elements[3].value;
-    db.collection("explore").add({
-            title: entryTitle,
-            subtitle: entrySubtitle,
-            category: entryCategory,
-            content: entryContent
+    let activityTitle = document.forms[0].elements[0].value;
+    let activityParticipants = document.forms[0].elements[1].value;
+    let activityTime = document.forms[0].elements[2].value;
+    let activitySupplies = document.forms[0].elements[3].value;
+    let activityInstructions = document.forms[0].elements[4].value;
+    let activityParticipantsBool = (activityParticipants == 1) ? false : true;
+    db.collection("activities").add({
+            title: activityTitle,
+            group: activityParticipantsBool,
+            time: activityTime,
+            supplies: activitySupplies,
+            content: activityInstructions
         }).then(function () {
             closeNewModal();
         })
@@ -34,8 +38,8 @@ function submitNewEntry() {
         })
 }
 
-var exploreVue = new Vue({
-    el: '#exploreTable',
+var activitiesVue = new Vue({
+    el: '#activitiesTable',
     data: {
         allIDs: [],
         allEntries: [],
@@ -46,12 +50,12 @@ var exploreVue = new Vue({
     methods: {
         async loadAllEntries() {
             try {
-                db.collection("explore").get().then(function (querySnapshot) {
+                db.collection("activities").get().then(function (querySnapshot) {
                     querySnapshot.forEach(function (doc) {
                         // doc.data() is never undefined for query doc snapshots
                         //console.log(doc.id, " => ", doc.data());
-                        exploreVue.allIDs.push(doc.id);
-                        exploreVue.allEntries.push(doc.data());
+                        activitiesVue.allIDs.push(doc.id);
+                        activitiesVue.allEntries.push(doc.data());
                     });
                 });
             } catch (err) {
@@ -74,9 +78,9 @@ var exploreVue = new Vue({
             $(modalID).toggleClass("is-active");
         },
         deleteEntry(id) {
-            db.collection("explore").doc(id).delete().then(function() {
+            db.collection("activities").doc(id).delete().then(function () {
                 //console.log("Document successfully deleted!");
-            }).catch(function(error) {
+            }).catch(function (error) {
                 console.error("Error removing document: ", error);
             });
             this.closeDeleteModal(id);
@@ -91,15 +95,18 @@ var exploreVue = new Vue({
         },
         editEntry(id) {
             let formID = 'editEntryForm-' + id;
-            let entryTitle = document.getElementById(formID).elements[0].value;
-            let entrySubtitle = document.getElementById(formID).elements[1].value;
-            let entryCategory = document.getElementById(formID).elements[2].value;
-            let entryContent = document.getElementById(formID).elements[3].value;
-            db.collection("explore").doc(id).set({
-                    title: entryTitle,
-                    subtitle: entrySubtitle,
-                    category: entryCategory,
-                    content: entryContent
+            let activityTitle = document.getElementById(formID).elements[0].value;
+            let activityParticipants = document.getElementById(formID).elements[1].value;
+            let activityTime = document.getElementById(formID).elements[2].value;
+            let activitySupplies = document.getElementById(formID).elements[3].value;
+            let activityInstructions = document.getElementById(formID).elements[4].value;
+            let activityParticipantsBool = (activityParticipants == 1) ? false : true;
+            db.collection("activities").doc(id).set({
+                    title: activityTitle,
+                    group: activityParticipantsBool,
+                    time: activityTime,
+                    supplies: activitySupplies,
+                    content: activityInstructions
                 }).then(function () {
                     //console.log("Edited document");
                 })
