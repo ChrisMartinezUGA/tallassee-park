@@ -55,9 +55,9 @@ const layers = [
 
 // Map URLs
 const maps = [
-  'http://tallassee.mynmi.net/images/aerial-map.png',
-  'http://tallassee.mynmi.net/images/features-map.png',
-  'http://tallassee.mynmi.net/images/topo-map.png'
+  'http://tallassee.mynmi.net/images/aerial-map.jpg',
+  'http://tallassee.mynmi.net/images/features-map.jpg',
+  'http://tallassee.mynmi.net/images/topo-map.jpg'
 ]
 
 // The Floating Action icon must come from a React Element
