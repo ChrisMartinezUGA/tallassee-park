@@ -6,23 +6,5 @@
         "Sapling",
         "Buck",
         "Oak"
-    ],
-    "badges": [
-        {
-            "type": "flora",
-            "url": "./../../data/images/star.png"
-        },
-        {
-            "type": "fauna",
-            "url": "./../../data/images/star.png"
-        },
-        {
-            "type": "geology",
-            "url": "./../../data/images/star.png"
-        },
-        {
-            "type": "hydrology",
-            "url": "./../../data/images/star.png"
-        }
     ]
 }

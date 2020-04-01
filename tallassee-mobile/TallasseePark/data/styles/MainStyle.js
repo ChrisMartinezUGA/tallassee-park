@@ -57,8 +57,9 @@ export default StyleSheet.create({
     fontSize: 32,
   },
   exploreButton: {
-    margin: 10,
+    backgroundColor: '#36464D',
+    margin: 20,
     width: 140,
-    height: 140
-  },
+    height: 80
+  }
 });

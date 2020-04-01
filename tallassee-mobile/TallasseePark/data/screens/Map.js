@@ -2,8 +2,8 @@ import React from 'react';
 import { FloatingAction } from "react-native-floating-action";
 import { View, Image, StatusBar } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
 
+// Navigation Floating Action
 const actions = [
   {
     text: "Activities",
@@ -25,9 +25,10 @@ const actions = [
     name: "bt_info",
     position: 3,
     color: "#363C24",
-  },
+  }
 ];
 
+// Map Layers Floating Action
 const layers = [
   {
     text: "Satellite",
@@ -49,16 +50,23 @@ const layers = [
     name: "bt_topo",
     position: 3,
     color: "#363C24",
-  },
+  }
 ];
 
-const images = [ require('../images/aerial-map.png'), require('../images/features-map.png'), require('../images/topo-map.png') ]
+// Map URLs
+const maps = [
+  'http://tallassee.mynmi.net/images/aerial-map.png',
+  'http://tallassee.mynmi.net/images/features-map.png',
+  'http://tallassee.mynmi.net/images/topo-map.png'
+]
 
 class Map extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       mapIndex: 0,
+      mapWidth: 1000, // causing errors
+      mapHeight: 1000, // causing errors
       navigation: this.props.navigation
     }
   }
@@ -68,7 +76,7 @@ class Map extends React.Component {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <StatusBar barStyle="light-content" />
         <ScrollView minimumZoomScale={1} maximumZoomScale={5} showsHorizontalScrollIndicator={true} style={{ flex: 1 }} >
-          <Image source={images[this.state.mapIndex]} />
+          <Image style={{ width: this.state.mapWidth, height: this.state.mapHeight }} source={{ uri: maps[this.state.mapIndex] }} />
         </ScrollView>
 
         <FloatingAction actions={actions} onPressItem={
@@ -81,11 +89,11 @@ class Map extends React.Component {
 
         <FloatingAction actions={layers} onPressItem={
           name => {
-            if (name == "bt_satellite") { this.setState({mapIndex: 0}) }
-            else if (name == "bt_features") { this.setState({mapIndex: 1}) }
-            else if (name == "bt_topo") { this.setState({mapIndex: 2}) }
+            if (name == "bt_satellite") { this.setState({ mapIndex: 0 }) }
+            else if (name == "bt_features") { this.setState({ mapIndex: 1 }) }
+            else if (name == "bt_topo") { this.setState({ mapIndex: 2 }) }
           }
-        } color="#363C24" position="left" />
+        } color="#242a3c" position="left" />
       </View>
     )
   }

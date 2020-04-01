@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { SafeAreaView, ScrollView, View, Text, StatusBar, TextInput, Button, Image, StyleSheet } from 'react-native';
-import { ThemeProvider, Header } from 'react-native-elements';
+import { SafeAreaView, ScrollView, View, Text, StatusBar, TextInput, Button, Image } from 'react-native';
+import MainStyle from './data/styles/MainStyle';
 
 // Import Screens from the data folder
 import MapScreen from './data/screens/Map';
@@ -14,14 +14,11 @@ import ExploreListScreen from './data/screens/ExploreList';
 import ExploreDetailsScreen from './data/screens/ExploreDetails';
 import ProgressScreen from './data/screens/Progress';
 
-import MainStyle from './data/styles/MainStyle';
-
+// Resources
 const styles = MainStyle;
-const Stack = createStackNavigator();
 const orltLegal = require('./data/sampleData/orltLegal.json');
 
-const correctPassword = "UGA";
-
+// Login Screen
 class Home extends React.Component {
   constructor(props) {
     super(props)
@@ -40,7 +37,7 @@ class Home extends React.Component {
             <StatusBar barStyle="light-content" />
             <View style={styles.body}>
               <View style={styles.sectionContainer}>
-                <Image style={{ width: 300, height: 100 }} source={require('./data/images/oconee-river-land-trust.png')} />
+                <Image style={{ width: 300, height: 100 }} source={{ uri: "http://tallassee.mynmi.net/images/oconee-river-land-trust.png" }} />
               </View>
 
               <View style={styles.sectionContainer}>
@@ -64,7 +61,7 @@ class Home extends React.Component {
 
               <View style={styles.sectionContainer}>
                 <Button title="Login" onPress={() => {
-                  if (this.state.password == correctPassword) {
+                  if (this.state.password == orltLegal.correctPassword) {
                     this.props.navigation.replace('Map')
                   }
                 }} />
@@ -81,6 +78,9 @@ function HomeScreen({ navigation }) {
   return <Home navigation={navigation} />
 }
 
+// Navigation
+const Stack = createStackNavigator();
+
 function App() {
   return (
     <NavigationContainer>
@@ -94,24 +94,24 @@ function App() {
         },
       }}>
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Map" component={MapScreen} 
-          options={{ 
+        <Stack.Screen name="Map" component={MapScreen}
+          options={{
             title: 'Tallassee Park'
           }} />
-        <Stack.Screen name="Info" component={InfoScreen} 
-          options={{ 
+        <Stack.Screen name="Info" component={InfoScreen}
+          options={{
             title: 'Tallassee Park Info',
             headerBackTitle: 'Map'
           }} />
         <Stack.Screen name="Activities" component={ActivitiesScreen}
-          options={{ 
+          options={{
             title: 'Games & Activities',
             headerBackTitle: 'Map'
           }} />
         <Stack.Screen name="ActivityDetails" component={ActivityDetailsScreen} />
 
         <Stack.Screen name="Explore" component={ExploreScreen}
-          options={{ 
+          options={{
             title: 'Explore Tallassee Park',
             headerBackTitle: 'Map'
           }} />
@@ -144,7 +144,6 @@ function App() {
             headerBackTitle: 'Back'
           }} />
         <Stack.Screen name="Progress" component={ProgressScreen} />
-
       </Stack.Navigator>
     </NavigationContainer>
   );

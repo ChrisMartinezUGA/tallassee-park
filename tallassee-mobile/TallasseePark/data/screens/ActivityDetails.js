@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 import MainStyle from '../styles/MainStyle';
 
+// Resources
 const styles = MainStyle;
 const activityList = require('../sampleData/activityList.json');
 const ALL_DATA = activityList.soloActivities.concat(activityList.groupActivities);
@@ -9,12 +10,15 @@ const ALL_DATA = activityList.soloActivities.concat(activityList.groupActivities
 function ActivitiesDetailsScreen({ route, navigation }) {
   const { itemId } = route.params;
   var currentItem;
+
+  // Retrieves item info based on the passed itemId
   for (var item of ALL_DATA) {
     if (item.id == itemId) {
       currentItem = item;
       break;
     }
   }
+
   return (
     <>
       <SafeAreaView>
@@ -37,7 +41,6 @@ function ActivitiesDetailsScreen({ route, navigation }) {
               <Text style={styles.sectionTitle}>Instructions</Text>
               <Text style={styles.sectionDescription}>{currentItem.instructions}</Text>
             </View>
-
           </View>
         </ScrollView>
       </SafeAreaView>
