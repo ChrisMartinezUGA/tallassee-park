@@ -17,14 +17,14 @@ const actions = [
     icon: require('../icons/compass.png'),
     name: "bt_explore",
     position: 1,
-    color: "#363C24",
+    color: "#363C24"
   },
   {
     text: "Park Info",
     icon: require('../icons/info.png'),
     name: "bt_info",
     position: 3,
-    color: "#363C24",
+    color: "#363C24"
   }
 ];
 
@@ -32,24 +32,24 @@ const actions = [
 const layers = [
   {
     text: "Satellite",
-    icon: require('../icons/running.png'),
+    icon: require('../icons/satellite.png'),
     name: "bt_satellite",
     position: 1,
-    color: "#363C24"
+    color: "#242a3c"
   },
   {
     text: "Features",
-    icon: require('../icons/compass.png'),
+    icon: require('../icons/map-pin.png'),
     name: "bt_features",
     position: 2,
-    color: "#363C24",
+    color: "#242a3c"
   },
   {
     text: "Topo",
-    icon: require('../icons/info.png'),
+    icon: require('../icons/mountain.png'),
     name: "bt_topo",
     position: 3,
-    color: "#363C24",
+    color: "#242a3c"
   }
 ];
 
@@ -59,6 +59,13 @@ const maps = [
   'http://tallassee.mynmi.net/images/features-map.png',
   'http://tallassee.mynmi.net/images/topo-map.png'
 ]
+
+// The Floating Action icon must come from a React Element
+const LayerIcon = () => {
+  return (
+  <Image style={{width: 20, height: 20}} source={require('../icons/layer-group-white.png')}></Image>
+);
+}
 
 class Map extends React.Component {
   constructor(props) {
@@ -93,7 +100,7 @@ class Map extends React.Component {
             else if (name == "bt_features") { this.setState({ mapIndex: 1 }) }
             else if (name == "bt_topo") { this.setState({ mapIndex: 2 }) }
           }
-        } color="#242a3c" position="left" />
+        } color="#242a3c" position="left" floatingIcon={<LayerIcon />}/>
       </View>
     )
   }

@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, Button, SafeAreaView, ScrollView, Image, StatusBar, Alert, AsyncStorage } from 'react-native';
+import { View, Text, Button, SafeAreaView, ScrollView, Image, StatusBar, Alert } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import * as ProgressBar from 'react-native-progress';
 import MainStyle from '../styles/MainStyle';
 

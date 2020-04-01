@@ -23,7 +23,8 @@ class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      password: 'UGA'
+      password: '',
+      errorMessage: ''
     }
   }
 
@@ -52,6 +53,7 @@ class Home extends React.Component {
                   style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
                   onChangeText={(password) => this.setState({ password })}
                   value={this.state.password} />
+                <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
               </View>
 
               <View style={styles.sectionContainer}>
@@ -62,7 +64,10 @@ class Home extends React.Component {
               <View style={styles.sectionContainer}>
                 <Button title="Login" onPress={() => {
                   if (this.state.password == orltLegal.correctPassword) {
+                    this.setState({ errorMessage: '' });
                     this.props.navigation.replace('Map')
+                  } else {
+                    this.setState({ errorMessage: 'Incorrect Password' })
                   }
                 }} />
               </View>

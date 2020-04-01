@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, SafeAreaView, ScrollView, StatusBar, AsyncStorage } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, StatusBar } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import MainStyle from '../styles/MainStyle';
 
 // Resources

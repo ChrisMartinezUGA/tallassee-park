@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, StatusBar, AsyncStorage, Alert } from 'react-native';
+import { View, StatusBar, Alert } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { Button } from 'react-native-elements';
 import MainStyle from '../styles/MainStyle';
 
