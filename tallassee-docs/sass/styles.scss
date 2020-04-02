@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+// Brand Colors
+
+
+// Brand Fonts
+// Import a Google Font
+
+// ! Update Bulma's global variables
+
+// ! COLORS
+//  initial variables
+//$black: $one-dark-blue;
+//$grey-darker: $one-med-blue;
+//$grey-dark: $one-med-blue;
+//$grey: $one-highlight-blue;
+//$grey-lighter: $one-light-blue;
+//$grey-light: $one-light-gray;
+
+$brand-blue: #2D454F;
+$brand-green: #2f3c16;
+$brand-purple: #2a2428;
+$brand-lightBlue: #bfc6c9;
+$brand-lightGreen: #a6afa1;
+$brand-tan: #a8a389;
+
+
+$primary: $brand-blue;
+$link: $brand-green;
+$info: $brand-purple;
+
+
+//* ------------------------------------------------------
+// Import only what you need from Bulma
+@import "../node_modules/bulma/bulma.sass";
+@import "../node_modules/bulma-switch/dist/css/bulma-switch.sass";
+//* ------------------------------------------------------
+
+// Overwrite some rules for customization
+
+.card {
+    border-radius: 20px;
+}
+
+p {
+    margin-bottom: 0.5em;
+}
+
+.team-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#tabs-with-content .tabs:not(:last-child) {
+    margin-bottom: 0;
+}
+
+#tabs-with-content .tab-content {
+    padding: 1rem;
+    display: none;
+}
+
+#tabs-with-content .tab-content.is-active {
+    display: block;
+}
+
+.palette-column {
+    border-radius: 20px;
+    padding: 1rem;
+}

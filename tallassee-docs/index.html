@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tallassee Park</title>
+  <!--Web Requirements-->
+  <script src="https://kit.fontawesome.com/9aef0c2001.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!--Local Requirements-->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- SMOOTH SCROLLING -->
+  <script>
+    $(document).ready(function () {
+      // Add smooth scrolling to all links
+      $("a").on('click', function (event) {
+        // Make sure this.hash has a value before overriding default behavior
+        if (this.hash !== "") {
+          // Prevent default anchor click behavior
+          event.preventDefault();
+          // Store hash
+          var hash = this.hash;
+          // Using jQuery's animate() method to add smooth page scroll
+          // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800, function () {
+            // Add hash (#) to URL when done scrolling (default click behavior)
+            window.location.hash = hash;
+          });
+        } // End if
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <p style="padding: 10px;"><img src="assets/logos/TallasseeParkLogo_square_white.png" style="width: 2em"></p>
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="mainNavbar">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="mainNavbar" class="navbar-menu">
+      <div class="navbar-start"></div>
+      <div class="navbar-end">
+        <a class="navbar-item" href="/">Home</a>
+        <a class="navbar-item" href="#download">Download</a>
+        <a class="navbar-item" href="#mission">Mission</a>
+        <a class="navbar-item" href="#background">Background</a>
+        <a class="navbar-item" href="#app">The App</a>
+        <a class="navbar-item" href="#brand">The Brand</a>
+        <a class="navbar-item" href="#team">The Team</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero is-primary is-medium">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <img src="assets/logos/TallasseeParkLogo_long_white.png" style="max-height: 4em" alt="Tallassee Park">
+        <h1 class="title">Mobile App</h1>
+      </div>
+    </div>
+  </section>
+
+  <section id="download" class="hero is-light is-medium">
+    <div class="hero-body has-text-centered">
+      <h3 class="is-size-3 has-text-weight-bold">Download</h3>
+      <p>Download Tallassee Park on the App Store or Google Play now!</p>
+      <br>
+      <div class="buttons are-large has-text-centered is-centered">
+        <a class="button is-dark"><i class="fab fa-app-store"></i>&nbsp; App Store</a>
+        <a class="button is-dark"><i class="fab fa-google-play"></i>&nbsp; Google Play</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="mission" class="hero is-link is-medium">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <h3 class="is-size-3 has-text-weight-bold">Our Mission</h3>
+        <p>The mission of the Oconee River Land Trust is to conserve natural lands to protect water quality, preserve
+          wildlife habitats, and enhance the quality of our lives and those of future generations.</p>
+        <p>With the Tallassee Park Mobile App, we hope to carry on this mission by creating a way to engage the
+          Athens-Clarke and Oconee County communities with this new park. By educating the public about the importance
+          of
+          environmental convervation, we can come together as a community to preserve not only the wealth of vital
+          habitats contained within this park, but the environment around us in our everyday lives.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="background" class="hero is-light">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <h3 class="is-size-3 has-text-weight-bold">Background</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Volutpat maecenas volutpat blandit aliquam. Nibh mauris cursus mattis molestie a. Nisi
+          scelerisque
+          eu ultrices vitae auctor. Augue interdum velit euismod in pellentesque massa placerat. In massa tempor nec
+          feugiat nisl. Dictum fusce ut placerat orci nulla pellentesque dignissim enim. Varius duis at consectetur
+          lorem
+          donec massa sapien faucibus et. Cursus metus aliquam eleifend mi in nulla posuere sollicitudin aliquam.
+          Pellentesque eu tincidunt tortor aliquam nulla facilisi. Fermentum dui faucibus in ornare quam viverra orci.
+        </p>
+        <p>Volutpat blandit aliquam etiam erat. Odio facilisis mauris sit amet massa vitae tortor condimentum lacinia.
+          Purus semper eget duis at tellus at urna condimentum mattis. Non enim praesent elementum facilisis. Massa eget
+          egestas purus viverra accumsan in nisl nisi. Nulla porttitor massa id neque. Commodo viverra maecenas accumsan
+          lacus. Elit at imperdiet dui accumsan sit. Tempus iaculis urna id volutpat. Massa enim nec dui nunc mattis
+          enim.
+          Facilisi nullam vehicula ipsum a arcu. Egestas congue quisque egestas diam. Consequat ac felis donec et odio
+          pellentesque diam. Ac tincidunt vitae semper quis lectus nulla at volutpat diam. Facilisi etiam dignissim diam
+          quis enim lobortis scelerisque fermentum dui. Venenatis urna cursus eget nunc scelerisque. Quis risus sed
+          vulputate odio ut enim blandit volutpat maecenas. </p>
+        <p>Bibendum est ultricies integer quis auctor elit sed vulputate. Integer feugiat scelerisque varius morbi enim
+          nunc. Magna sit amet purus gravida quis blandit turpis. Feugiat in ante metus dictum at tempor. Aliquam purus
+          sit amet luctus venenatis. Tortor posuere ac ut consequat semper viverra. Mauris nunc congue nisi vitae
+          suscipit
+          tellus mauris a diam. Sem et tortor consequat id. Tincidunt ornare massa eget egestas purus viverra accumsan
+          in.
+          Sollicitudin tempor id eu nisl nunc mi ipsum faucibus vitae. Ultrices neque ornare aenean euismod. Eu feugiat
+          pretium nibh ipsum consequat nisl vel pretium lectus. Vivamus arcu felis bibendum ut tristique et. Aliquam sem
+          fringilla ut morbi tincidunt augue interdum velit. </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="app" class="hero is-info">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <h3 class="is-size-3 has-text-weight-bold">The App</h3>
+        <p>Designed for iOS and Android</p>
+        <p>We developed the Tallassee Park Mobile App using <span class="tag is-light has-text-weight-bold">
+            <i class="fab fa-react"></i>&nbsp; React Native</span> - a branch of the React framework developed by
+          Facebook
+          to support seamless cross-platform development. You'll find every feature present in both versions of the App.
+        </p>
+        <h4 class="is-size-4 has-text-weight-bold">Features</h4>
+        <p class="is-italic"><i class="fas fa-check-circle has-text-grey"></i>&nbsp; Map of the property featuring
+          Sattelite, Feature, and Topographical layers</p>
+        <p class="is-italic"><i class="fas fa-check-circle has-text-grey"></i>&nbsp; Park info including hours & parking
+          information</p>
+        <p class="is-italic"><i class="fas fa-check-circle has-text-grey"></i>&nbsp; Activities for children of all ages
+          with supplies lists and instructions</p>
+        <p class="is-italic"><i class="fas fa-check-circle has-text-grey"></i>&nbsp; Explore the park with information
+          about Flora, Fauna, and natural processes taking place in the park</p>
+        <p class="is-italic"><i class="fas fa-check-circle has-text-grey"></i>&nbsp; Track your progress as you engage
+          with the park and learn</p>
+        <p class="is-italic"><i class="fas fa-check-circle has-text-grey"></i>&nbsp; Offline data caching for areas of
+          low cellular data connection</p>
+        <br>
+        <div class="buttons are-medium has-text-centered is-centered">
+          <a class="button is-light"><i class="fab fa-github"></i>&nbsp; View on GitHub</a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="brand" class="hero is-light">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <h3 class="is-size-3 has-text-weight-bold">The Tallassee Park Brand</h3>
+        <br>
+        <div id="tabs-with-content">
+          <div class="tabs is-centered is-boxed">
+            <ul>
+              <li class="is-active">
+                <a>
+                  <span class="icon is-small"><i class="fas fa-image" aria-hidden="true"></i></span>
+                  <span>Palette</span>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
+                  <span>Logos</span>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
+                  <span>Typography</span>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                  <span>Graphic Elements</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <section class="tab-content">
+              <div class="card">
+                <div class="card-content">
+                  <div class="container">
+                    <p>This color palette forms the basis of our brand identity. We chose these closers to create a
+                      simple and earthy feel for our print materials, presentations, and applications. The palette
+                      encompasses the main colors people encounter in nature, thus giving users a feel of Tallassee Park
+                      at the touch of their fingers. We made sure to have a nice contrast in colors, with deeper tones
+                      such as Black Magic, Kombu Green, and Baja Blue, alongside our neutral colors Volkswagen Kalahari
+                      Beige, Tea Leaves, and Quarter Powder Blue.</p>
+                    <div class="columns is-multiline is-centered">
+                      <div class="column is-one-third">
+                        <div class="palette-column" style="background-color: #2b2428">
+                          <p class="has-text-weight-bold is-italic is-size-5 has-text-light">BLACK MAGIC</p>
+                          <hr>
+                          <p class="has-text-light" >PANTONE 19-3911 TCX</p>
+                          <p class="has-text-light">C 69  Y 69  M 61  K 68</p>
+                          <p class="has-text-light">R 43  G 36  B 40</p>
+                          <p class="has-text-light">HEX 2B2428</p>
+                          <hr>
+                          <p class="is-italic has-text-light">Body & Title Text</p>
+                        </div>
+                      </div>
+
+                      <div class="column is-one-third">
+                        <div class="palette-column" style="background-color: #313c1a">
+                          <p class="has-text-weight-bold is-italic is-size-5 has-text-light">KOMBU GREEN</p>
+                          <hr>
+                          <p class="has-text-light" >PANTONE 5743 C</p>
+                          <p class="has-text-light">C 70  Y 51  M 95  K 58</p>
+                          <p class="has-text-light">R 49  G 60  B 26</p>
+                          <p class="has-text-light">HEX 313C1A</p>
+                          <hr>
+                          <p class="is-italic has-text-light">Banners & buttons</p>
+                        </div>
+                      </div>
+
+                      <div class="column is-one-third">
+                        <div class="palette-column" style="background-color: #2e454f">
+                          <p class="has-text-weight-bold is-italic is-size-5 has-text-light">BAJA BLUE</p>
+                          <hr>
+                          <p class="has-text-light">PANTONE 19-4121 TCX</p>
+                          <p class="has-text-light">C 82 Y 61 M 52 K 39</p>
+                          <p class="has-text-light">R 46 G 69 B 79</p>
+                          <p class="has-text-light">HEX 2E454F</p>
+                          <hr>
+                          <p class="is-italic has-text-light">Disclaimer bar</p>
+                        </div>
+                      </div>
+
+                      <div class="column is-one-third">
+                        <div class="palette-column" style="background-color: #A8A389">
+                          <p class="has-text-weight-bold is-italic is-size-5">VOLKSWAGEN KALAHARI BEIGE</p>
+                          <hr>
+                          <p class="">PANTONE 16-0613 TPG</p>
+                          <p class="">C 36 Y 30 M 48 K 01</p>
+                          <p class="">R 168 G 163 B 137</p>
+                          <p class="">HEX A8A389</p>
+                          <hr>
+                          <p class="is-italic">Progress Bar</p>
+                        </div>
+                      </div>
+
+                      <div class="column is-one-third">
+                        <div class="palette-column" style="background-color: #A6B0A1">
+                          <p class="has-text-weight-bold is-italic is-size-5">TEA LEAVES</p>
+                          <hr>
+                          <p class="">PANTONE 4178 C</p>
+                          <p class="">C 37 Y 23 M 37 K 00</p>
+                          <p class="">R 166 G 176 B 161</p>
+                          <p class="">HEX A6B0A1</p>
+                          <hr>
+                          <p class="is-italic">Category Items</p>
+                        </div>
+                      </div>
+
+                      <div class="column is-one-third">
+                        <div class="palette-column" style="background-color: #BFC6C9">
+                          <p class="has-text-weight-bold is-italic is-size-5">QUARTER POWDER BLUE</p>
+                          <hr>
+                          <p class="">PANTONE 14-4504 TCX</p>
+                          <p class="">C 25 Y 16 M 16 K 00</p>
+                          <p class="">R 191 G 198 B 201</p>
+                          <p class="">HEX BFC6C9</p>
+                          <hr>
+                          <p class="is-italic">Login & information</p>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </section>
+            <section class="tab-content">LOGOS</section>
+            <section class="tab-content">TYPOGRAPHY</section>
+            <section class="tab-content">GRAPHIC ELEMENTS</section>
+          </div>
+        </div>
+
+
+        <br>
+        <a href="assets/branding/TallasseePark_VisualDesignDocu_FD.pdf"
+          class="button is-primary has-text-weight-bold"><i class="fas fa-file-alt"></i>&nbsp; Download Visual Design
+          Document</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="team" class="hero is-primary">
+    <div class="hero-body has-text-centered">
+      <div class="container">
+        <h3 class="is-size-3 has-text-weight-bold">Meet the Team</h3>
+        <div class="columns">
+          <div class="column">
+            <img class="team-photo" src="team/leanna.png">
+            <p class="is-size-5 has-text-weight-bold">Lucia</p>
+            <p class="is-size-6">4th Year CS Major</p>
+          </div>
+          <div class="column">
+            <img class="team-photo" src="team/courtney.jpg">
+            <p class="is-size-5 has-text-weight-bold">Kriti Lodh</p>
+            <p class="is-size-6">4th Year CS Major</p>
+          </div>
+          <div class="column">
+            <img class="team-photo" src="team/nathan.jpeg">
+            <p class="is-size-5 has-text-weight-bold">Chris Martinez</p>
+            <p class="is-size-6">Programmer</p>
+          </div>
+          <div class="column">
+            <img class="team-photo" src="team/jack.jpg">
+            <p class="is-size-5 has-text-weight-bold">Jack Towery</p>
+            <p class="is-size-6">Programmer</p>
+          </div>
+          <div class="column">
+            <img class="team-photo" src="team/connor.jpeg">
+            <p class="is-size-5 has-text-weight-bold">Hollie Mitchell</p>
+            <p class="is-size-6">4th Year CS Major</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>Developed in partnership with the New Media Institute at UGA for the Oconee River Land Trust</p>
+      <p>&copy; 2020</p>
+    </div>
+  </footer>
+
+  <!-- ! LOCAL SCRIPTS -->
+  <script src="js/index.js"></script>
+</body>
+
+</html>
