@@ -29,6 +29,12 @@ $primary: $brand-blue;
 $link: $brand-green;
 $info: $brand-purple;
 
+// ! FONTS
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitter:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+$family-primary: 'Open Sans', sans-serif;
+$family-secondary: 'Bebas Neue', 'Open Sans', sans-serif;
+$family-code: 'Bitter', serif;
+
 
 //* ------------------------------------------------------
 // Import only what you need from Bulma
@@ -46,6 +52,10 @@ p {
     margin-bottom: 0.5em;
 }
 
+p.no-space {
+    margin-bottom: 0 !important;
+}
+
 .team-photo {
     width: 150px;
     height: 150px;
@@ -58,7 +68,7 @@ p {
 }
 
 #tabs-with-content .tab-content {
-    padding: 1rem;
+    padding: 0 1rem 1rem 1rem;
     display: none;
 }
 
