@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "22066638918",
+    "firebase_url": "https://tallassee-park-app.firebaseio.com",
+    "project_id": "tallassee-park-app",
+    "storage_bucket": "tallassee-park-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:22066638918:android:966969996ddc96a8b01a47",
+        "android_client_info": {
+          "package_name": "com.tallasseepark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "22066638918-g2dq7luri4b6jqhbmmbv314ql8td2ai0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNFOzo9CzHi5AlG0V-TaxF_0M-6NY1iao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "22066638918-g2dq7luri4b6jqhbmmbv314ql8td2ai0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

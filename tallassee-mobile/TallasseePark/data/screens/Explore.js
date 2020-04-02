@@ -3,6 +3,7 @@ import { View, StatusBar, Alert } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Button } from 'react-native-elements';
 import MainStyle from '../styles/MainStyle';
+import firestore from '@react-native-firebase/firestore';
 
 // Resources
 const styles = MainStyle;
@@ -13,6 +14,20 @@ class Explore extends React.Component {
     this.state = {
       navigation: this.props.navigation
     }
+
+    const unsubscribe = firestore()
+      .collection('explore')
+      .onSnapshot((querySnapshot) => {
+        console.log('Total explore entries', querySnapshot.size);
+        const entries = querySnapshot.docs.map((documentSnapshot) => {
+          return {
+            ...documentSnapshot.data(),
+            key: documentSnapshot.id,
+          }
+        });
+        //exploreData = entries;
+      });
+
   }
 
   async setupProgress() {
@@ -59,14 +74,14 @@ class Explore extends React.Component {
 
         <Button title="The Big Picture" onPress={() => this.state.navigation.navigate('ExploreList', {
           typeId: 3,
-          type: "The Big Picture"
+          type: "Big Picture"
         })}
           buttonStyle={styles.exploreButton}
         />
 
         <Button title="Progress" onPress={() => this.state.navigation.navigate('Progress')}
           buttonStyle={{
-            backgroundColor: '#363C24',
+            backgroundColor: '#2d454f',
             margin: 10,
             marginTop: 100,
             width: 120,

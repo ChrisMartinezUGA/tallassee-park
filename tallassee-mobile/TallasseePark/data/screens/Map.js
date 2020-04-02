@@ -10,21 +10,21 @@ const actions = [
     icon: require('../icons/running.png'),
     name: "bt_activities",
     position: 2,
-    color: "#363C24"
+    color: "#2d454f"
   },
   {
     text: "Explore",
     icon: require('../icons/compass.png'),
     name: "bt_explore",
     position: 1,
-    color: "#363C24"
+    color: "#2d454f"
   },
   {
     text: "Park Info",
     icon: require('../icons/info.png'),
     name: "bt_info",
     position: 3,
-    color: "#363C24"
+    color: "#2d454f"
   }
 ];
 
@@ -35,21 +35,21 @@ const layers = [
     icon: require('../icons/satellite.png'),
     name: "bt_satellite",
     position: 1,
-    color: "#242a3c"
+    color: "#2a2428"
   },
   {
     text: "Features",
     icon: require('../icons/map-pin.png'),
     name: "bt_features",
     position: 2,
-    color: "#242a3c"
+    color: "#2a2428"
   },
   {
     text: "Topo",
     icon: require('../icons/mountain.png'),
     name: "bt_topo",
     position: 3,
-    color: "#242a3c"
+    color: "#2a2428"
   }
 ];
 
@@ -92,7 +92,7 @@ class Map extends React.Component {
             else if (name == "bt_explore") { this.state.navigation.navigate('Explore') }
             else if (name == "bt_info") { this.state.navigation.navigate('Info') }
           }
-        } color="#363C24" />
+        } color="#2d454f" />
 
         <FloatingAction actions={layers} onPressItem={
           name => {
@@ -100,7 +100,7 @@ class Map extends React.Component {
             else if (name == "bt_features") { this.setState({ mapIndex: 1 }) }
             else if (name == "bt_topo") { this.setState({ mapIndex: 2 }) }
           }
-        } color="#242a3c" position="left" floatingIcon={<LayerIcon />}/>
+        } color="#2a2428" position="left" floatingIcon={<LayerIcon />}/>
       </View>
     )
   }
