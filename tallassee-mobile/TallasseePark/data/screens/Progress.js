@@ -98,10 +98,10 @@ class Progress extends React.Component {
               <View style={styles.sectionContainer}>
                 <Text style={styles.sectionTitle}>Badges</Text>
                 <View style={{ flexDirection: 'row' }}>
-                  {this.state.badges[0] && <Image style={{ width: 100, height: 100 }} source={{ uri: 'http://tallassee.mynmi.net/images/badges/tree.png' }} />}
-                  {this.state.badges[1] && <Image style={{ width: 100, height: 100 }} source={{ uri: 'http://tallassee.mynmi.net/images/badges/star.png' }} />}
-                  {this.state.badges[2] && <Image style={{ width: 100, height: 100 }} source={{ uri: 'http://tallassee.mynmi.net/images/badges/river.png' }} />}
-                  {this.state.badges[3] && <Image style={{ width: 100, height: 100 }} source={{ uri: 'http://tallassee.mynmi.net/images/badges/star.png' }} />}
+                  {this.state.badges[0] && <Image style={{ width: 80, height: 80, margin: 5 }} source={{ uri: 'http://tallassee.mynmi.net/images/badges/flora_icon.png' }} />}
+                  {this.state.badges[1] && <Image style={{ width: 80, height: 80, margin: 5 }} source={{ uri: 'http://tallassee.mynmi.net/images/badges/fauna_icon.png' }} />}
+                  {this.state.badges[2] && <Image style={{ width: 80, height: 80, margin: 5 }} source={{ uri: 'http://tallassee.mynmi.net/images/badges/earthscience_icon.png' }} />}
+                  {this.state.badges[3] && <Image style={{ width: 80, height: 80, margin: 5 }} source={{ uri: 'http://tallassee.mynmi.net/images/badges/thebigpicture_icon.png' }} />}
                 </View>
               </View>
 
