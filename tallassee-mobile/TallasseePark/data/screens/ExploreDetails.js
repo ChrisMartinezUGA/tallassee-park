@@ -9,15 +9,15 @@ const styles = MainStyle;
 //const exploreData = require('../sampleData/exploreList.json');
 
 // Updates the progress array currently on local storage
-async function updateProgress(typeId, itemId) {
+async function updateProgress(typeId, title) {
   try {
     // Get progress array from local data
     const stringifiedArray = await AsyncStorage.getItem('completedActivities');
     if (stringifiedArray !== null) {
       const restoredArray = JSON.parse(stringifiedArray); // Ex: [[0], [1,2], [1], [2,0]]
       // Checks if array doesn't contain id already
-      if (!restoredArray[typeId].some(id => id == itemId)) {
-        restoredArray[typeId].push(itemId);
+      if (!restoredArray[typeId].some(completedTitle => completedTitle == title)) {
+        restoredArray[typeId].push(title);
 
         // Saves progress array to local data
         await AsyncStorage.setItem("completedActivities", JSON.stringify(restoredArray));
@@ -61,7 +61,7 @@ function ExploreDetailsScreen({ route, navigation }) {
   }
   */
 
-  updateProgress(typeId, itemId);
+  updateProgress(typeId, title);
 
   navigation.setOptions({
     title: title,

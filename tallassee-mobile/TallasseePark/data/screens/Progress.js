@@ -3,23 +3,50 @@ import { View, Text, Button, SafeAreaView, ScrollView, Image, StatusBar, Alert }
 import AsyncStorage from '@react-native-community/async-storage';
 import * as ProgressBar from 'react-native-progress';
 import MainStyle from '../styles/MainStyle';
+import firestore from '@react-native-firebase/firestore';
 
 // Resources
 const styles = MainStyle;
 const exploreCategories = require('../sampleData/exploreList.json').categories;
 const progressData = require('../sampleData/progress.json');
+var exploreData = [];
+var categoryNames = ["Flora", "Fauna", "Earth Science", "Big Picture"]
+var currentFilter = '';
 
 class Progress extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {};
+    const unsubscribe = firestore()
+      .collection('explore')
+      .onSnapshot((querySnapshot) => {
+        //console.log('Total explore entries', querySnapshot.size);
+        const entries = querySnapshot.docs.map((documentSnapshot) => {
+          return {
+            ...documentSnapshot.data(),
+            key: documentSnapshot.id,
+          }
+        });
+        exploreData = entries;
+      });
+
     this.state = {
       navigation: this.props.navigation,
       progressArray: "",
       progessDecimal: 0,
       progressPercentage: 0,
       rankTitle: "",
-      badges: [false, false, false, false]
+      badges: [false, false, false, false],
+      data: exploreData,
+      currentData: exploreData
     }
+  }
+
+  filter(type) {
+    filteredData = exploreData.filter(function(el) {
+      return el.category == currentFilter;
+    });
+    this.state.currentData = filteredData;
   }
 
   async getProgress() {
@@ -37,13 +64,15 @@ class Progress extends React.Component {
       let completedActivitiesCount = 0;
       let allActivitiesCount = 0;
 
-      for (let i = 0; i < exploreCategories.length; i++) {
+      for (let i = 0; i < categoryNames.length; i++) {
+        currentFilter = categoryNames[i];
+        this.filter(currentFilter);
         let categoryProgress = 0;
 
-        for (let activity of exploreCategories[i].items) {
+        for (let activity of this.state.currentData) {
 
           // Checks if the current activity is in the list of completed activities
-          if (completedActivities[i].some(id => id == activity.id)) {
+          if (completedActivities[i].some(title => title == activity.title)) {
             completedActivitiesCount = completedActivitiesCount + 1;
             categoryProgress = categoryProgress + 1;
           }
@@ -52,7 +81,7 @@ class Progress extends React.Component {
         }
 
         // Checks if they earned the badge
-        if (categoryProgress >= exploreCategories[i].items.length) {
+        if (categoryProgress >= this.state.currentData.length) {
           let badges = [...this.state.badges];
           badges[i] = { ...badges[i], key: true };
           this.setState({ badges });
