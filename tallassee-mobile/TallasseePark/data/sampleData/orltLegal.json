@@ -1,11 +1,11 @@
 {
+    "orltDisclaimer": "* The park is currently CLOSED, please do not enter the property *",
     "accDisclaimer": "Tallasee Park is not open to the public. This land is under preservation and is only open to approved land trust employees. This app is solely for testing new activities and should only be accessed by approved users.",
-    "disclaimer": "...",
     "missionStatement": "The mission of the Oconee River Land Trust is to conserve natural lands to protect water quality, preserve wildlife habitats, and enhance the quality of our lives and those of future generations.",
-    "contactInfo": "...",
     "url": "http://oconeeriverlandtrust.org/",
     "parkHours": [
         "Monday - Friday: 6 AM - 8 AM",
         "Saturday - Sunday: 8 AM - 10 PM"
-    ]
+    ],
+    "correctPassword": "UGA"
 }

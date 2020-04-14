@@ -1,0 +1,82 @@
+@charset "utf-8";
+
+// Brand Colors
+
+
+// Brand Fonts
+// Import a Google Font
+
+// ! Update Bulma's global variables
+
+// ! COLORS
+//  initial variables
+//$black: $one-dark-blue;
+//$grey-darker: $one-med-blue;
+//$grey-dark: $one-med-blue;
+//$grey: $one-highlight-blue;
+//$grey-lighter: $one-light-blue;
+//$grey-light: $one-light-gray;
+
+$brand-blue: #2D454F;
+$brand-green: #2f3c16;
+$brand-purple: #2a2428;
+$brand-lightBlue: #bfc6c9;
+$brand-lightGreen: #a6afa1;
+$brand-tan: #a8a389;
+
+
+$primary: $brand-blue;
+$link: $brand-green;
+$info: $brand-purple;
+
+// ! FONTS
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitter:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+$family-primary: 'Open Sans', sans-serif;
+$family-secondary: 'Bebas Neue', 'Open Sans', sans-serif;
+$family-code: 'Bitter', serif;
+
+
+//* ------------------------------------------------------
+// Import only what you need from Bulma
+@import "../node_modules/bulma/bulma.sass";
+@import "../node_modules/bulma-switch/dist/css/bulma-switch.sass";
+//* ------------------------------------------------------
+
+// Overwrite some rules for customization
+
+.card {
+    border-radius: 20px;
+}
+
+p {
+    margin-bottom: 0.5em;
+}
+
+p.no-space {
+    margin-bottom: 0 !important;
+}
+
+.team-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#tabs-with-content .tabs:not(:last-child) {
+    margin-bottom: 0;
+}
+
+#tabs-with-content .tab-content {
+    padding: 0 1rem 1rem 1rem;
+    display: none;
+}
+
+#tabs-with-content .tab-content.is-active {
+    display: block;
+}
+
+.palette-column {
+    border-radius: 20px;
+    padding: 1rem;
+}

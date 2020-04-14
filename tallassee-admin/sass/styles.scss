@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+// Brand Colors
+
+
+// Brand Fonts
+// Import a Google Font
+
+// ! Update Bulma's global variables
+
+// ! COLORS
+//  initial variables
+//$black: $one-dark-blue;
+//$grey-darker: $one-med-blue;
+//$grey-dark: $one-med-blue;
+//$grey: $one-highlight-blue;
+//$grey-lighter: $one-light-blue;
+//$grey-light: $one-light-gray;
+
+$brand-blue: #2D454F;
+$brand-green: #2f3c16;
+$brand-purple: #2a2428;
+$brand-lightBlue: #bfc6c9;
+$brand-lightGreen: #a6afa1;
+$brand-tan: #a8a389;
+
+
+$primary: $brand-blue;
+$link: $brand-green;
+
+//* ------------------------------------------------------
+// Import only what you need from Bulma
+@import "../node_modules/bulma/bulma.sass";
+@import "../node_modules/bulma-switch/dist/css/bulma-switch.sass";
+//* ------------------------------------------------------
+
+// Overwrite some rules for customization
+
+.card {
+    border-radius: 20px;
+}

@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { SafeAreaView, ScrollView, View, Text, StatusBar, TextInput, Button, Image, StyleSheet } from 'react-native';
-import { ThemeProvider, Header } from 'react-native-elements';
+import { SafeAreaView, ScrollView, View, Text, StatusBar, TextInput, Button, Image } from 'react-native';
+import MainStyle from './data/styles/MainStyle';
+import firestore from '@react-native-firebase/firestore';
+
 
 // Import Screens from the data folder
 import MapScreen from './data/screens/Map';
@@ -14,19 +16,34 @@ import ExploreListScreen from './data/screens/ExploreList';
 import ExploreDetailsScreen from './data/screens/ExploreDetails';
 import ProgressScreen from './data/screens/Progress';
 
-import MainStyle from './data/styles/MainStyle';
 
+// Resources
 const styles = MainStyle;
-const Stack = createStackNavigator();
 const orltLegal = require('./data/sampleData/orltLegal.json');
+var masterPws = "UGA";
+var masterOpen = false;
+const masterPwsSnapshot = firestore().collection('park').doc('open');
+masterPwsSnapshot.get().then(function(doc) {
+  if(doc.exists){
+    console.log("Document data: ", doc.data())
+    masterPws = doc.data().password;
+    masterOpen = doc.data().open;
+  } else {
+    console.log("No such document!")
+  }
+}).catch(function(error) {
+  console.log("Error getting document:", error);
+})
 
-const correctPassword = "UGA";
+//console.log(masterPws);
 
+// Login Screen
 class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      password: 'UGA'
+      password: '',
+      errorMessage: ''
     }
   }
 
@@ -40,12 +57,8 @@ class Home extends React.Component {
             <StatusBar barStyle="light-content" />
             <View style={styles.body}>
               <View style={styles.sectionContainer}>
-                <Image style={{ width: 300, height: 100 }} source={require('./data/images/oconee-river-land-trust.png')} />
-              </View>
-
-              <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>Tallasee Park</Text>
-                <Text style={styles.sectionDescription}>Project by the Oconee River Land Trust</Text>
+                <Image style={{ width: 360, height: 52 }} source={require("./data/logos/TallasseeParkLogo_long_dark.png")} />
+                <Text style={styles.sectionDescription}>A Project by the Oconee River Land Trust</Text>
               </View>
 
               <View style={styles.sectionContainer}>
@@ -55,6 +68,7 @@ class Home extends React.Component {
                   style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
                   onChangeText={(password) => this.setState({ password })}
                   value={this.state.password} />
+                <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
               </View>
 
               <View style={styles.sectionContainer}>
@@ -64,8 +78,11 @@ class Home extends React.Component {
 
               <View style={styles.sectionContainer}>
                 <Button title="Login" onPress={() => {
-                  if (this.state.password == correctPassword) {
+                  if (this.state.password == masterPws) {
+                    this.setState({ errorMessage: '' });
                     this.props.navigation.replace('Map')
+                  } else {
+                    this.setState({ errorMessage: 'Incorrect Password' })
                   }
                 }} />
               </View>
@@ -81,12 +98,16 @@ function HomeScreen({ navigation }) {
   return <Home navigation={navigation} />
 }
 
+// Navigation
+const Stack = createStackNavigator();
+
 function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home" screenOptions={{
+        title: 'Sign In',
         headerStyle: {
-          backgroundColor: '#363C24',
+          backgroundColor: '#2d454f',
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
@@ -94,24 +115,30 @@ function App() {
         },
       }}>
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Map" component={MapScreen} 
-          options={{ 
-            title: 'Tallassee Park'
+        <Stack.Screen name="Map" component={MapScreen}
+          options={{
+            title: 'Tallassee Park',
+            headerTitle: (
+              <Image style={{ width: 200, height: 20 }} source={require("./data/logos/TallasseeParkLogo_long_white.png")} />
+            ),
+            headerStyle: {
+              backgroundColor: '#2d454f',
+            },
           }} />
-        <Stack.Screen name="Info" component={InfoScreen} 
-          options={{ 
+        <Stack.Screen name="Info" component={InfoScreen}
+          options={{
             title: 'Tallassee Park Info',
             headerBackTitle: 'Map'
           }} />
         <Stack.Screen name="Activities" component={ActivitiesScreen}
-          options={{ 
+          options={{
             title: 'Games & Activities',
             headerBackTitle: 'Map'
           }} />
         <Stack.Screen name="ActivityDetails" component={ActivityDetailsScreen} />
 
         <Stack.Screen name="Explore" component={ExploreScreen}
-          options={{ 
+          options={{
             title: 'Explore Tallassee Park',
             headerBackTitle: 'Map'
           }} />
@@ -119,7 +146,7 @@ function App() {
           options={{
             title: '[Category]',
             headerStyle: {
-              backgroundColor: '#36464D',
+              backgroundColor: '#2f3c16',
               height: 240,
             },
             headerTintColor: '#fff',
@@ -143,8 +170,9 @@ function App() {
             },
             headerBackTitle: 'Back'
           }} />
-        <Stack.Screen name="Progress" component={ProgressScreen} />
-
+        <Stack.Screen name="Progress" component={ProgressScreen} options={{
+          title: 'Progress',
+        }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

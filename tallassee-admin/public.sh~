@@ -1,0 +1,5 @@
+cp css public/css
+cp js public/js
+cp index.html public/index.html
+cp explore.html public/explore.html
+cp README.md public/README.md

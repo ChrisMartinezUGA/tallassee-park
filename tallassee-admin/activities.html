@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Activities | Tallassee Park Admin</title>
+    <script src="https://kit.fontawesome.com/9aef0c2001.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <p style="padding: 6px;"><img src="assets/logos/t-logo.png" style="width: 2em"></p>
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                data-target="mainNavbar">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="mainNavbar" class="navbar-menu">
+            <div class="navbar-start"></div>
+            <div class="navbar-end">
+                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item" href="info.html">Park Info</a>
+                <a class="navbar-item" href="activities.html">Activities</a>
+                <a class="navbar-item" href="explore.html">Explore</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero is-primary is-small">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">Activities - Content Manager</h1>
+            </div>
+        </div>
+    </section>
+
+    <div id="newModal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Activities - New Activity</p>
+                <button class="delete" aria-label="close" onclick="closeNewModal()"></button>
+            </header>
+            <section class="modal-card-body">
+                <form id="newEntryForm" action="javascript:submitNewEntry" class="form">
+                    <div class="field">
+                        <label class="label">Activity</label>
+                        <div class="control">
+                            <input class="input" name="newTitle" id="newTitle" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Participants</label>
+                        <div class="control">
+                            <div name="newParticipants" id="newParticipants" class="select">
+                                <select>
+                                    <option value="1">Solo Activity</option>
+                                    <option value="2">Group Activity</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Estimated Time</label>
+                        <div class="control">
+                            <input class="input" name="newTime" id="newTime" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Supplies Required for Activity</label>
+                        <div class="control">
+                            <input class="input" name="newSupplies" id="newSupplies" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Activity Instructions</label>
+                        <div class="control">
+                            <textarea name="newInstructions" id="newInstructions" class="textarea"
+                                placeholder=""></textarea>
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-primary" onclick="submitNewEntry()">Save New Activity</button>
+                <!--<button class="button is-primary" type="submit" form="newEntryForm">Save changes</button>-->
+                <button class="button" onclick="closeNewModal()">Cancel</button>
+            </footer>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="content">
+            <table id="activitiesTable" class="table is-striped is-narrow">
+                <thead>
+                    <tr>
+                        <th><abbr title="Unique Entry ID">ID</abbr></th>
+                        <th>Activity</th>
+                        <th>Group Activity?</th>
+                        <th>Time</th>
+                        <th>Supplies</th>
+                        <th>Content</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(entry,index) in allEntries">
+                        <td><abbr :title="allIDs[index]">{{allIDs[index].substring(0,4)}}</abbr></td>
+                        <td class="has-text-weight-bold">{{entry.title}}</td>
+                        <td class="">{{entry.group}}</td>
+                        <td>{{entry.time}}</td>
+                        <td>{{entry.supplies.substring(0,30)}}</td>
+                        <td>{{entry.content.substring(0,50)}}...</td>
+                        <td>
+                            <button type="button" v-on:click="launchEditModal(allIDs[index])"
+                                class="button is-warning"><i class="fas fa-edit"></i></button>
+                            <button type="button" v-on:click="launchDeleteModal(allIDs[index])"
+                                class="button is-danger"><i class="fas fa-trash-alt"></i></button>
+                            <!-- DELETE MODAL -->
+                            <div :id="'deleteModal-' + allIDs[index]" class="modal">
+                                <div class="modal-background"></div>
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <p class="modal-card-title">Confirm Delete</p>
+                                        <button class="delete" aria-label="close"
+                                            v-on:click="closeDeleteModal(allIDs[index])"></button>
+                                    </header>
+                                    <section class="modal-card-body">
+                                        <p>Are you sure you want to delete <span
+                                                class="has-text-weight-bold">{{entry.title}}</span></p>
+                                    </section>
+                                    <footer class="modal-card-foot">
+                                        <button class="button is-danger"
+                                            v-on:click="deleteEntry(allIDs[index])">Delete</button>
+                                        <button class="button"
+                                            v-on:click="closeDeleteModal(allIDs[index])">Cancel</button>
+                                    </footer>
+                                </div>
+                            </div>
+                            <!-- EDIT MODAL -->
+                            <div :id="'editModal-' + allIDs[index]" class="modal">
+                                <div class="modal-background"></div>
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <p class="modal-card-title">Editing Entry: <span
+                                                class="has-text-weight-bold">{{entry.title}}</span></p>
+                                        <button class="delete" aria-label="close"
+                                            v-on:click="closeEditModal(allIDs[index])"></button>
+                                    </header>
+                                    <section class="modal-card-body">
+                                        <form :id="'editEntryForm-' + allIDs[index]" action="javascript:editEntry"
+                                            class="form">
+                                            <div class="field">
+                                                <label class="label">Activity Title</label>
+                                                <div class="control">
+                                                    <input class="input" name="editTitle" id="editTitle" type="text"
+                                                        :value="entry.title">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Participants</label>
+                                                <div class="control">
+                                                    <div name="editCategory" id="editCategory" class="select">
+                                                        <select>
+                                                            <option value="1"
+                                                                v-bind:selected="entry.group == false ? true : false">
+                                                                Solo Activity</option>
+                                                            <option value="2"
+                                                                v-bind:selected="entry.group == true ? true : false">
+                                                                Group Activity</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Estimated Time</label>
+                                                <div class="control">
+                                                    <input class="input" name="editTime" id="editTime" type="text"
+                                                        :value="entry.time">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Supplies</label>
+                                                <div class="control">
+                                                    <input class="input" name="editSupplies" id="editSupplies"
+                                                        type="text" :value="entry.supplies">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Activity Instructions</label>
+                                                <div class="control">
+                                                    <textarea name="editContent" id="editContent" class="textarea"
+                                                        :value="entry.content"></textarea>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </section>
+                                    <footer class="modal-card-foot">
+                                        <button class="button is-primary" v-on:click="editEntry(allIDs[index])">Save
+                                            Changes</button>
+                                        <button class="button"
+                                            v-on:click="closeEditModal(allIDs[index])">Cancel</button>
+                                    </footer>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="has-text-centered">
+                <a id="newEntryButton" class="button is-link" onclick="launchNewModal()"><i
+                        class="fas fa-plus-circle"></i>&nbsp;New
+                    Activity</a>
+            </div>
+        </div>
+    </section>
+    <!-- ! FIREBASE SDK SCRIPTS -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBpfnYdTTe5J_N_SO9p9BgRtKSmLtdv2w0",
+            authDomain: "tallassee-park-app.firebaseapp.com",
+            databaseURL: "https://tallassee-park-app.firebaseio.com",
+            projectId: "tallassee-park-app",
+            storageBucket: "tallassee-park-app.appspot.com",
+            messagingSenderId: "22066638918",
+            appId: "1:22066638918:web:f4c675eec904f649b01a47",
+            measurementId: "G-70125R43XL"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+
+    <!-- ! LOCAL SCRIPTS -->
+    <script src="js/activities.js"></script>
+</body>
+
+</html>
