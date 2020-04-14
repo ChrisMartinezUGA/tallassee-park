@@ -7,7 +7,7 @@ var parkPws = "";
 var openDoc = db.collection("park").doc("open");
 openDoc.get().then(function (doc) {
     if (doc.exists) {
-        console.log("Document data:", doc.data());
+        //console.log("Document data:", doc.data());
         parkOpen = doc.data().open;
         parkPws = doc.data().password;
         $("#fieldAppPassword").prop("value", parkPws);
@@ -45,8 +45,8 @@ function toggleParkOpenStatus() {
 
 function saveChanges() {
     console.log("saving changes");
-    parkPws = $("#fieldAppPassword").val();
-    console.log(parkPws);
+    //parkPws = $("#fieldAppPassword").val();
+    //console.log(parkPws);
     db.collection("park").doc("open").set({
         open: parkOpen,
         password: parkPws,

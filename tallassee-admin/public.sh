@@ -6,6 +6,8 @@ rm -rf public/assets
 cp -r assets public/assets
 rm public/index.html
 cp index.html public/index.html
+rm public/info.html
+cp info.html public/info.html
 rm public/explore.html
 cp explore.html public/explore.html
 rm public/activities.html
