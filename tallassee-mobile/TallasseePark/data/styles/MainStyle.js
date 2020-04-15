@@ -1,4 +1,4 @@
-import { StyleSheet,Dimensions } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 var width = Dimensions.get('window').width;
 var height = Dimensions.get('window').height;
@@ -64,8 +64,8 @@ export default StyleSheet.create({
     color: '#ffffff',
     textShadowColor: '#ffffff',
     alignSelf: 'stretch',
-    width: width-40,
-    
+    width: width - 40,
+
   },
   buttonTitle: {
     color: '#ffffff',

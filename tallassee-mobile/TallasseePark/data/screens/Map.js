@@ -63,8 +63,8 @@ const maps = [
 // The Floating Action icon must come from a React Element
 const LayerIcon = () => {
   return (
-  <Image style={{width: 20, height: 20}} source={require('../icons/layer-group-white.png')}></Image>
-);
+    <Image style={{ width: 20, height: 20 }} source={require('../icons/layer-group-white.png')}></Image>
+  );
 }
 
 class Map extends React.Component {
@@ -100,7 +100,7 @@ class Map extends React.Component {
             else if (name == "bt_features") { this.setState({ mapIndex: 1 }) }
             else if (name == "bt_topo") { this.setState({ mapIndex: 2 }) }
           }
-        } color="#2a2428" position="left" floatingIcon={<LayerIcon />}/>
+        } color="#2a2428" position="left" floatingIcon={<LayerIcon />} />
       </View>
     )
   }

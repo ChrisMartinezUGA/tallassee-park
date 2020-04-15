@@ -7,7 +7,7 @@ import firestore from '@react-native-firebase/firestore';
 
 // Resources
 const styles = MainStyle;
-const exploreCategories = require('../sampleData/exploreList.json').categories;
+
 const progressData = require('../sampleData/progress.json');
 var exploreData = [];
 var categoryNames = ["Flora", "Fauna", "Earth Science", "Big Picture"]
@@ -20,7 +20,6 @@ class Progress extends React.Component {
     const unsubscribe = firestore()
       .collection('explore')
       .onSnapshot((querySnapshot) => {
-        //console.log('Total explore entries', querySnapshot.size);
         const entries = querySnapshot.docs.map((documentSnapshot) => {
           return {
             ...documentSnapshot.data(),
@@ -43,7 +42,7 @@ class Progress extends React.Component {
   }
 
   filter(type) {
-    filteredData = exploreData.filter(function(el) {
+    filteredData = exploreData.filter(function (el) {
       return el.category == currentFilter;
     });
     this.state.currentData = filteredData;

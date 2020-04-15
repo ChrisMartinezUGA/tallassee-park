@@ -37,17 +37,17 @@ class Home extends React.Component {
     try {
       const masterPwsSnapshot = await firestore().collection('park').doc('open');
       const doc = await masterPwsSnapshot.get();
-      if(doc.exists){
+      if (doc.exists) {
         console.log("Document data: ", doc.data())
-        this.setState({masterPws: doc.data().password});
-        this.setState({masterOpen: doc.data().open});
-        if(this.state.masterOpen == true) {
+        this.setState({ masterPws: doc.data().password });
+        this.setState({ masterOpen: doc.data().open });
+        if (this.state.masterOpen == true) {
           this.props.navigation.replace('Map');
         }
       } else {
         console.log("No such document!")
       }
-    } catch(error) {
+    } catch (error) {
       console.log("Error getting document:", error);
     }
   }

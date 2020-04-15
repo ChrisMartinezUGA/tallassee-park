@@ -2,11 +2,9 @@ import React from 'react';
 import { View, Text, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import MainStyle from '../styles/MainStyle';
-import firestore from '@react-native-firebase/firestore';
 
 // Resources
 const styles = MainStyle;
-//const exploreData = require('../sampleData/exploreList.json');
 
 // Updates the progress array currently on local storage
 async function updateProgress(typeId, title) {
@@ -30,8 +28,6 @@ async function updateProgress(typeId, title) {
 }
 
 function ExploreDetailsScreen({ route, navigation }) {
-  //const { typeId } = route.params;
-  //const { itemId } = route.params;
   const { itemId } = route.params;
   const { title } = route.params;
   const { subtitle } = route.params;
@@ -47,19 +43,6 @@ function ExploreDetailsScreen({ route, navigation }) {
   } else {
     typeId = 3;
   }
-
-  //const TYPE_DATA = exploreData.categories[typeId].items;
-  //var currentItem;
-
-  // Retrieves item info based on the passed itemId
-  /*
-  for (var item of TYPE_DATA) {
-    if (item.id == itemId) {
-      currentItem = item;
-      break;
-    }
-  }
-  */
 
   updateProgress(typeId, title);
 

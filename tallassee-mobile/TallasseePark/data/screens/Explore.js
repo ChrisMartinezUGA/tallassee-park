@@ -25,7 +25,6 @@ class Explore extends React.Component {
             key: documentSnapshot.id,
           }
         });
-        //exploreData = entries;
       });
 
   }

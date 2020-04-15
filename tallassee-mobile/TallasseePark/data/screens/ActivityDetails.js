@@ -4,9 +4,7 @@ import MainStyle from '../styles/MainStyle';
 
 // Resources
 const styles = MainStyle;
-const activityList = require('../sampleData/activityList.json');
-const ALL_DATA = activityList.soloActivities.concat(activityList.groupActivities);
-//itemId: id, title: title, group: group, supplies: supplies, time: time, content: content
+
 function ActivitiesDetailsScreen({ route, navigation }) {
   const { itemId } = route.params;
   const { title } = route.params;
@@ -15,16 +13,6 @@ function ActivitiesDetailsScreen({ route, navigation }) {
   const { supplies } = route.params;
   const { time } = route.params;
   const { content } = route.params;
-  //var currentItem;
-  /*
-  // Retrieves item info based on the passed itemId
-  for (var item of ALL_DATA) {
-    if (item.id == itemId) {
-      currentItem = item;
-      break;
-    }
-  }
-  */
 
   return (
     <>
