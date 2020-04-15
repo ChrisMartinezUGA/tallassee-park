@@ -31,21 +31,21 @@ const actions = [
 // Map Layers Floating Action
 const layers = [
   {
-    text: "Satellite",
+    text: "Ecology",
     icon: require('../icons/satellite.png'),
     name: "bt_satellite",
     position: 1,
     color: "#2a2428"
   },
   {
-    text: "Features",
+    text: "Trails",
     icon: require('../icons/map-pin.png'),
     name: "bt_features",
     position: 2,
     color: "#2a2428"
   },
   {
-    text: "Topo",
+    text: "Topography",
     icon: require('../icons/mountain.png'),
     name: "bt_topo",
     position: 3,
@@ -55,9 +55,9 @@ const layers = [
 
 // Map URLs
 const maps = [
-  'http://tallassee.mynmi.net/images/aerial-map.jpg',
-  'http://tallassee.mynmi.net/images/features-map.jpg',
-  'http://tallassee.mynmi.net/images/topo-map.jpg'
+  require('../testMaps/TallasseeMap_Ecology.png'),
+  require('../testMaps/TallasseeMap_Trails.png'),
+  require('../testMaps/TallasseeMap_Topo.png'),
 ]
 
 // The Floating Action icon must come from a React Element
@@ -83,7 +83,7 @@ class Map extends React.Component {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <StatusBar barStyle="light-content" />
         <ScrollView minimumZoomScale={1} maximumZoomScale={5} showsHorizontalScrollIndicator={true} style={{ flex: 1 }} >
-          <Image style={{ width: this.state.mapWidth, height: this.state.mapHeight }} source={{ uri: maps[this.state.mapIndex] }} />
+          <Image style={{ width: this.state.mapWidth, height: this.state.mapHeight }} source={maps[this.state.mapIndex]} />
         </ScrollView>
 
         <FloatingAction actions={actions} onPressItem={
