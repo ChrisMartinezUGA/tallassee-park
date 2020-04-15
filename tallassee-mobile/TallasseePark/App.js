@@ -83,7 +83,7 @@ class Home extends React.Component {
 
               <View style={styles.sectionContainer}>
                 <Button title="Login" onPress={() => {
-                  if (this.state.password == masterPws) {
+                  if (this.state.password == this.state.masterPws) {
                     this.setState({ errorMessage: '' });
                     this.props.navigation.replace('Map')
                   } else {
