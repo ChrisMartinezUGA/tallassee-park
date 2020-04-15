@@ -16,7 +16,6 @@ var currentFilter = '';
 class Progress extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
     const unsubscribe = firestore()
       .collection('explore')
       .onSnapshot((querySnapshot) => {
@@ -62,6 +61,7 @@ class Progress extends React.Component {
       const completedActivities = JSON.parse(stringifiedArray);
       let completedActivitiesCount = 0;
       let allActivitiesCount = 0;
+      this.setState({ badges: [false, false, false, false] });
 
       for (let i = 0; i < categoryNames.length; i++) {
         currentFilter = categoryNames[i];
@@ -137,7 +137,7 @@ class Progress extends React.Component {
                 <Button title="Clear Progress" onPress={() =>
                   // Removes the completedActivities array from local storage
                   Alert.alert("Clear Progress", "Please confirm that you want to clear your progress.", [
-                    { text: "Confirm", onPress: () => AsyncStorage.removeItem('completedActivities') },
+                    { text: "Confirm", onPress: () => { AsyncStorage.removeItem('completedActivities'); this.getProgress(); } },
                     { text: "Cancel", style: "cancel" }
                   ],
                     { cancelable: "false" })
