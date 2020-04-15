@@ -19,11 +19,11 @@ openDoc.get().then(function (doc) {
 });
 
 if (parkOpen) {
-    $("#statusParkOpen").text("open");
+    $("#statusParkOpen").text("to the public");
     $("#fieldAppPassword").prop("disabled", true);
     $("#fieldOpenPark").prop("checked", true);
 } else {
-    $("#statusParkOpen").text("closed");
+    $("#statusParkOpen").text("with permission");
     $("#fieldAppPassword").prop("disabled", false);
     $("#fieldOpenPark").prop("checked", false);
 }
@@ -33,11 +33,11 @@ if (parkOpen) {
 function toggleParkOpenStatus() {
     open = document.getElementById("fieldOpenPark").checked;
     if (open == false) {
-        $("#statusParkOpen").text("closed");
+        $("#statusParkOpen").text("with permission");
         $("#fieldAppPassword").prop("disabled", false);
         parkOpen = false;
     } else {
-        $("#statusParkOpen").text("open");
+        $("#statusParkOpen").text("to the public");
         $("#fieldAppPassword").prop("disabled", true);
         parkOpen = true;
     }

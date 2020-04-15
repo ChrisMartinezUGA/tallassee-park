@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Explore | Tallassee Park Admin</title>
+    <title>Explore | Tallassee Forest Admin</title>
     <script src="https://kit.fontawesome.com/9aef0c2001.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -63,6 +63,12 @@
                         </div>
                     </div>
                     <div class="field">
+                        <label class="label">Image</label>
+                        <div class="control">
+                            <input class="input" name="newImage" id="newImage" type="file" value="upload">
+                        </div>
+                    </div>
+                    <div class="field">
                         <label class="label">Category</label>
                         <div class="control">
                             <div name="newCategory" id="newCategory" class="select">
@@ -93,6 +99,40 @@
 
     <section class="section">
         <div class="content">
+            <div class="tabs is-centered">
+                <ul>
+                  <li id="filterTab0" class="is-active">
+                    <a onclick="filterByTab(0)">
+                      <span class="icon is-small"><i class="far fa-circle" aria-hidden="true"></i></span>
+                      <span>All</span>
+                    </a>
+                  </li>
+                  <li id="filterTab1">
+                    <a onclick="filterByTab(1)">
+                      <span class="icon is-small"><i class="fas fa-leaf" aria-hidden="true"></i></span>
+                      <span>Flora</span>
+                    </a>
+                  </li>
+                  <li id="filterTab2">
+                    <a onclick="filterByTab(2)">
+                      <span class="icon is-small"><i class="fas fa-frog" aria-hidden="true"></i></span>
+                      <span>Fauna</span>
+                    </a>
+                  </li>
+                  <li id="filterTab3">
+                    <a onclick="filterByTab(3)">
+                      <span class="icon is-small"><i class="fas fa-globe-americas" aria-hidden="true"></i></span>
+                      <span>Earth Science</span>
+                    </a>
+                  </li>
+                  <li id="filterTab4">
+                    <a onclick="filterByTab(4)">
+                      <span class="icon is-small"><i class="fas fa-project-diagram" aria-hidden="true"></i></span>
+                      <span>Big Picture</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             <table id="exploreTable" class="table is-striped is-narrow">
                 <thead>
                     <tr>
@@ -164,6 +204,13 @@
                                                 </div>
                                             </div>
                                             <div class="field">
+                                                <label class="label">Image</label>
+                                                <img :id="'editImgPreview-' + allIDs[index]" alt="No image currently set." style="max-height: 100px;">
+                                                <div class="control">
+                                                    <input class="input" name="editImage" id="editImage" type="file" value="upload">
+                                                </div>
+                                            </div>
+                                            <div class="field">
                                                 <label class="label">Category</label>
                                                 <div class="control">
                                                     <div name="editCategory" id="editCategory" class="select">
@@ -211,6 +258,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-storage.js"></script>
 
     <script>
         // Your web app's Firebase configuration

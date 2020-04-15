@@ -19,13 +19,15 @@ function closeNewModal() {
 
 function submitNewEntry() {
     let activityTitle = document.forms[0].elements[0].value;
-    let activityParticipants = document.forms[0].elements[1].value;
-    let activityTime = document.forms[0].elements[2].value;
-    let activitySupplies = document.forms[0].elements[3].value;
-    let activityInstructions = document.forms[0].elements[4].value;
+    let activityDesc = document.forms[0].elements[1].value;
+    let activityParticipants = document.forms[0].elements[2].value;
+    let activityTime = document.forms[0].elements[3].value;
+    let activitySupplies = document.forms[0].elements[4].value;
+    let activityInstructions = document.forms[0].elements[5].value;
     let activityParticipantsBool = (activityParticipants == 1) ? false : true;
     db.collection("activities").add({
             title: activityTitle,
+            desc: activityDesc,
             group: activityParticipantsBool,
             time: activityTime,
             supplies: activitySupplies,
@@ -96,13 +98,15 @@ var activitiesVue = new Vue({
         editEntry(id) {
             let formID = 'editEntryForm-' + id;
             let activityTitle = document.getElementById(formID).elements[0].value;
-            let activityParticipants = document.getElementById(formID).elements[1].value;
-            let activityTime = document.getElementById(formID).elements[2].value;
-            let activitySupplies = document.getElementById(formID).elements[3].value;
-            let activityInstructions = document.getElementById(formID).elements[4].value;
+            let activityDesc = document.getElementById(formID).elements[1].value;
+            let activityParticipants = document.getElementById(formID).elements[2].value;
+            let activityTime = document.getElementById(formID).elements[3].value;
+            let activitySupplies = document.getElementById(formID).elements[4].value;
+            let activityInstructions = document.getElementById(formID).elements[5].value;
             let activityParticipantsBool = (activityParticipants == 1) ? false : true;
             db.collection("activities").doc(id).set({
                     title: activityTitle,
+                    desc: activityDesc,
                     group: activityParticipantsBool,
                     time: activityTime,
                     supplies: activitySupplies,
