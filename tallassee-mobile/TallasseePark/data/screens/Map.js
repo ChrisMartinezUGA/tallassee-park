@@ -1,6 +1,6 @@
 import React from 'react';
 import { FloatingAction } from "react-native-floating-action";
-import { View, Image, StatusBar } from 'react-native';
+import { View, Image, StatusBar, Dimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
 // Navigation Floating Action
@@ -72,8 +72,8 @@ class Map extends React.Component {
     super(props)
     this.state = {
       mapIndex: 0,
-      mapWidth: 1000, // causing errors
-      mapHeight: 1000, // causing errors
+      mapWidth: Dimensions.get('window').height,
+      mapHeight: Dimensions.get('window').height,
       navigation: this.props.navigation
     }
   }
