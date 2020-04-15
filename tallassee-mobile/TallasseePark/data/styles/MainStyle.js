@@ -80,5 +80,36 @@ export default StyleSheet.create({
     margin: 20,
     width: 140,
     height: 80
+  },
+  exploreTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+    color: Colors.black,
+    textAlign: 'center'
+  },
+  exploreSubtitle: {
+    fontSize: 14,
+    fontWeight: '400',
+    fontStyle: 'italic',
+    color: Colors.black,
+    textAlign: 'center'
+  },
+  exploreContent: {
+    fontSize: 18,
+    fontWeight: '400',
+    color: Colors.black,
+    lineHeight: 30
+  },
+  exploreContainer: {
+    marginTop: 8,
+    marginBottom: 8,
+    paddingHorizontal: 24,
+  },
+  exploreImage: {
+    width: '100%',
+    height: 160,
+    resizeMode: 'contain'
   }
+
+
 });

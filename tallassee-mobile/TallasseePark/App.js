@@ -152,7 +152,7 @@ function App() {
             title: '[Category]',
             headerStyle: {
               backgroundColor: '#2f3c16',
-              height: 240,
+              height: 120,
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -166,7 +166,7 @@ function App() {
             title: '[Item]',
             headerStyle: {
               backgroundColor: '#ABB1A4',
-              height: 240,
+              height: 120,
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
