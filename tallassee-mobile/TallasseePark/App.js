@@ -20,22 +20,6 @@ import ProgressScreen from './data/screens/Progress';
 // Resources
 const styles = MainStyle;
 const orltLegal = require('./data/sampleData/orltLegal.json');
-var masterPws = "UGA";
-var masterOpen = false;
-const masterPwsSnapshot = firestore().collection('park').doc('open');
-masterPwsSnapshot.get().then(function(doc) {
-  if(doc.exists){
-    console.log("Document data: ", doc.data())
-    masterPws = doc.data().password;
-    masterOpen = doc.data().open;
-  } else {
-    console.log("No such document!")
-  }
-}).catch(function(error) {
-  console.log("Error getting document:", error);
-})
-
-//console.log(masterPws);
 
 // Login Screen
 class Home extends React.Component {
@@ -43,7 +27,28 @@ class Home extends React.Component {
     super(props)
     this.state = {
       password: '',
-      errorMessage: ''
+      errorMessage: '',
+      masterPws: '',
+      masterOpen: false
+    }
+  }
+
+  async componentDidMount() {
+    try {
+      const masterPwsSnapshot = await firestore().collection('park').doc('open');
+      const doc = await masterPwsSnapshot.get();
+      if(doc.exists){
+        console.log("Document data: ", doc.data())
+        this.setState({masterPws: doc.data().password});
+        this.setState({masterOpen: doc.data().open});
+        if(this.state.masterOpen == true) {
+          this.props.navigation.replace('Map');
+        }
+      } else {
+        console.log("No such document!")
+      }
+    } catch(error) {
+      console.log("Error getting document:", error);
     }
   }
 
