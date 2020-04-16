@@ -66,11 +66,11 @@ function filterByTab(f) {
             break;
         case 3:
             $('#filterTab3').addClass("is-active");
-            exploreVue.reloadEntriesFilter("Big Picture");
+            exploreVue.reloadEntriesFilter("Earth Science");
             break;
         case 4:
             $('#filterTab4').addClass("is-active");
-            exploreVue.reloadEntriesFilter("Earth Science");
+            exploreVue.reloadEntriesFilter("Big Picture");
             break;
     }
 
