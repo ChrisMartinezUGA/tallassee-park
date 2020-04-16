@@ -1,5 +1,6 @@
 import React from 'react';
-import { SafeAreaView, View, Button, FlatList, StatusBar } from 'react-native';
+import { SafeAreaView, View, FlatList, StatusBar } from 'react-native';
+import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import MainStyle from '../styles/MainStyle';
 import firestore from '@react-native-firebase/firestore';
@@ -14,7 +15,7 @@ function Item({ title, id, category, subtitle, content }) {
 
   return (
     <View style={styles.item}>
-      <Button style={styles.buttonTitle} title={title} onPress={() => navigation.navigate('ExploreDetails', { itemId: id, title: title, subtitle: subtitle, category: category, content: content })} />
+      <Button buttonStyle={styles.exploreListButton} titleStyle={{fontSize:18}} title={title} onPress={() => navigation.navigate('ExploreDetails', { itemId: id, title: title, subtitle: subtitle, category: category, content: content })} />
     </View>
   );
 }

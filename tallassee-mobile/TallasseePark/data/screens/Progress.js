@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, Button, SafeAreaView, ScrollView, Image, StatusBar, Alert } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, Image, StatusBar, Alert } from 'react-native';
+import { Button } from 'react-native-elements';
 import AsyncStorage from '@react-native-community/async-storage';
 import * as ProgressBar from 'react-native-progress';
 import MainStyle from '../styles/MainStyle';
@@ -114,7 +115,7 @@ class Progress extends React.Component {
           <ScrollView>
             <View style={styles.body}>
               <View style={styles.sectionContainer}>
-                <ProgressBar.Bar progress={this.state.progessDecimal} width={300} height={25} />
+                <ProgressBar.Bar progress={this.state.progessDecimal} color="#313c1a" width={300} height={25} />
                 <Text style={styles.sectionDescription}>{this.state.progressPercentage}%</Text>
               </View>
 
@@ -134,7 +135,7 @@ class Progress extends React.Component {
               </View>
 
               <View style={styles.sectionContainer}>
-                <Button title="Clear Progress" onPress={() =>
+                <Button buttonStyle={styles.clearProgressButton} titleStyle={{fontSize:18}} title="Clear Progress" onPress={() =>
                   // Removes the completedActivities array from local storage
                   Alert.alert("Clear Progress", "Please confirm that you want to clear your progress.", [
                     { text: "Confirm", onPress: () => { AsyncStorage.removeItem('completedActivities'); this.getProgress(); } },

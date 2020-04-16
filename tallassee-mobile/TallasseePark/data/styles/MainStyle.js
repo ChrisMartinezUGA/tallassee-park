@@ -58,8 +58,8 @@ export default StyleSheet.create({
   },
   item: {
     backgroundColor: '#a6afa1',
-    padding: 20,
-    marginVertical: 8,
+    //padding: 20,
+    marginTop: 20,
     marginHorizontal: 16,
     color: '#ffffff',
     textShadowColor: '#ffffff',
@@ -109,7 +109,20 @@ export default StyleSheet.create({
     width: '100%',
     height: 160,
     resizeMode: 'contain'
+  },
+  loginButton: {
+    backgroundColor: '#313c1a',
+    paddingVertical: 15,
+    paddingHorizontal: 32
+  },
+  clearProgressButton: {
+    backgroundColor: '#a8a389',
+    paddingVertical: 15,
+    paddingHorizontal: 32
+  },
+  exploreListButton: {
+    backgroundColor: '#a8a389',
+    paddingVertical: 15,
+    paddingHorizontal: 32
   }
-
-
 });

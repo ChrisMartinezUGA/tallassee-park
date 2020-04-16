@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { SafeAreaView, ScrollView, View, Text, StatusBar, TextInput, Button, Image } from 'react-native';
+import { SafeAreaView, ScrollView, View, Text, StatusBar, TextInput, Image } from 'react-native';
+import { Button } from 'react-native-elements';
 import MainStyle from './data/styles/MainStyle';
 import firestore from '@react-native-firebase/firestore';
 
@@ -82,7 +83,7 @@ class Home extends React.Component {
               </View>
 
               <View style={styles.sectionContainer}>
-                <Button title="Login" onPress={() => {
+                <Button buttonStyle={styles.loginButton} titleStyle={{fontSize:18}} title="Login" onPress={() => {
                   if (this.state.password == this.state.masterPws) {
                     this.setState({ errorMessage: '' });
                     this.props.navigation.replace('Map')
@@ -118,6 +119,7 @@ function App() {
         headerTitleStyle: {
           fontWeight: 'bold',
         },
+        cardStyle: { backgroundColor: '#fff' },
       }}>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Map" component={MapScreen}
