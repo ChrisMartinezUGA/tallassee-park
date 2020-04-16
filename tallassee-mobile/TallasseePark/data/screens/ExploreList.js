@@ -15,7 +15,7 @@ function Item({ title, id, category, subtitle, content }) {
 
   return (
     <View style={styles.item}>
-      <Button buttonStyle={styles.exploreListButton} titleStyle={{fontSize:18}} title={title} onPress={() => navigation.navigate('ExploreDetails', { itemId: id, title: title, subtitle: subtitle, category: category, content: content })} />
+      <Button buttonStyle={styles.exploreListButton} titleStyle={{ fontSize: 18 }} title={title} onPress={() => navigation.navigate('ExploreDetails', { itemId: id, title: title, subtitle: subtitle, category: category, content: content })} />
     </View>
   );
 }
@@ -124,7 +124,7 @@ function ExploreListScreen({ route, navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start' }}>
       <StatusBar barStyle="light-content" />
-      <ExploreList type={type} navigation={navigation}/>
+      <ExploreList type={type} navigation={navigation} />
     </View>
   );
 }

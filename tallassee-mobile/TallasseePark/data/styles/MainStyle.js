@@ -25,11 +25,13 @@ export default StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontWeight: '600',
+    fontFamily: 'BebasNeue-Regular',
     color: Colors.black,
   },
   sectionSubtitle: {
     fontSize: 18,
     fontWeight: '400',
+    fontFamily: 'Bitter-Bold',
     fontStyle: 'italic',
     color: Colors.black,
   },
@@ -37,12 +39,14 @@ export default StyleSheet.create({
     marginTop: 8,
     fontSize: 18,
     fontWeight: '400',
+    fontFamily: 'OpenSans-Regular',
     color: Colors.dark,
   },
   footer: {
     color: Colors.dark,
     fontSize: 12,
     fontWeight: '600',
+    fontFamily: 'OpenSans-Regular',
     padding: 4,
     paddingRight: 12,
     textAlign: 'right',
@@ -51,6 +55,7 @@ export default StyleSheet.create({
     marginTop: 8,
     fontSize: 18,
     fontWeight: '400',
+    fontFamily: 'OpenSans-Regular',
     color: 'blue',
   },
   container: {
@@ -73,6 +78,7 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: 32,
+    fontFamily: 'Bitter-Bold',
   },
   exploreButton: {
     backgroundColor: '#2f3c16',
@@ -83,12 +89,14 @@ export default StyleSheet.create({
   exploreTitle: {
     fontSize: 24,
     fontWeight: '600',
+    fontFamily: 'BebasNeue-Regular',
     color: Colors.black,
     textAlign: 'center'
   },
   exploreSubtitle: {
     fontSize: 14,
     fontWeight: '400',
+    fontFamily: 'OpenSans-Regular',
     fontStyle: 'italic',
     color: Colors.black,
     textAlign: 'center'
@@ -96,6 +104,7 @@ export default StyleSheet.create({
   exploreContent: {
     fontSize: 18,
     fontWeight: '400',
+    fontFamily: 'OpenSans-Regular',
     color: Colors.black,
     lineHeight: 30
   },
@@ -135,6 +144,7 @@ export default StyleSheet.create({
   activityDesc: {
     fontSize: 18,
     fontWeight: '400',
+    fontFamily: 'OpenSans-Regular',
     fontStyle: 'italic',
     color: Colors.black,
     textAlign: 'center'
@@ -142,17 +152,20 @@ export default StyleSheet.create({
   activityInfo: {
     fontSize: 18,
     fontWeight: '400',
+    fontFamily: 'OpenSans-Regular',
     color: Colors.black,
   },
   activityInstructionsTitle: {
     fontSize: 22,
     fontWeight: '600',
+    fontFamily: 'BebasNeue-Regular',
     color: Colors.black,
     textAlign: 'center'
   },
   activityInstructions: {
     fontSize: 18,
     fontWeight: '400',
+    fontFamily: 'OpenSans-Regular',
     color: Colors.black,
   },
   activityContainer: {

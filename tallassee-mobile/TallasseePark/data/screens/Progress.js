@@ -99,7 +99,7 @@ class Progress extends React.Component {
 
     } catch (error) {
       // Error retrieving data
-      Alert.alert("Error", "getProgress(): " + error)
+      console.log("Error", "getProgress(): " + error)
     }
   }
 
@@ -135,7 +135,7 @@ class Progress extends React.Component {
               </View>
 
               <View style={styles.sectionContainer}>
-                <Button buttonStyle={styles.clearProgressButton} titleStyle={{fontSize:18}} title="Clear Progress" onPress={() =>
+                <Button buttonStyle={styles.clearProgressButton} titleStyle={{ fontSize: 18, fontFamily: 'OpenSans-Regular' }} title="Clear Progress" onPress={() =>
                   // Removes the completedActivities array from local storage
                   Alert.alert("Clear Progress", "Please confirm that you want to clear your progress.", [
                     { text: "Confirm", onPress: () => { AsyncStorage.removeItem('completedActivities'); this.getProgress(); } },
