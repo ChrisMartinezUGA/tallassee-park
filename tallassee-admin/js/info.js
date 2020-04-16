@@ -31,6 +31,8 @@ infoDoc.get().then(function (doc) {
     if (doc.exists) {
         //console.log("Document data:", doc.data());
         $("#disclaimer").prop("value", doc.data().disclaimer);
+        $("#mission").prop("value", doc.data().mission);
+        $("#url").prop("value", doc.data().url);
     } else {
         console.log("No such document!");
     }
@@ -62,6 +64,8 @@ function saveChanges() {
     })
     db.collection("park").doc("info").set({
         disclaimer: $("#disclaimer").val(),
+        mission: $('#mission').val(),
+        url:  $('#url').val()
     }).then(function() {
         console.log("Document successfully written!");
     }).catch(function(error) {

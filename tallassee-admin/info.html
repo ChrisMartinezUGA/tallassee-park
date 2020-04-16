@@ -47,7 +47,31 @@
 
     <section class="section">
       <div class="container">
-        <div class="columns">
+        <div class="columns is-multiline">
+          <div class="column is-half">
+            <div class="card">
+              <div class="card-content">
+                <div class="field">
+                  <label class="label">Disclaimer</label>
+                  <div class="control">
+                    <textarea id="disclaimer" class="textarea" placeholder="Disclaimer text"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="card">
+              <div class="card-content">
+                <div class="field">
+                  <label class="label">Mission Statement</label>
+                  <div class="control">
+                    <textarea id="mission" class="textarea" placeholder="Mission statement text"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="column is-half">
             <div class="card">
               <div class="card-content">
@@ -219,18 +243,20 @@
             <div class="card">
               <div class="card-content">
                 <div class="field">
-                  <label class="label">Disclaimer</label>
+                  <label class="label">ORLT Website Address</label>
                   <div class="control">
-                    <textarea id="disclaimer" class="textarea" placeholder="Disclaimer text"></textarea>
+                    <input id="url" class="input" type="text" placeholder="http://">
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="has-text-centered">
-          <a class="button is-link" onclick="saveChanges()">Save Changes</a>
-        </div>
+      </div>
+      <br>
+      <div class="has-text-centered">
+        <a class="button is-link" onclick="saveChanges()">Save Changes</a>
+      </div>
       </div>
     </section>
 
