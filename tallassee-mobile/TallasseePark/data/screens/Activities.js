@@ -7,12 +7,12 @@ import firestore from '@react-native-firebase/firestore';
 // Resources
 const styles = MainStyle;
 
-function Item({ id, title, group, supplies, time, content }) {
+function Item({ id, title, desc, group, supplies, time, content }) {
   const navigation = useNavigation();
 
   return (
     <View style={styles.item}>
-      <Button style={styles.buttonTitle} title={title} onPress={() => navigation.navigate('ActivityDetails', { itemId: id, title: title, group: group, supplies: supplies, time: time, content: content })} />
+      <Button style={styles.buttonTitle} title={title} onPress={() => navigation.navigate('ActivityDetails', { itemId: id, title: title, desc: desc, group: group, supplies: supplies, time: time, content: content })} />
     </View>
   );
 }
@@ -66,7 +66,7 @@ class ActivityList extends React.Component {
 
             <FlatList
               data={this.state.data}
-              renderItem={({ item }) => <Item id={item.key} title={item.title} group={item.group} supplies={item.supplies} time={item.time} content={item.content} />}
+              renderItem={({ item }) => <Item id={item.key} title={item.title} desc={item.desc} group={item.group} supplies={item.supplies} time={item.time} content={item.content} />}
             />
           </View>
         </SafeAreaView>

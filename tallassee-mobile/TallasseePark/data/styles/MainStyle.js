@@ -124,5 +124,39 @@ export default StyleSheet.create({
     backgroundColor: '#a8a389',
     paddingVertical: 15,
     paddingHorizontal: 32
+  },
+  activityDesc: {
+    fontSize: 18,
+    fontWeight: '400',
+    fontStyle: 'italic',
+    color: Colors.black,
+    textAlign: 'center'
+  },
+  activityInfo: {
+    fontSize: 18,
+    fontWeight: '400',
+    color: Colors.black,
+  },
+  activityInstructionsTitle: {
+    fontSize: 22,
+    fontWeight: '600',
+    color: Colors.black,
+    textAlign: 'center'
+  },
+  activityInstructions: {
+    fontSize: 18,
+    fontWeight: '400',
+    color: Colors.black,
+  },
+  activityContainer: {
+    marginTop: 8,
+    marginBottom: 8,
+    paddingHorizontal: 24,
+  },
+  activityTopContainer: {
+    marginTop: 4,
+    marginBottom: 8,
+    paddingHorizontal: 24,
+    textAlign: 'center'
   }
 });
