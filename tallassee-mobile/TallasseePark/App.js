@@ -30,7 +30,8 @@ class Home extends React.Component {
       password: '',
       errorMessage: '',
       masterPws: '',
-      masterOpen: false
+      masterOpen: false,
+      disclaimer: ''
     }
   }
 
@@ -39,7 +40,7 @@ class Home extends React.Component {
       const masterPwsSnapshot = await firestore().collection('park').doc('open');
       const doc = await masterPwsSnapshot.get();
       if (doc.exists) {
-        console.log("Document data: ", doc.data())
+        //console.log("Document data: ", doc.data())
         this.setState({ masterPws: doc.data().password });
         this.setState({ masterOpen: doc.data().open });
         if (this.state.masterOpen == true) {
@@ -51,6 +52,21 @@ class Home extends React.Component {
     } catch (error) {
       console.log("Error getting document:", error);
     }
+
+    try {
+      const masterInfoSnapshot = await firestore().collection('park').doc('info');
+      const doc = await masterInfoSnapshot.get();
+      if (doc.exists) {
+        //console.log("Document data: ", doc.data())
+        this.setState({ disclaimer: doc.data().disclaimer });
+      } else {
+        console.log("No such document!")
+      }
+    } catch (error) {
+      console.log("Error getting document:", error);
+    }
+
+
   }
 
   render() {
@@ -79,7 +95,7 @@ class Home extends React.Component {
 
               <View style={styles.sectionContainer}>
                 <Text style={styles.sectionTitle}>Athens Clarke County Government Discliamer</Text>
-                <Text style={styles.sectionDescription}>{orltLegal.accDisclaimer}</Text>
+                <Text style={styles.sectionDescription}>{this.state.disclaimer}</Text>
               </View>
 
               <View style={styles.sectionContainer}>
