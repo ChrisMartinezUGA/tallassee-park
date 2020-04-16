@@ -28,6 +28,7 @@ $brand-tan: #a8a389;
 $primary: $brand-blue;
 $link: $brand-green;
 $info: $brand-purple;
+$warning: $brand-lightGreen;
 
 // ! FONTS
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitter:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -79,4 +80,8 @@ p.no-space {
 .palette-column {
     border-radius: 20px;
     padding: 1rem;
+}
+
+hr {
+    background-color: $brand-lightGreen;
 }
