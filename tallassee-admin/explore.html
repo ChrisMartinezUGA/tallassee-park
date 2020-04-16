@@ -5,6 +5,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Explore | Tallassee Forest Admin</title>
+
+    <!-- ICONS & FAVICONS -->
+    <!-- Generic -->
+    <link rel="icon" href="favicons/favicon-32.png" sizes="32x32">
+    <link rel="icon" href="favicons/favicon-57.png" sizes="57x57">
+    <link rel="icon" href="favicons/favicon-76.png" sizes="76x76">
+    <link rel="icon" href="favicons/favicon-96.png" sizes="96x96">
+    <link rel="icon" href="favicons/favicon-128.png" sizes="128x128">
+    <link rel="icon" href="favicons/favicon-192.png" sizes="192x192">
+    <link rel="icon" href="favicons/favicon-228.png" sizes="228x228">
+    <!-- Android -->
+    <link rel="shortcut icon" sizes="196x196" href="favicons/favicon-196.png">
+    <!-- iOS -->
+    <link rel="apple-touch-icon" href="favicons/favicon-120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="favicons/favicon-152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="favicons/favicon-180.png" sizes="180x180">
+
     <script src="https://kit.fontawesome.com/9aef0c2001.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -101,38 +118,38 @@
         <div class="content">
             <div class="tabs is-centered">
                 <ul>
-                  <li id="filterTab0" class="is-active">
-                    <a onclick="filterByTab(0)">
-                      <span class="icon is-small"><i class="far fa-circle" aria-hidden="true"></i></span>
-                      <span>All</span>
-                    </a>
-                  </li>
-                  <li id="filterTab1">
-                    <a onclick="filterByTab(1)">
-                      <span class="icon is-small"><i class="fas fa-leaf" aria-hidden="true"></i></span>
-                      <span>Flora</span>
-                    </a>
-                  </li>
-                  <li id="filterTab2">
-                    <a onclick="filterByTab(2)">
-                      <span class="icon is-small"><i class="fas fa-frog" aria-hidden="true"></i></span>
-                      <span>Fauna</span>
-                    </a>
-                  </li>
-                  <li id="filterTab3">
-                    <a onclick="filterByTab(3)">
-                      <span class="icon is-small"><i class="fas fa-globe-americas" aria-hidden="true"></i></span>
-                      <span>Earth Science</span>
-                    </a>
-                  </li>
-                  <li id="filterTab4">
-                    <a onclick="filterByTab(4)">
-                      <span class="icon is-small"><i class="fas fa-project-diagram" aria-hidden="true"></i></span>
-                      <span>Big Picture</span>
-                    </a>
-                  </li>
+                    <li id="filterTab0" class="is-active">
+                        <a onclick="filterByTab(0)">
+                            <span class="icon is-small"><i class="far fa-circle" aria-hidden="true"></i></span>
+                            <span>All</span>
+                        </a>
+                    </li>
+                    <li id="filterTab1">
+                        <a onclick="filterByTab(1)">
+                            <span class="icon is-small"><i class="fas fa-leaf" aria-hidden="true"></i></span>
+                            <span>Flora</span>
+                        </a>
+                    </li>
+                    <li id="filterTab2">
+                        <a onclick="filterByTab(2)">
+                            <span class="icon is-small"><i class="fas fa-frog" aria-hidden="true"></i></span>
+                            <span>Fauna</span>
+                        </a>
+                    </li>
+                    <li id="filterTab3">
+                        <a onclick="filterByTab(3)">
+                            <span class="icon is-small"><i class="fas fa-globe-americas" aria-hidden="true"></i></span>
+                            <span>Earth Science</span>
+                        </a>
+                    </li>
+                    <li id="filterTab4">
+                        <a onclick="filterByTab(4)">
+                            <span class="icon is-small"><i class="fas fa-project-diagram" aria-hidden="true"></i></span>
+                            <span>Big Picture</span>
+                        </a>
+                    </li>
                 </ul>
-              </div>
+            </div>
             <table id="exploreTable" class="table is-striped is-narrow">
                 <thead>
                     <tr>
@@ -188,7 +205,8 @@
                                             v-on:click="closeEditModal(allIDs[index])"></button>
                                     </header>
                                     <section class="modal-card-body">
-                                        <form :id="'editEntryForm-' + allIDs[index]" action="javascript:editEntry" class="form">
+                                        <form :id="'editEntryForm-' + allIDs[index]" action="javascript:editEntry"
+                                            class="form">
                                             <div class="field">
                                                 <label class="label">Entry Title</label>
                                                 <div class="control">
@@ -205,9 +223,11 @@
                                             </div>
                                             <div class="field">
                                                 <label class="label">Image</label>
-                                                <img :id="'editImgPreview-' + allIDs[index]" alt="No image currently set." style="max-height: 100px;">
+                                                <img :id="'editImgPreview-' + allIDs[index]"
+                                                    alt="No image currently set." style="max-height: 100px;">
                                                 <div class="control">
-                                                    <input class="input" name="editImage" id="editImage" type="file" value="upload">
+                                                    <input class="input" name="editImage" id="editImage" type="file"
+                                                        value="upload">
                                                 </div>
                                             </div>
                                             <div class="field">
@@ -215,10 +235,18 @@
                                                 <div class="control">
                                                     <div name="editCategory" id="editCategory" class="select">
                                                         <select>
-                                                            <option value="Flora" v-bind:selected="entry.category == 'Flora' ? true : false">Flora</option>
-                                                            <option value="Fauna" v-bind:selected="entry.category == 'Fauna' ? true : false">Fauna</option>
-                                                            <option value="Earth Science" v-bind:selected="entry.category == 'Earth Science' ? true : false">Earth Science</option>
-                                                            <option value="Big Picture" v-bind:selected="entry.category == 'Big Picture' ? true : false">Big Picture</option>
+                                                            <option value="Flora"
+                                                                v-bind:selected="entry.category == 'Flora' ? true : false">
+                                                                Flora</option>
+                                                            <option value="Fauna"
+                                                                v-bind:selected="entry.category == 'Fauna' ? true : false">
+                                                                Fauna</option>
+                                                            <option value="Earth Science"
+                                                                v-bind:selected="entry.category == 'Earth Science' ? true : false">
+                                                                Earth Science</option>
+                                                            <option value="Big Picture"
+                                                                v-bind:selected="entry.category == 'Big Picture' ? true : false">
+                                                                Big Picture</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -245,7 +273,8 @@
                 </tbody>
             </table>
             <div class="has-text-centered">
-                <a id="newEntryButton" class="button is-link" onclick="launchNewModal()"><i class="fas fa-plus-circle"></i>&nbsp;New
+                <a id="newEntryButton" class="button is-link" onclick="launchNewModal()"><i
+                        class="fas fa-plus-circle"></i>&nbsp;New
                     Entry</a>
             </div>
         </div>
