@@ -71,7 +71,7 @@ class Map extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      mapIndex: 0,
+      mapIndex: 2,
       mapWidth: Dimensions.get('window').height,
       mapHeight: Dimensions.get('window').height,
       navigation: this.props.navigation

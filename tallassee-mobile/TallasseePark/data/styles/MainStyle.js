@@ -58,7 +58,6 @@ export default StyleSheet.create({
   },
   item: {
     backgroundColor: '#a6afa1',
-    //padding: 20,
     marginTop: 20,
     marginHorizontal: 16,
     color: '#ffffff',
@@ -124,6 +123,14 @@ export default StyleSheet.create({
     backgroundColor: '#a8a389',
     paddingVertical: 15,
     paddingHorizontal: 32
+  },
+  filterButtonOn: {
+    backgroundColor: '#313c1a',
+    borderRadius: 0
+  },
+  filterButtonOff: {
+    backgroundColor: '#a6b0a1',
+    borderRadius: 0
   },
   activityDesc: {
     fontSize: 18,
