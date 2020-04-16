@@ -3,6 +3,7 @@ import { SafeAreaView, View, Button, FlatList, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MainStyle from '../styles/MainStyle';
 import firestore from '@react-native-firebase/firestore';
+import AsyncStorage from '@react-native-community/async-storage';
 
 // Resources
 const styles = MainStyle;
@@ -26,25 +27,63 @@ class ExploreList extends React.Component {
     super(props)
     currentFilter = props.type;
     this.state = {
-      data: [],
+      data: []
     };
   }
 
-  async componentDidMount() {
-    // Subscribe to user updates
-    const unsubscribe = await firestore().collection('explore');
-    const querySnap = await unsubscribe.get();
-    const entries = querySnap.docs.map((documentSnapshot) => {
-      return {
-        ...documentSnapshot.data(),
-        key: documentSnapshot.id,
+  // Gets the progress array currently on local storage
+  async getProgress(typeId) {
+    var typeId = 0;
+    if (currentFilter == 'Flora') {
+      typeId = 0;
+    } else if (currentFilter == 'Fauna') {
+      typeId = 1;
+    } else if (currentFilter == 'Earth Science') {
+      typeId = 2;
+    } else {
+      typeId = 3;
+    }
+    try {
+      // Get progress array from local data
+      const stringifiedArray = await AsyncStorage.getItem('completedActivities');
+      if (stringifiedArray !== null) {
+        const restoredArray = JSON.parse(stringifiedArray); // Ex: [[0], [1,2], [1], [2,0]]
+        var data = [...this.state.data];
+        for (var i = 0; i < data.length; i++) {
+          // Checks if array does contain id
+          if (restoredArray[typeId].some(completedTitle => completedTitle == data[i].title)) {
+            let checked = data[i].title + " ✓";
+            data[i] = { ...data[i], title: checked };
+            this.setState({ data });
+          }
+        }
       }
-    });
-    this.setState({
-      data: entries.filter(function (el) {
-        return el.category == currentFilter;
-      })
-    });
+    } catch (error) {
+      // Error retrieving data
+      console.log("Error", "getProgress(): " + error);
+    }
+  }
+
+  async componentDidMount() {
+    try {
+      // Subscribe to user updates
+      const unsubscribe = await firestore().collection('explore');
+      const querySnap = await unsubscribe.get();
+      const entries = querySnap.docs.map((documentSnapshot) => {
+        return {
+          ...documentSnapshot.data(),
+          key: documentSnapshot.id,
+        }
+      });
+      this.setState({
+        data: entries.filter(function (el) {
+          return el.category == currentFilter;
+        })
+      });
+      await this.getProgress();
+    } catch (error) {
+      console.log("Error", "componentDidMount(): " + error);
+    }
   }
 
   render() {
