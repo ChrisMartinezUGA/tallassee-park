@@ -9,7 +9,7 @@ import firestore from '@react-native-firebase/firestore';
 // Resources
 const styles = MainStyle;
 
-const progressData = require('../sampleData/progress.json');
+const ranksData = require('../sampleData/ranks.json');
 var exploreData = [];
 var categoryNames = ["Flora", "Fauna", "Earth Science", "Big Picture"]
 var currentFilter = '';
@@ -92,8 +92,8 @@ class Progress extends React.Component {
       let decimal = completedActivitiesCount / allActivitiesCount;
       let percentage = Math.round(100 * decimal);
 
-      let rankIndex = Math.ceil(decimal * progressData.ranks.length) - 1;
-      let rankTitle = progressData.ranks[rankIndex];
+      let rankIndex = Math.ceil(decimal * ranksData.ranks.length) - 1;
+      let rankTitle = ranksData.ranks[rankIndex];
 
       this.setState({ progressArray: stringifiedArray, rank: rankTitle, progessDecimal: decimal, progressPercentage: percentage });
 
