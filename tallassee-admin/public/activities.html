@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Activities | Tallassee Park Admin</title>
+    <title>Activities | Tallassee Forest Admin</title>
     <script src="https://kit.fontawesome.com/9aef0c2001.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -57,6 +57,12 @@
                         </div>
                     </div>
                     <div class="field">
+                        <label class="label">Short Description</label>
+                        <div class="control">
+                            <input class="input" name="newDesc" id="newDesc" type="text">
+                        </div>
+                    </div>
+                    <div class="field">
                         <label class="label">Participants</label>
                         <div class="control">
                             <div name="newParticipants" id="newParticipants" class="select">
@@ -103,7 +109,8 @@
                     <tr>
                         <th><abbr title="Unique Entry ID">ID</abbr></th>
                         <th>Activity</th>
-                        <th>Group Activity?</th>
+                        <th>Short Description</th>
+                        <th>Participants</th>
                         <th>Time</th>
                         <th>Supplies</th>
                         <th>Content</th>
@@ -114,7 +121,8 @@
                     <tr v-for="(entry,index) in allEntries">
                         <td><abbr :title="allIDs[index]">{{allIDs[index].substring(0,4)}}</abbr></td>
                         <td class="has-text-weight-bold">{{entry.title}}</td>
-                        <td class="">{{entry.group}}</td>
+                        <td>{{entry.desc.substring(0,30)}}</td>
+                        <td class=""><span v-if="entry.group">Group</span><span v-else>Solo</span></td>
                         <td>{{entry.time}}</td>
                         <td>{{entry.supplies.substring(0,30)}}</td>
                         <td>{{entry.content.substring(0,50)}}...</td>
@@ -162,6 +170,13 @@
                                                 <div class="control">
                                                     <input class="input" name="editTitle" id="editTitle" type="text"
                                                         :value="entry.title">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Short Description</label>
+                                                <div class="control">
+                                                    <input class="input" name="editDesc" id="editDesc" type="text"
+                                                        :value="entry.desc">
                                                 </div>
                                             </div>
                                             <div class="field">
@@ -229,6 +244,8 @@
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-storage.js"></script>
+
 
     <script>
         // Your web app's Firebase configuration
