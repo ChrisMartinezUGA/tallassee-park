@@ -140,7 +140,20 @@ function App() {
             title: 'Games & Activities',
             headerBackTitle: 'Map'
           }} />
-        <Stack.Screen name="ActivityDetails" component={ActivityDetailsScreen} />
+        <Stack.Screen name="ActivityDetails" component={ActivityDetailsScreen}
+        options={{
+            title: 'Activity',
+            headerStyle: {
+              backgroundColor: '#ABB1A4',
+              height: 120,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              fontSize: 22
+            },
+            headerBackTitle: 'Back'
+          }} />
 
         <Stack.Screen name="Explore" component={ExploreScreen}
           options={{

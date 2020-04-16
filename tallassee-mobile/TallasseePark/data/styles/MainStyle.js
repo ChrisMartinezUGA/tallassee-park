@@ -109,6 +109,40 @@ export default StyleSheet.create({
     width: '100%',
     height: 160,
     resizeMode: 'contain'
+  },
+  activityDesc: {
+    fontSize: 18,
+    fontWeight: '400',
+    fontStyle: 'italic',
+    color: Colors.black,
+    textAlign: 'center'
+  },
+  activityInfo: {
+    fontSize: 18,
+    fontWeight: '400',
+    color: Colors.black,
+  },
+  activityInstructionsTitle: {
+    fontSize: 22,
+    fontWeight: '600',
+    color: Colors.black,
+    textAlign: 'center'
+  },
+  activityInstructions: {
+    fontSize: 18,
+    fontWeight: '400',
+    color: Colors.black,
+  },
+  activityContainer: {
+    marginTop: 8,
+    marginBottom: 8,
+    paddingHorizontal: 24,
+  },
+  activityTopContainer: {
+    marginTop: 4,
+    marginBottom: 8,
+    paddingHorizontal: 24,
+    textAlign: 'center'
   }
 
 
