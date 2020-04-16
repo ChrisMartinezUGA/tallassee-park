@@ -71,7 +71,7 @@ class Home extends React.Component {
                 <Text style={styles.sectionTitle}>Password</Text>
                 <TextInput
                   secureTextEntry={true}
-                  style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                  style={{ height: 40, borderColor: 'gray', borderWidth: 1, fontFamily: 'OpenSans-Regular' }}
                   onChangeText={(password) => this.setState({ password })}
                   value={this.state.password} />
                 <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
@@ -83,7 +83,7 @@ class Home extends React.Component {
               </View>
 
               <View style={styles.sectionContainer}>
-                <Button buttonStyle={styles.loginButton} titleStyle={{fontSize:18}} title="Login" onPress={() => {
+                <Button buttonStyle={styles.loginButton} titleStyle={{ fontSize: 18, fontFamily: 'OpenSans-Regular' }} title="Login" onPress={() => {
                   if (this.state.password == this.state.masterPws) {
                     this.setState({ errorMessage: '' });
                     this.props.navigation.replace('Map')
@@ -143,7 +143,7 @@ function App() {
             headerBackTitle: 'Map'
           }} />
         <Stack.Screen name="ActivityDetails" component={ActivityDetailsScreen}
-        options={{
+          options={{
             title: 'Activity',
             headerStyle: {
               backgroundColor: '#ABB1A4',

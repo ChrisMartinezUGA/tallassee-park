@@ -15,7 +15,7 @@ function Item({ title, id, category, subtitle, content }) {
 
   return (
     <View style={styles.item}>
-      <Button buttonStyle={styles.exploreListButton} titleStyle={{fontSize:18}} title={title} onPress={() => navigation.navigate('ExploreDetails', { itemId: id, title: title, subtitle: subtitle, category: category, content: content })} />
+      <Button buttonStyle={styles.exploreListButton} titleStyle={{ fontSize: 18 }} title={title} onPress={() => navigation.navigate('ExploreDetails', { itemId: id, title: title, subtitle: subtitle, category: category, content: content })} />
     </View>
   );
 }
@@ -28,7 +28,8 @@ class ExploreList extends React.Component {
     super(props)
     currentFilter = props.type;
     this.state = {
-      data: []
+      data: [],
+      navigation: this.props.navigation
     };
   }
 
@@ -65,7 +66,7 @@ class ExploreList extends React.Component {
     }
   }
 
-  async componentDidMount() {
+  async getList() {
     try {
       // Subscribe to user updates
       const unsubscribe = await firestore().collection('explore');
@@ -85,6 +86,16 @@ class ExploreList extends React.Component {
     } catch (error) {
       console.log("Error", "componentDidMount(): " + error);
     }
+  }
+
+  componentDidMount() {
+    this._unsubscribe = this.state.navigation.addListener('focus', () => {
+      this.getList();
+    });
+  }
+
+  componentWillUnmount() {
+    this._unsubscribe();
   }
 
   render() {
@@ -113,7 +124,7 @@ function ExploreListScreen({ route, navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start' }}>
       <StatusBar barStyle="light-content" />
-      <ExploreList type={type} />
+      <ExploreList type={type} navigation={navigation} />
     </View>
   );
 }
