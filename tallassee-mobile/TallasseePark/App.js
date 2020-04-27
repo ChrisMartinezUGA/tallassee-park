@@ -79,7 +79,7 @@ class Home extends React.Component {
             <StatusBar barStyle="light-content" />
             <View style={styles.body}>
               <View style={styles.sectionContainer}>
-                <Image style={{ width: 360, height: 52 }} source={require("./data/logos/TallasseeParkLogo_long_dark.png")} />
+                <Image style={{ width: 360, height: 52, resizeMode:'contain'}} source={require("./data/logos/TallasseeParkLogo_long_dark.png")} />
                 <Text style={styles.sectionDescription}>A Project by the Oconee River Land Trust</Text>
               </View>
 
@@ -142,7 +142,7 @@ function App() {
           options={{
             title: 'Tallassee Park',
             headerTitle: (
-              <Image style={{ width: 200, height: 20 }} source={require("./data/logos/TallasseeParkLogo_long_white.png")} />
+              <Image style={{ width: 200, height: 20, resizeMode:'contain' }} source={require("./data/logos/TallasseeParkLogo_long_white.png")} />
             ),
             headerStyle: {
               backgroundColor: '#2d454f',

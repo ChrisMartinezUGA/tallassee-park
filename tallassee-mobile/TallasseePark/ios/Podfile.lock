@@ -504,20 +504,20 @@ PODS:
     - React
   - RNCMaskedView (0.1.9):
     - React
-  - RNFBApp (6.4.0):
+  - RNFBApp (6.4.1):
     - Firebase/Core (~> 6.13.0)
     - React
-  - RNFBAuth (6.4.0):
+  - RNFBAuth (6.4.1):
     - Firebase/Auth (~> 6.13.0)
     - Firebase/Core (~> 6.13.0)
     - React
     - RNFBApp
-  - RNFBFirestore (6.4.0):
+  - RNFBFirestore (6.4.1):
     - Firebase/Core (~> 6.13.0)
     - Firebase/Firestore (~> 6.13.0)
     - React
     - RNFBApp
-  - RNFBStorage (6.4.0):
+  - RNFBStorage (6.4.1):
     - Firebase/Core (~> 6.13.0)
     - Firebase/Storage (~> 6.13.0)
     - React
@@ -726,10 +726,10 @@ SPEC CHECKSUMS:
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
   RNCAsyncStorage: b16697280b08bab4b5f2f67f752d93d13a52e9ed
   RNCMaskedView: 5dba3cb07493765fb66156c83c3dd281ca709a48
-  RNFBApp: 69781cf10ce41f6f6db789e6264dd80119ef2fb7
-  RNFBAuth: 50fcc7826344dc96caad8bc4f5b40a64904297b8
-  RNFBFirestore: 69e59e5266927857fa3629715111ee65f4de1cd0
-  RNFBStorage: 24097a1d18534b9c3559f862b8d18365cd573c2c
+  RNFBApp: 73de6cb8c6c63b0582299a4fa1ad1817853d4b60
+  RNFBAuth: fcf819b7b8fb2c75c2c4291bacebe6455f3a9284
+  RNFBFirestore: adb5f4db409d534d9b926cb0a72f7952d0522fe3
+  RNFBStorage: ae5becbd408501a1ee6dcb630d356f21b4b13bbc
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNReanimated: 955cf4068714003d2f1a6e2bae3fb1118f359aff
   RNScreens: ac02d0e4529f08ced69f5580d416f968a6ec3a1d
