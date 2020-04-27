@@ -17,24 +17,45 @@
 //$grey-lighter: $one-light-blue;
 //$grey-light: $one-light-gray;
 
-$brand-blue: #2D454F;
-$brand-green: #2f3c16;
-$brand-purple: #2a2428;
-$brand-lightBlue: #bfc6c9;
+
+//$brand-green: #2f3c16;
+//$brand-purple: #2a2428;
+//$brand-lightBlue: #bfc6c9;
+//$brand-lightGreen: #a6afa1;
+//$brand-tan: #a8a389;
+
+@import "../assets/aileron/stylesheet.css";
+
+$brand-brown1: #2D292A;
+$brand-brown2: #3D3A3C;
+$brand-brown3: #a8a389;
+$brand-darkGreen: #2f3c16;
+$brand-green: #657864;
 $brand-lightGreen: #a6afa1;
-$brand-tan: #a8a389;
+$brand-darkBlue: #2D454F;
+$brand-lightBlue: #bfc6c9;
 
+$grey-darker: $brand-brown1;
+$grey-dark: $brand-brown2;
 
-$primary: $brand-blue;
-$link: $brand-green;
-$info: $brand-purple;
-$warning: $brand-lightGreen;
+$primary: $brand-green;
+$link: $brand-brown3;
+$info: $brand-darkBlue;
+$success: $brand-darkGreen;
+$warning: $brand-brown3;
+//$danger
+$dark: $brand-brown1;
+$text: $brand-brown1;
+
 
 // ! FONTS
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitter:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-$family-primary: 'Open Sans', sans-serif;
+$family-primary: 'Aileron', 'Open Sans', sans-serif;
 $family-secondary: 'Bebas Neue', 'Open Sans', sans-serif;
 $family-code: 'Bitter', serif;
+
+$size-1: 6rem;
+$size-2: 4.5rem;
 
 
 //* ------------------------------------------------------
@@ -44,6 +65,10 @@ $family-code: 'Bitter', serif;
 //* ------------------------------------------------------
 
 // Overwrite some rules for customization
+
+.is-capitalized {
+    text-transform: uppercase;
+}
 
 .card {
     border-radius: 20px;
@@ -58,8 +83,8 @@ p.no-space {
 }
 
 .team-photo {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -84,4 +109,301 @@ p.no-space {
 
 hr {
     background-color: $brand-lightGreen;
+}
+
+.my-fullheight-with-nav {
+    width: 100%;
+    height: calc(100vh - 66px);
+}
+
+.my-fullheight {
+    width: 100%;
+    height: calc(100vh);
+}
+
+.cropped-image {
+    object-fit: cover;
+}
+
+.white-background {
+    background-color: #ffffff;
+}
+
+.vertical-center {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+#nav-arrow {
+    z-index: 1000;
+    position: fixed;
+    margin-top: calc(92vh);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+#nav-arrow-link {
+    opacity: 0.5;
+    transition: opacity ease-in-out 0.2s;
+    #nav-arrow-arrow {
+        transform: translateY(0px);
+        transition: transform ease-in-out 0.2s;
+    }
+}
+#nav-arrow-link:hover {
+    opacity: 1;
+    #nav-arrow-arrow {
+        transform: translateY(6px);
+    }
+}
+
+#nav-arrow-text {
+    color: #fff;
+    margin-bottom: 0.1em;
+}
+#nav-arrow-arrow {
+    width: 3rem;
+}
+
+.nav-arrow {
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 2rem;
+}
+.nav-arrow-link {
+    opacity: 0.5;
+    transition: opacity ease-in-out 0.2s;
+    #nav-arrow-arrow {
+        transform: translateY(0px);
+        transition: transform ease-in-out 0.2s;
+    }
+}
+.nav-arrow-link:hover {
+    opacity: 1;
+    #nav-arrow-arrow {
+        transform: translateY(6px);
+    }
+}
+.nav-arrow-text {
+    color: #fff;
+    margin-bottom: 0.2em !important;
+}
+.nav-arrow-arrow {
+    width: 3rem;
+}
+
+.flex-center-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.my-section-title {
+    line-height: 0.9
+}
+
+#home {
+    position: relative;
+    background-color: $brand-brown1;
+    
+    .brand-container-bg {
+        z-index: 0;
+        position: absolute;
+        background-color: $brand-brown2;
+        margin-top: 10%;
+        height: 20em;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding-right: 2rem;
+
+        h1 {
+            margin-top: 0px;
+        }
+    }
+
+    .brand-container {
+        z-index: 100;
+        position: absolute;
+        margin-top: 10%;
+        height: 20em;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding-right: 2rem;
+
+        h1 {
+            margin-top: 0px;
+        }
+    }
+
+    .image-1 {
+        z-index: 1;
+        position: absolute;
+        margin-left: 10%;
+        object-fit: cover;
+        height: calc(100vh - 66px);
+        width: 30%;
+    }
+
+    .orlt-container {
+        z-index: 2;
+        position: absolute;
+        height: 10em;
+        width: 20em;
+        margin-left: 5%;
+        margin-top: calc(10% + 15em);
+        .square {
+            height: 10em;
+            width: 10em;
+            background-color: $brand-green;
+        }
+        p {
+            position: absolute;
+            margin-top: -2em;
+            margin-left: 1em;
+            font-size: 24pt;
+        }
+    }
+
+    .download-container {
+        z-index: 3;
+        position: absolute;
+        width: 50%;
+        right: 0;
+        text-align: center;
+        margin-top: calc(100vh - 25%);
+    }
+
+}
+
+#mission {
+    background-color: $brand-brown3;
+
+    .column {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    .mission-image {
+        width: 8rem;
+        height: 8rem;
+        object-fit: cover;
+        box-shadow: -8px -8px $brand-brown1;
+    }
+
+    h2 {
+        color: $brand-brown2
+    }
+
+
+    #orlt-logo-1 {
+        margin-top: 2rem;
+        max-height: 3rem;
+    }
+
+}
+#team {
+    background-color: $brand-brown1;
+
+    #team-row .column {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .image-column {
+        background-image: url("../assets/images/darkleaves2.jpg");
+    }
+
+    .media-container {
+        display: flex;
+        align-items: center; // vertical center
+        justify-items: flex-start;
+        flex-direction: row;
+        padding-right: 2rem;
+    }
+
+    #team-goals {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+
+    .team-goal-text {
+        line-height: 1.1 !important;
+        margin-bottom: 0;
+    }
+
+    .team-goal-image {
+        width: 8rem;
+        height: 8rem;
+        object-fit: cover;
+        margin: 1rem 2rem 1rem 2rem;
+    }
+
+    .centered-text-and-bg {
+        background-color: $brand-brown1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 80%;
+        width: 80%;
+        padding: 2rem;
+        p {
+            margin-top: 2rem;
+            text-align: center;
+            line-height: 0.9;
+        }
+    }
+}
+#features {
+    background-color: $brand-brown3;
+
+    .features-list {
+        li {
+            margin-bottom: 2rem;
+        }
+    }
+
+}
+#branding {
+    background-color: $brand-brown1;
+
+    .tabs a {
+        color: #fff;
+    }
+
+    .tabs li.is-active a {
+        color: $brand-brown3
+    }
+
+    .tabs ul {
+        border-bottom-width: 0;
+    }
+
+    hr {
+        background-color: #fff;
+    }
+
+}
+#launch {
+    background-color: $brand-brown3;
 }

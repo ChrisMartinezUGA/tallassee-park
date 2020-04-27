@@ -25,34 +25,511 @@
   <!--Web Requirements-->
   <script src="https://kit.fontawesome.com/9aef0c2001.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
   <!--Local Requirements-->
   <link rel="stylesheet" href="css/styles.css">
-
-  <!-- SMOOTH SCROLLING -->
-  <script>
-    $(document).ready(function () {
-      // Add smooth scrolling to all links
-      $("a").on('click', function (event) {
-        // Make sure this.hash has a value before overriding default behavior
-        if (this.hash !== "") {
-          // Prevent default anchor click behavior
-          event.preventDefault();
-          // Store hash
-          var hash = this.hash;
-          // Using jQuery's animate() method to add smooth page scroll
-          // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-          $('html, body').animate({
-            scrollTop: $(hash).offset().top
-          }, 800, function () {
-            // Add hash (#) to URL when done scrolling (default click behavior)
-            window.location.hash = hash;
-          });
-        } // End if
-      });
-    });
-  </script>
 </head>
 
+<body>
+  <!--
+  <div id="nav-arrow" class="">
+    <a id="nav-arrow-link" href="#mission" class="has-text-centered">
+      <p id="nav-arrow-text" class="is-size-6">Our Mission</p>
+      <svg version="1.1" id="nav-arrow-arrow" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 200 70"
+        style="enable-background:new 0 0 200 70;" xml:space="preserve">
+        <style type="text/css">
+          .st0 {
+            fill: #FFFFFF;
+          }
+        </style>
+        <polygon class="st0" points="200,21.99 100,68.63 0,21.99 9.32,2 100,44.28 190.68,2 " />
+      </svg>
+    </a>
+  </div>
+-->
+
+  <nav id="top" class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <p style="padding: 10px;"><img src="assets/logos/TallasseeParkLogo_square_white.png" style="width: 2em"></p>
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="mainNavbar">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="mainNavbar" class="navbar-menu">
+      <div class="navbar-start"></div>
+      <div class="navbar-end">
+        <a class="navbar-item" href="#top">Home</a>
+        <a class="navbar-item" href="#mission">Mission</a>
+        <a class="navbar-item" href="#team">Team</a>
+        <a class="navbar-item" href="#features">Features</a>
+        <a class="navbar-item" href="#branding">Branding</a>
+        <a class="navbar-item" href="#launch">Launch</a>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="my-fullheight-with-nav">
+    <div class="content has-text-white">
+      <!--HOME: DESKTOP LAYOUT-->
+      <span id="home-desktop" class="is-hidden-touch has-text-white">
+        <img class="image-1" src="assets/images/darkleaves.jpg">
+        <div class="brand-container-bg"></div>
+        <div class="brand-container has-text-white has-text-right">
+          <div class="">
+            <img src="assets/logos/TallasseeParkLogo_long_white.png" style="max-height: 6em" alt="Tallassee Park">
+            <h1 class="title is-family-code has-text-white my-section-title">Mobile App</h1>
+          </div>
+        </div>
+        <div class="orlt-container">
+          <div class="square" id="orlt-square"></div>
+          <p class="is-family-secondary" id="orlt-text-1">Oconee River Land Trust</p>
+        </div>
+        <div class="download-container">
+          <p id="download-1"><a class="button is-large is-link is-outlined"><i class="fab fa-app-store"></i>&nbsp; App
+              Store</a></p>
+          <p id="download-2"><a class="button is-large is-link is-outlined"><i class="fab fa-google-play"></i>&nbsp;
+              Google Play</a></p>
+
+          <!-- NAVIGATION ARROW -->
+          <div class="nav-arrow" id="nav-arrow-1">
+            <a class="nav-arrow-link has-text-centered" href="#mission">
+              <p class="nav-arrow-text is-size-6">Our Mission</p>
+              <svg version="1.1" id="nav-arrow-arrow" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 200 70"
+                style="enable-background:new 0 0 200 70;" xml:space="preserve">
+                <style type="text/css">
+                  .st0 {
+                    fill: #FFFFFF;
+                  }
+                </style>
+                <polygon class="st0" points="200,21.99 100,68.63 0,21.99 9.32,2 100,44.28 190.68,2 " />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </span>
+
+      <!--HOME: MOBILE LAYOUT-->
+      <span id="home-mobile" class="is-hidden-desktop has-text-white">
+      </span>
+
+    </div>
+
+  </section>
+  <section id="mission" class="section">
+    <div class="container">
+      <div class="has-text-centered">
+        <h1 class="is-family-secondary is-uppercase is-size-1-desktop is-size-2-touch my-section-title" id="mission-title">Our Mission
+        </h1>
+        <p class="is-size-4-desktop is-size-5-mobile mission-animation" id="mission-desc">Tallassee Forest Nature Preserve is a
+          conservation easement
+          managed by the <a class="has-text-success has-text-weight-bold" href="http://oconeeriverlandtrust.org">Oconee
+            River Land Trust</a>, an organization dedicated to the conservaton of natural lands.</p>
+      </div>
+      <br>
+      <div class="columns">
+        <div class="column has-text-centered mission-col mission-animation">
+          <img src="assets/images/yellowflowers.jpg" class="mission-image">
+          <h2 class="is-size-3 is-family-primary has-text-weight-bold is-family-code">PROTECT</h2>
+            <p>this land, its beauty, and its natural biodiversity.</p>
+        </div>
+        <div class="column has-text-centered mission-col mission-animation">
+          <img src="assets/images/plantstem.jpg" class="mission-image">
+          <h2 class="is-size-3 is-family-primary has-text-weight-bold is-family-code">EDUCATE</h2>
+            <p>the Athens community about the importance of conservation.</p>
+        </div>
+        <div class="column has-text-centered mission-col mission-animation">
+          <img src="assets/images/pinkblossoms.jpg" class="mission-image">
+          <h2 class="is-size-3 is-family-primary has-text-weight-bold is-family-code">INVOLVE</h2>
+            <p>students at Burnie-Harris-Lyons Middle School</p>
+        </div>
+      </div>
+      <p class="has-text-centered mission-animation" id="mission-desc2">With the <span class="has-text-weight-bold">Tallassee Forest
+          Mobile App</span>, we
+        hope to carry on this mission by creating a way to engage the Athens-Clarke and Oconee County communities with
+        this new park. By educating the public about the importance of environmental convervation, we can come together
+        as a community to preserve not only the wealth of vital habitats contained within this park, but the environment
+        around us in our everyday lives.</p>
+      <img id="orlt-logo-1" class="mission-animation" src="assets/logos/orlt-logo-01.svg">
+
+      <!-- NAVIGATION ARROW -->
+      <div class="nav-arrow mission-animation" id="nav-arrow-2">
+        <a class="nav-arrow-link has-text-centered" href="#team">
+          <p class="nav-arrow-text is-size-6">The Team</p>
+          <svg version="1.1" id="nav-arrow-arrow" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 200 70"
+            style="enable-background:new 0 0 200 70;" xml:space="preserve">
+            <style type="text/css">
+              .st0 {
+                fill: #FFFFFF;
+              }
+            </style>
+            <polygon class="st0" points="200,21.99 100,68.63 0,21.99 9.32,2 100,44.28 190.68,2 " />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section id="team" class="section">
+    <div class="container">
+      <div class="has-text-centered has-text-white">
+        <h1 class="is-family-secondary is-uppercase is-size-1-desktop is-size-2-touch my-section-title">The Team</h1>
+        <p id="team-subtitle" class="is-size-4-desktop is-size-5-mobile has-text-link">Developers &bull; Designers &bull; Researchers
+          &bull; Writers &bull; Brand Managers</p>
+      </div>
+      <br>
+      <div id="team-row" class="columns has-text-white is-hidden-mobile">
+        <div class="column team-col">
+          <img class="team-photo" src="assets/team/lucia.jpg">
+          <p class="is-size-6 has-text-weight-bold is-family-code">Lucia Vereen</p>
+        </div>
+        <div class="column team-col">
+          <img class="team-photo" src="assets/team/kriti.jpg">
+          <p class="is-size-6 has-text-weight-bold is-family-code">Kriti Lodh</p>
+        </div>
+        <div class="column team-col">
+          <img class="team-photo" src="assets/team/chris.jpg">
+          <p class="is-size-6 has-text-weight-bold is-family-code">Chris Martinez</p>
+        </div>
+        <div class="column team-col">
+          <img class="team-photo" src="assets/team/jack.jpg">
+          <p class="is-size-6 has-text-weight-bold is-family-code">Jack Towery</p>
+        </div>
+        <div class="column team-col">
+          <img class="team-photo" src="assets/team/hollie.jpg">
+          <p class="is-size-6 has-text-weight-bold is-family-code">Hollie Mitchell</p>
+        </div>
+      </div>
+
+      <div class="columns is-gapless">
+        <div id="team-goals" class="column is-two-thirds white-background">
+          <div class="media-container">
+            <img src="assets/images/spiked-square.jpg" class="team-goal-image">
+            <p class="team-goal-text is-size-3-desktop is-size-4-mobile has-text-primary is-uppercase">Create a Cross-Platform Mobile App</p>
+          </div>
+          <div class="media-container">
+            <img src="assets/images/sunflower-square.jpg" class="team-goal-image">
+            <p class="team-goal-text is-size-3-desktop is-size-4-mobile has-text-primary is-uppercase">Engage the Community Using Technology</p>
+          </div>
+          <div class="media-container">
+            <img src="assets/images/succulent-square.jpg" class="team-goal-image">
+            <p class="team-goal-text is-size-3-desktop is-size-4-mobile has-text-primary is-uppercase">Research & Rebrand</p>
+          </div>
+        </div>
+        <div class="column is-one-third image-column flex-center-center">
+          <div class="centered-text-and-bg">
+            <p class="has-text-white is-size-1 is-family-secondary">Team Goals</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="has-text-white has-text-centered">Our team has developed a cross-platform mobile app in partnership with
+        the Oconee River Land Trust for the Tallassee Forest Nature Preserve, a newly created park in northwest Athens.
+        Our goal with this app is to engage the Athens community with this new park and educate them on the importance
+        of conservation easements. To create our cross-platform app, we are leveraging the React Native library to
+        develop for &nbsp;<i class="fab fa-android"></i>&nbsp; Android and &nbsp;<i class="fab fa-apple"></i>&nbsp; iOS
+        simultaneously.</p>
+
+      <div class="nav-arrow">
+        <a class="nav-arrow-link has-text-centered" href="#features">
+          <p class="nav-arrow-text is-size-6">Features</p>
+          <svg version="1.1" id="nav-arrow-arrow" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 200 70"
+            style="enable-background:new 0 0 200 70;" xml:space="preserve">
+            <style type="text/css">
+              .st0 {
+                fill: #FFFFFF;
+              }
+            </style>
+            <polygon class="st0" points="200,21.99 100,68.63 0,21.99 9.32,2 100,44.28 190.68,2 " />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="features" class="section">
+    <div class="container">
+      <div class="has-text-centered">
+        <h1 class="is-family-secondary is-uppercase is-size-1-desktop is-size-2-touch my-section-title">Features</h1>
+        <p class="is-size-4-desktop is-size-5-mobile">Interact with the park like never before.</p>
+        
+      </div>
+
+      <div class="columns">
+        <div class="column is-half">
+          <img src="assets/images/Tallassee_Mockup1_s.png" style="max-height: 800px">
+        </div>
+        <div class="column is-half vertical-center">
+          <ul class="features-list is-size-4 has-text-weight-bold has-text-centered-mobile">
+            <li><i class="fas fa-leaf has-text-primary is-hidden-mobile"></i>&nbsp;&nbsp; Navigate with 3 types of maps</li>
+            <li><i class="fas fa-leaf has-text-primary is-hidden-mobile"></i>&nbsp;&nbsp; Play interactive games and activities</li>
+            <li><i class="fas fa-leaf has-text-primary is-hidden-mobile"></i>&nbsp;&nbsp; Explore flora, fauna, and natural processes</li>
+            <li><i class="fas fa-leaf has-text-primary is-hidden-mobile"></i>&nbsp;&nbsp; Track your progress exploring the property</li>
+            <li><i class="fas fa-leaf has-text-primary is-hidden-mobile"></i>&nbsp;&nbsp; Get park information</li>
+          </ul>
+        </div>
+      </div>
+      
+
+      <div class="nav-arrow">
+        <a class="nav-arrow-link has-text-centered" href="#branding">
+          <p class="nav-arrow-text is-size-6">The Brand</p>
+          <svg version="1.1" id="nav-arrow-arrow" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 200 70"
+            style="enable-background:new 0 0 200 70;" xml:space="preserve">
+            <style type="text/css">
+              .st0 {
+                fill: #FFFFFF;
+              }
+            </style>
+            <polygon class="st0" points="200,21.99 100,68.63 0,21.99 9.32,2 100,44.28 190.68,2 " />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="branding" class="section">
+    <div class="container has-text-white">
+      <div class="has-text-centered">
+        <h1 class="is-family-secondary is-uppercase is-size-1-desktop is-size-2-touch my-section-title">Branding</h1>
+        <p class="is-size-4-desktop is-size-5-mobile">The Tallassee Forest Brand</p>
+      </div>
+      <br>
+      <!-- TABS -->
+      <div id="tabs-with-content">
+        <div class="tabs is-centered">
+          <ul>
+            <li class="is-active">
+              <a>
+                <span class="icon is-small"><i class="fas fa-swatchbook" aria-hidden="true"></i></span>
+                <span>Palette</span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span class="icon is-small"><i class="far fa-copyright" aria-hidden="true"></i></span>
+                <span>Logos</span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span class="icon is-small"><i class="fas fa-font" aria-hidden="true"></i></span>
+                <span>Typography</span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span class="icon is-small"><i class="fas fa-bezier-curve" aria-hidden="true"></i></span>
+                <span>Graphic Elements</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- TAB CONTENT -->
+        <div>
+          <section class="tab-content" id="palette">
+            <div class="card">
+              <div class="card-content">
+                <div class="container">
+                  <p>This color palette forms the basis of our brand identity. We chose these closers to create a
+                    simple and earthy feel for our print materials, presentations, and applications. The palette
+                    encompasses the main colors people encounter in nature, thus giving users a feel of Tallassee Park
+                    at the touch of their fingers. We made sure to have a nice contrast in colors, with deeper tones
+                    such as Black Magic, Kombu Green, and Baja Blue, alongside our neutral colors Volkswagen Kalahari
+                    Beige, Tea Leaves, and Quarter Powder Blue.</p>
+                  <div class="columns is-multiline is-centered">
+                    <div class="column is-one-third">
+                      <div class="palette-column" style="background-color: #2b2428">
+                        <p class="is-size-3 is-family-secondary has-text-light">BLACK MAGIC</p>
+                        <hr>
+                        <p class="has-text-light">PANTONE 19-3911 TCX</p>
+                        <p class="has-text-light">C 69 Y 69 M 61 K 68</p>
+                        <p class="has-text-light">R 43 G 36 B 40</p>
+                        <p class="has-text-light">HEX 2B2428</p>
+                        <hr>
+                        <p class="is-family-code has-text-weight-bold has-text-light">Body & Title Text</p>
+                      </div>
+                    </div>
+
+                    <div class="column is-one-third">
+                      <div class="palette-column" style="background-color: #313c1a">
+                        <p class="is-size-3 is-family-secondary has-text-light">KOMBU GREEN</p>
+                        <hr>
+                        <p class="has-text-light">PANTONE 5743 C</p>
+                        <p class="has-text-light">C 70 Y 51 M 95 K 58</p>
+                        <p class="has-text-light">R 49 G 60 B 26</p>
+                        <p class="has-text-light">HEX 313C1A</p>
+                        <hr>
+                        <p class="is-family-code has-text-weight-bold has-text-light">Banners & buttons</p>
+                      </div>
+                    </div>
+
+                    <div class="column is-one-third">
+                      <div class="palette-column" style="background-color: #2e454f">
+                        <p class="is-size-3 is-family-secondary has-text-light">BAJA BLUE</p>
+                        <hr>
+                        <p class="has-text-light">PANTONE 19-4121 TCX</p>
+                        <p class="has-text-light">C 82 Y 61 M 52 K 39</p>
+                        <p class="has-text-light">R 46 G 69 B 79</p>
+                        <p class="has-text-light">HEX 2E454F</p>
+                        <hr>
+                        <p class="is-family-code has-text-weight-bold has-text-light">Disclaimer bar</p>
+                      </div>
+                    </div>
+
+                    <div class="column is-one-third">
+                      <div class="palette-column" style="background-color: #A8A389">
+                        <p class="is-size-3 is-family-secondary">VOLKSWAGEN KALAHARI BEIGE</p>
+                        <hr>
+                        <p class="">PANTONE 16-0613 TPG</p>
+                        <p class="">C 36 Y 30 M 48 K 01</p>
+                        <p class="">R 168 G 163 B 137</p>
+                        <p class="">HEX A8A389</p>
+                        <hr>
+                        <p class="is-family-code has-text-weight-bold">Progress Bar</p>
+                      </div>
+                    </div>
+
+                    <div class="column is-one-third">
+                      <div class="palette-column" style="background-color: #A6B0A1">
+                        <p class="is-size-3 is-family-secondary">TEA LEAVES</p>
+                        <hr>
+                        <p class="">PANTONE 4178 C</p>
+                        <p class="">C 37 Y 23 M 37 K 00</p>
+                        <p class="">R 166 G 176 B 161</p>
+                        <p class="">HEX A6B0A1</p>
+                        <hr>
+                        <p class="is-family-code has-text-weight-bold">Category Items</p>
+                      </div>
+                    </div>
+
+                    <div class="column is-one-third">
+                      <div class="palette-column" style="background-color: #BFC6C9">
+                        <p class="is-size-3 is-family-secondary">QUARTER POWDER BLUE</p>
+                        <hr>
+                        <p class="">PANTONE 14-4504 TCX</p>
+                        <p class="">C 25 Y 16 M 16 K 00</p>
+                        <p class="">R 191 G 198 B 201</p>
+                        <p class="">HEX BFC6C9</p>
+                        <hr>
+                        <p class="is-family-code has-text-weight-bold">Login & information</p>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </section>
+          <section class="tab-content" id="logos">
+            <div class="card">
+              <div class="card-content">
+                <div class="container">
+                  <p>Tallassee Park’s logo is representative of both the brand and the app. Our vision behind the logo
+                    is to illustrate the Oconee River that is one of the park’s landmarks. We created various forms of
+                    the logo that will be utilized for different purposes, as listed.</p>
+                  <img src="assets/branding/logo-usage.png">
+                  <br>
+                  <br>
+                  <a href="assets/branding/Tallasee-Park-Logos.zip" class="button is-primary has-text-weight-bold"><i
+                      class="fas fa-file-archive"></i>&nbsp; Download Logos</a>
+                </div>
+              </div>
+            </div>
+
+          </section>
+          <section class="tab-content" id="typo">
+            <div class="card">
+              <div class="card-content">
+                <div class="container">
+                  <p>We chose fonts that will stick to the crisp and minimal feel of the brand and product we have
+                    created alongside the Oconee River Land Trust. These fonts help make our product look both
+                    professional and engaging.</p>
+                  <br>
+                  <p class="is-italic no-space">Bebas Neue</p>
+                  <p class="is-size-1 is-family-secondary no-space">A B C D E F G H I J K L M N O P Q R S T U V W X Y
+                    Z</p>
+                  <p class="is-capitalized is-size-7-desktop is-size-6-mobile">Main Headers</p>
+                  <hr>
+                  <p class="is-italic no-space">Bitter Bold</p>
+                  <p class="is-size-1 is-family-code no-space">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
+                  <p class="is-capitalized is-size-7-desktop is-size-6-mobile">Secondary Headers</p>
+                  <hr>
+                  <p class="is-italic no-space">Open Sans</p>
+                  <p class="is-size-1 is-family-primary no-space">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+                  </p>
+                  <p class="is-capitalized is-size-7-desktop is-size-6-mobile">Body Font</p>
+                  <br>
+                  <a href="assets/branding/Tallasee-Park-Fonts.zip" class="button is-primary has-text-weight-bold"><i
+                      class="fas fa-file-archive"></i>&nbsp; Download Fonts</a>
+
+                </div>
+              </div>
+          </section>
+          <section class="tab-content" id="graphics">
+            <div class="card">
+              <div class="card-content">
+                <div class="container">
+                  <img src="assets/branding/graphic-elements.png">
+                  <br>
+                  <br>
+                  <a href="assets/branding/Tallasee-Park-Icons.zip" class="button is-primary has-text-weight-bold"><i
+                      class="fas fa-file-archive"></i>&nbsp; Download Icons</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <br>
+      <div class="has-text-centered">
+        <a href="assets/branding/TallasseePark_VisualDesignDocu_FD.pdf"
+          class="button is-primary has-text-weight-bold"><i class="fas fa-download"></i>&nbsp; Download Visual Design
+          Document</a>
+      </div>
+
+      <div class="nav-arrow">
+        <a class="nav-arrow-link has-text-centered" href="#launch">
+          <p class="nav-arrow-text is-size-6">Launch</p>
+          <svg version="1.1" id="nav-arrow-arrow" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 200 70"
+            style="enable-background:new 0 0 200 70;" xml:space="preserve">
+            <style type="text/css">
+              .st0 {
+                fill: #FFFFFF;
+              }
+            </style>
+            <polygon class="st0" points="200,21.99 100,68.63 0,21.99 9.32,2 100,44.28 190.68,2 " />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="launch" class="section">
+    <div class="container">
+      <div class="has-text-centered">
+        <h1 class="is-family-secondary is-uppercase is-size-1-desktop is-size-2-touch my-section-title">Launch Materials</h1>
+        <p class="is-size-4-desktop is-size-5-mobile">Introducing: The Tallassee Forest Mobile App</p>
+      </div>
+    </div>
+  </section>
+
+
+
+</body>
+
+
+<!--
 <body>
   <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
@@ -424,9 +901,10 @@
       <p>&copy; 2020</p>
     </div>
   </footer>
+  -->
 
-  <!-- ! LOCAL SCRIPTS -->
-  <script src="js/index.js"></script>
+<!-- ! LOCAL SCRIPTS -->
+<script src="js/index.js"></script>
 </body>
 
 </html>
