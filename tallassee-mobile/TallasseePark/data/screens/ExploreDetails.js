@@ -34,7 +34,7 @@ function ExploreDetailsScreen({ route, navigation }) {
 class ExploreDetails extends React.Component {
   constructor(props) {
     super(props);
-    console.log("##### Inside ExploreDetails constructor");
+    //console.log("##### Inside ExploreDetails constructor");
     this.state = {
       navigation: this.props.navigation,
       itemId: this.props.itemId,
@@ -93,7 +93,7 @@ class ExploreDetails extends React.Component {
   */
 
   render() {
-    console.log("##### Inside Render, Before Return");
+    //console.log("##### Inside Render, Before Return");
     //console.log("IMAGEURL --> " + this.state.imageUrl );
     return (
       <SafeAreaView>

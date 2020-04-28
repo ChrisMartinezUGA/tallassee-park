@@ -2,6 +2,11 @@ import React from 'react';
 import { FloatingAction } from "react-native-floating-action";
 import { View, Image, StatusBar, Dimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import AsyncImage from './AsyncImage';
+import MainStyle from '../styles/MainStyle';
+
+// Resources
+const styles = MainStyle;
 
 // Navigation Floating Action
 const actions = [
@@ -54,10 +59,20 @@ const layers = [
 ];
 
 // Map URLs
+/*
 const maps = [
   require('../testMaps/TallasseeMap_Ecology.png'),
   require('../testMaps/TallasseeMap_Trails.png'),
   require('../testMaps/TallasseeMap_Topo.png'),
+]*/
+
+//          <Image style={{ width: this.state.mapWidth, height: this.state.mapHeight }} source={maps[this.state.mapIndex]} />
+
+
+const maps = [
+  'maps/TallasseeMap_Ecology.png',
+  'maps/TallasseeMap_Trails.png',
+  'maps/TallasseeMap_Topo.png',
 ]
 
 // The Floating Action icon must come from a React Element
@@ -74,7 +89,8 @@ class Map extends React.Component {
       mapIndex: 2,
       mapWidth: Dimensions.get('window').height,
       mapHeight: Dimensions.get('window').height,
-      navigation: this.props.navigation
+      navigation: this.props.navigation,
+      firebaseImageRef: 'maps/TallasseeMap_Topo.png'
     }
   }
 
@@ -83,7 +99,7 @@ class Map extends React.Component {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <StatusBar barStyle="light-content" />
         <ScrollView minimumZoomScale={1} maximumZoomScale={5} showsHorizontalScrollIndicator={true} style={{ flex: 1 }} >
-          <Image style={{ width: this.state.mapWidth, height: this.state.mapHeight }} source={maps[this.state.mapIndex]} />
+          <AsyncImage image={this.state.firebaseImageRef} style={{ width: this.state.mapWidth, height: this.state.mapHeight }} refresh={this.state.refresh}></AsyncImage>    
         </ScrollView>
 
         <FloatingAction actions={actions} onPressItem={
@@ -96,9 +112,21 @@ class Map extends React.Component {
 
         <FloatingAction actions={layers} onPressItem={
           name => {
-            if (name == "bt_satellite") { this.setState({ mapIndex: 0 }) }
-            else if (name == "bt_features") { this.setState({ mapIndex: 1 }) }
-            else if (name == "bt_topo") { this.setState({ mapIndex: 2 }) }
+            if (name == "bt_satellite") { 
+              //console.log("Change image to ecology:");
+              this.setState({ mapIndex: 0 });
+              this.setState({firebaseImageRef: 'maps/TallasseeMap_Ecology.png'});
+            }
+            else if (name == "bt_features") { 
+              //console.log("Change image to trails:");
+              this.setState({ mapIndex: 1 });
+              this.setState({firebaseImageRef: 'maps/TallasseeMap_Trails.png'});
+            }
+            else if (name == "bt_topo") {
+              //console.log("Change image to topology:");
+              this.setState({ mapIndex: 2 });
+              this.setState({firebaseImageRef: 'maps/TallasseeMap_Topo.png'});
+            }
           }
         } color="#2a2428" position="left" floatingIcon={<LayerIcon />} />
       </View>

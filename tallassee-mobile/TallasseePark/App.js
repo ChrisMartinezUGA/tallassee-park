@@ -147,6 +147,7 @@ function App() {
             headerStyle: {
               backgroundColor: '#2d454f',
             },
+            cardStyle: { backgroundColor: '#657864' },
           }} />
         <Stack.Screen name="Info" component={InfoScreen}
           options={{

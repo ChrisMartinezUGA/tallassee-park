@@ -19,14 +19,17 @@ componentDidMount() {
 }
 
 async getAndLoadHttpUrl() {
+    this.setState({ loading: true });
     if (this.state.mounted == true) {
       const ref = storage().ref(this.props.image);
       ref.getDownloadURL().then(data => {
          this.setState({ url: data })
          this.setState({ loading: false })
+         //console.log("got image");
       }).catch(error => {
          this.setState({ url: "/images/trail.jpg" })
          this.setState({ loading: false })
+         //console.log("image error");
      })
    }
  }
@@ -34,6 +37,12 @@ async getAndLoadHttpUrl() {
 //The code that is called when the component is about to unmount. Use it to cancel any http calls otherwise you will get a memory warning from React
 componentWillUnmount() {
     this.setState({ isMounted: false })
+}
+
+componentDidUpdate(prevProps) {
+    if(this.props.image != prevProps.image) {
+        this.getAndLoadHttpUrl();
+    }
 }
 /*
 //The code that is called when the props passed to the component change. It is typically useful when say you are implementing a search functionality and you need to refresh the image after the component is refreshed on the component.
@@ -51,7 +60,7 @@ render() {
         if (this.state.loading == true) {
             return (
                 <View key={this.props.image} style={{ width: '100%', alignItems: 'center', justifyContent: 'center' }} >
-                <ActivityIndicator />
+                    <ActivityIndicator size="large" color="#2d454f" />
                 </View>
             )
         }
