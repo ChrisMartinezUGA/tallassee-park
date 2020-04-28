@@ -158,6 +158,20 @@ ScrollReveal().reveal('#nav-arrow-1', {
   delay: 2200
 });
 
+ScrollReveal().reveal('.mobile-header-col-img', {
+  duration: 1000,
+  origin: 'left',
+  distance: '50px',
+  delay: 200
+});
+ScrollReveal().reveal('.brand-container-mobile', {
+  duration: 1000,
+  origin: 'right',
+  distance: '50px',
+  delay: 300
+});
+
+
 ScrollReveal().reveal('.mission-animation', {
   duration: 500,
   origin: 'top',
@@ -179,6 +193,14 @@ ScrollReveal().reveal('.team-col', {
   interval: 100
 });
 ScrollReveal().reveal('.team-goal-text', {
+  duration: 300,
+  origin: 'left',
+  distance: '30px',
+  delay: 500,
+  interval: 300
+});
+
+ScrollReveal().reveal('.feature-li', {
   duration: 300,
   origin: 'left',
   distance: '30px',

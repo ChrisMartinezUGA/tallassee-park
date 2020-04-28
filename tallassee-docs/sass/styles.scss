@@ -29,10 +29,10 @@
 $brand-brown1: #2D292A;
 $brand-brown2: #3D3A3C;
 $brand-brown3: #a8a389;
-$brand-darkGreen: #2f3c16;
+$brand-darkGreen: #313C1A;
 $brand-green: #657864;
 $brand-lightGreen: #a6afa1;
-$brand-darkBlue: #2D454F;
+$brand-darkBlue: #2E454F;
 $brand-lightBlue: #bfc6c9;
 
 $grey-darker: $brand-brown1;
@@ -47,7 +47,6 @@ $warning: $brand-brown3;
 $dark: $brand-brown1;
 $text: $brand-brown1;
 
-
 // ! FONTS
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitter:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 $family-primary: 'Aileron', 'Open Sans', sans-serif;
@@ -56,6 +55,13 @@ $family-code: 'Bitter', serif;
 
 $size-1: 6rem;
 $size-2: 4.5rem;
+
+// ! FOOTER
+$footer-background-color: $brand-brown1;
+$footer-padding: 3rem 1.5rem 3rem 1.5rem;
+footer {
+    color: #5e5a5c;
+}
 
 
 //* ------------------------------------------------------
@@ -80,13 +86,6 @@ p {
 
 p.no-space {
     margin-bottom: 0 !important;
-}
-
-.team-photo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
 }
 
 #tabs-with-content .tabs:not(:last-child) {
@@ -201,6 +200,10 @@ hr {
     width: 3rem;
 }
 
+.upside-down {
+    transform: rotateX(180deg)
+}
+
 .flex-center-center {
     display: flex;
     justify-content: center;
@@ -249,6 +252,25 @@ hr {
         }
     }
 
+    .brand-container-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        flex-direction: column;
+        background-color: $brand-brown2;
+        padding: 2rem 1rem 2rem 0rem;
+        margin-top: 6rem;
+        margin-left: calc(100vw * -0.4);
+
+        h1 {
+            margin-top: 0px;
+        }
+
+        img {
+            padding-left: 2rem;
+        }
+    }
+
     .image-1 {
         z-index: 1;
         position: absolute;
@@ -256,6 +278,13 @@ hr {
         object-fit: cover;
         height: calc(100vh - 66px);
         width: 30%;
+    }
+
+    .mobile-header-cols {
+        height: calc(100vh - 66px);
+    }
+    .mobile-header-col-img {
+        background-image: url('../assets/images/darkleaves.jpg');
     }
 
     .orlt-container {
@@ -283,8 +312,9 @@ hr {
         position: absolute;
         width: 50%;
         right: 0;
+        bottom: 0;
         text-align: center;
-        margin-top: calc(100vh - 25%);
+        margin-bottom: 4rem;
     }
 
 }
@@ -333,6 +363,18 @@ hr {
         background-image: url("../assets/images/darkleaves2.jpg");
     }
 
+    .team-photo {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        transition: ease-in-out 0.3s;
+    }
+    .team-photo:hover {
+        width: 120px;
+        height: 120px;
+    }
+
     .media-container {
         display: flex;
         align-items: center; // vertical center
@@ -358,6 +400,14 @@ hr {
         margin: 1rem 2rem 1rem 2rem;
     }
 
+    .team-goal {
+        transform: translateX(0rem);
+        transition: ease-out 0.3s;
+    }
+    .team-goal:hover {
+        transform: translateX(2rem);
+    }
+
     .centered-text-and-bg {
         background-color: $brand-brown1;
         display: flex;
@@ -380,6 +430,16 @@ hr {
     .features-list {
         li {
             margin-bottom: 2rem;
+            i {
+                color: $brand-green;
+                transition: color ease-in 0.1s;
+            }
+
+        }
+        li:hover {
+            i {
+                color: $brand-darkBlue;
+            }
         }
     }
 
@@ -405,5 +465,46 @@ hr {
 
 }
 #launch {
-    background-color: $brand-brown3;
+    background-color: $brand-green;
+
+    .launch-card {
+        height: 19rem;
+        background-color: $brand-brown3;
+        color: #fff;
+    }
+
+    .launch-card h3 {
+        margin-bottom: 1rem;
+    }
+
+    .launch-card-mobile {
+        background-color: $brand-brown3;
+        margin: 1rem 2rem 1rem 2rem;
+        h3 {
+            margin-bottom: 1rem;
+        }
+    }
 }
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: $brand-brown2;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #5e5a5c;
+    opacity: 0.5; 
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
