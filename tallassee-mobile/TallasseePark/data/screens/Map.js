@@ -90,7 +90,7 @@ class Map extends React.Component {
       mapWidth: Dimensions.get('window').height,
       mapHeight: Dimensions.get('window').height,
       navigation: this.props.navigation,
-      firebaseImageRef: 'maps/TallasseeMap_Topo.png'
+      firebaseImageRef: 'maps/TallasseeMap_Topo.jpg'
     }
   }
 
