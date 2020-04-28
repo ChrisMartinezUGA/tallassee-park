@@ -9,5 +9,3 @@ cp info.html public/info.html
 cp explore.html public/explore.html
 cp activities.html public/activities.html
 cp 404.html public/404.html
-
-
