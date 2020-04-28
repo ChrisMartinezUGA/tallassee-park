@@ -8,7 +8,7 @@ function saveChanges() {
     if(topoImage != null) {
         $('#topoLoading').css("display","block");
 
-        var topoRef = storage.ref('maps/TallasseeMap_Topo.png');
+        var topoRef = storage.ref('maps/TallasseeMap_Topo.jpg');
         var task = topoRef.put(topoImage).then((snapshot) => {
             mapVue.loadTopoMap();
             $('#newTopoMap').val(null);
@@ -18,7 +18,7 @@ function saveChanges() {
     }
     if(ecoImage != null) {
         $('#ecoLoading').css("display","block");
-        var ecoRef = storage.ref('maps/TallasseeMap_Ecology.png');
+        var ecoRef = storage.ref('maps/TallasseeMap_Ecology.jpg');
         var task = ecoRef.put(ecoImage).then((snapshot) => {
             mapVue.loadEcoMap();
             $('#newEcoMap').val(null);
@@ -28,7 +28,7 @@ function saveChanges() {
     }
     if(trailsImage != null) {
         $('#trailsLoading').css("display","block");
-        var trailsRef = storage.ref('maps/TallasseeMap_Trails.png');
+        var trailsRef = storage.ref('maps/TallasseeMap_Trails.jpg');
         var task = trailsRef.put(trailsImage).then((snapshot) => {
             mapVue.loadTrailsMap();
             $('#newTrailsMap').val(null);
@@ -55,7 +55,7 @@ var mapVue = new Vue({
             this.loadTrailsMap();
         },
         async loadTopoMap() {
-            var pathReference = storage.ref('maps/TallasseeMap_Topo.png');
+            var pathReference = storage.ref('maps/TallasseeMap_Topo.jpg');
             // Get the download URL
             pathReference.getDownloadURL().then(function (url) {
                 // Insert url into an <img> tag to "download"
@@ -84,7 +84,7 @@ var mapVue = new Vue({
             });
         },
         async loadEcoMap() {
-            var pathReference = storage.ref('maps/TallasseeMap_Ecology.png');
+            var pathReference = storage.ref('maps/TallasseeMap_Ecology.jpg');
             // Get the download URL
             pathReference.getDownloadURL().then(function (url) {
                 // Insert url into an <img> tag to "download"
@@ -113,7 +113,7 @@ var mapVue = new Vue({
             });
         },
         async loadTrailsMap() {
-            var pathReference = storage.ref('maps/TallasseeMap_Trails.png');
+            var pathReference = storage.ref('maps/TallasseeMap_Trails.jpg');
             // Get the download URL
             pathReference.getDownloadURL().then(function (url) {
                 // Insert url into an <img> tag to "download"

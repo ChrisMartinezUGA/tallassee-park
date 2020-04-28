@@ -70,9 +70,9 @@ const maps = [
 
 
 const maps = [
-  'maps/TallasseeMap_Ecology.png',
-  'maps/TallasseeMap_Trails.png',
-  'maps/TallasseeMap_Topo.png',
+  'maps/TallasseeMap_Ecology.jpg',
+  'maps/TallasseeMap_Trails.jpg',
+  'maps/TallasseeMap_Topo.jpg',
 ]
 
 // The Floating Action icon must come from a React Element
@@ -115,17 +115,17 @@ class Map extends React.Component {
             if (name == "bt_satellite") { 
               //console.log("Change image to ecology:");
               this.setState({ mapIndex: 0 });
-              this.setState({firebaseImageRef: 'maps/TallasseeMap_Ecology.png'});
+              this.setState({firebaseImageRef: 'maps/TallasseeMap_Ecology.jpg'});
             }
             else if (name == "bt_features") { 
               //console.log("Change image to trails:");
               this.setState({ mapIndex: 1 });
-              this.setState({firebaseImageRef: 'maps/TallasseeMap_Trails.png'});
+              this.setState({firebaseImageRef: 'maps/TallasseeMap_Trails.jpg'});
             }
             else if (name == "bt_topo") {
               //console.log("Change image to topology:");
               this.setState({ mapIndex: 2 });
-              this.setState({firebaseImageRef: 'maps/TallasseeMap_Topo.png'});
+              this.setState({firebaseImageRef: 'maps/TallasseeMap_Topo.jpg'});
             }
           }
         } color="#2a2428" position="left" floatingIcon={<LayerIcon />} />
