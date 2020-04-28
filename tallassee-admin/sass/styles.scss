@@ -24,9 +24,16 @@ $brand-lightBlue: #bfc6c9;
 $brand-lightGreen: #a6afa1;
 $brand-tan: #a8a389;
 
-
 $primary: $brand-blue;
 $link: $brand-green;
+
+
+// ! FONTS
+// ! FONTS
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitter:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+$family-primary: 'Open Sans', sans-serif;
+$family-secondary: 'Bebas Neue', 'Open Sans', sans-serif;
+$family-code: 'Bitter', serif;
 
 //* ------------------------------------------------------
 // Import only what you need from Bulma
@@ -38,4 +45,8 @@ $link: $brand-green;
 
 .card {
     border-radius: 20px;
+}
+
+.loading-div {
+    margin-bottom: 1rem;
 }
