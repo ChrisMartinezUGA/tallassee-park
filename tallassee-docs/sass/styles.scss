@@ -486,6 +486,16 @@ hr {
     }
 }
 
+.footer { 
+    a {
+        color: #5e5a5c;
+        text-decoration: underline;
+    }
+    a:hover {
+        color: $brand-brown3;
+    }
+}
+
 
 /* width */
 ::-webkit-scrollbar {
