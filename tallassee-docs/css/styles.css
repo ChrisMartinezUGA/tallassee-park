@@ -7874,6 +7874,10 @@ hr {
 .footer a:hover {
   color: #a8a389; }
 
+#privacy a:hover {
+  color: #a8a389;
+  text-decoration: underline; }
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px; }

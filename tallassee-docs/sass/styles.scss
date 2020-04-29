@@ -496,6 +496,15 @@ hr {
     }
 }
 
+#privacy {
+    
+a:hover {
+    color: $link;
+    text-decoration: underline;
+}
+
+}
+
 
 /* width */
 ::-webkit-scrollbar {
