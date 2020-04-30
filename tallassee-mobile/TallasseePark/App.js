@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { SafeAreaView, ScrollView, View, Text, StatusBar, TextInput, Button, Image } from 'react-native';
+import { SafeAreaView, ScrollView, View, Text, StatusBar, TextInput, Image } from 'react-native';
+import { Button } from 'react-native-elements';
 import MainStyle from './data/styles/MainStyle';
 import firestore from '@react-native-firebase/firestore';
 
@@ -20,22 +21,6 @@ import ProgressScreen from './data/screens/Progress';
 // Resources
 const styles = MainStyle;
 const orltLegal = require('./data/sampleData/orltLegal.json');
-var masterPws = "UGA";
-var masterOpen = false;
-const masterPwsSnapshot = firestore().collection('park').doc('open');
-masterPwsSnapshot.get().then(function(doc) {
-  if(doc.exists){
-    console.log("Document data: ", doc.data())
-    masterPws = doc.data().password;
-    masterOpen = doc.data().open;
-  } else {
-    console.log("No such document!")
-  }
-}).catch(function(error) {
-  console.log("Error getting document:", error);
-})
-
-//console.log(masterPws);
 
 // Login Screen
 class Home extends React.Component {
@@ -43,8 +28,45 @@ class Home extends React.Component {
     super(props)
     this.state = {
       password: '',
-      errorMessage: ''
+      errorMessage: '',
+      masterPws: '',
+      masterOpen: false,
+      disclaimer: ''
     }
+  }
+
+  async componentDidMount() {
+    try {
+      const masterPwsSnapshot = await firestore().collection('park').doc('open');
+      const doc = await masterPwsSnapshot.get();
+      if (doc.exists) {
+        //console.log("Document data: ", doc.data())
+        this.setState({ masterPws: doc.data().password });
+        this.setState({ masterOpen: doc.data().open });
+        if (this.state.masterOpen == true) {
+          this.props.navigation.replace('Map');
+        }
+      } else {
+        console.log("No such document!")
+      }
+    } catch (error) {
+      console.log("Error getting document:", error);
+    }
+
+    try {
+      const masterInfoSnapshot = await firestore().collection('park').doc('info');
+      const doc = await masterInfoSnapshot.get();
+      if (doc.exists) {
+        //console.log("Document data: ", doc.data())
+        this.setState({ disclaimer: doc.data().disclaimer });
+      } else {
+        console.log("No such document!")
+      }
+    } catch (error) {
+      console.log("Error getting document:", error);
+    }
+
+
   }
 
   render() {
@@ -57,7 +79,7 @@ class Home extends React.Component {
             <StatusBar barStyle="light-content" />
             <View style={styles.body}>
               <View style={styles.sectionContainer}>
-                <Image style={{ width: 360, height: 52 }} source={require("./data/logos/TallasseeParkLogo_long_dark.png")} />
+                <Image style={{ width: 360, height: 52, resizeMode:'contain'}} source={require("./data/logos/TallasseeParkLogo_long_dark.png")} />
                 <Text style={styles.sectionDescription}>A Project by the Oconee River Land Trust</Text>
               </View>
 
@@ -65,7 +87,7 @@ class Home extends React.Component {
                 <Text style={styles.sectionTitle}>Password</Text>
                 <TextInput
                   secureTextEntry={true}
-                  style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                  style={{ height: 40, borderColor: 'gray', borderWidth: 1, fontFamily: 'OpenSans-Regular' }}
                   onChangeText={(password) => this.setState({ password })}
                   value={this.state.password} />
                 <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>
@@ -73,12 +95,12 @@ class Home extends React.Component {
 
               <View style={styles.sectionContainer}>
                 <Text style={styles.sectionTitle}>Athens Clarke County Government Discliamer</Text>
-                <Text style={styles.sectionDescription}>{orltLegal.accDisclaimer}</Text>
+                <Text style={styles.sectionDescription}>{this.state.disclaimer}</Text>
               </View>
 
               <View style={styles.sectionContainer}>
-                <Button title="Login" onPress={() => {
-                  if (this.state.password == masterPws) {
+                <Button buttonStyle={styles.loginButton} titleStyle={{ fontSize: 18, fontFamily: 'OpenSans-Regular' }} title="Login" onPress={() => {
+                  if (this.state.password == this.state.masterPws) {
                     this.setState({ errorMessage: '' });
                     this.props.navigation.replace('Map')
                   } else {
@@ -113,17 +135,19 @@ function App() {
         headerTitleStyle: {
           fontWeight: 'bold',
         },
+        cardStyle: { backgroundColor: '#fff' },
       }}>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Map" component={MapScreen}
           options={{
             title: 'Tallassee Park',
             headerTitle: (
-              <Image style={{ width: 200, height: 20 }} source={require("./data/logos/TallasseeParkLogo_long_white.png")} />
+              <Image style={{ width: 200, height: 20, resizeMode:'contain' }} source={require("./data/logos/TallasseeParkLogo_long_white.png")} />
             ),
             headerStyle: {
               backgroundColor: '#2d454f',
             },
+            cardStyle: { backgroundColor: '#657864' },
           }} />
         <Stack.Screen name="Info" component={InfoScreen}
           options={{
@@ -135,7 +159,20 @@ function App() {
             title: 'Games & Activities',
             headerBackTitle: 'Map'
           }} />
-        <Stack.Screen name="ActivityDetails" component={ActivityDetailsScreen} />
+        <Stack.Screen name="ActivityDetails" component={ActivityDetailsScreen}
+          options={{
+            title: 'Activity',
+            headerStyle: {
+              backgroundColor: '#ABB1A4',
+              height: 120,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              fontSize: 22
+            },
+            headerBackTitle: 'Back'
+          }} />
 
         <Stack.Screen name="Explore" component={ExploreScreen}
           options={{
@@ -147,7 +184,7 @@ function App() {
             title: '[Category]',
             headerStyle: {
               backgroundColor: '#2f3c16',
-              height: 240,
+              height: 120,
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -161,7 +198,7 @@ function App() {
             title: '[Item]',
             headerStyle: {
               backgroundColor: '#ABB1A4',
-              height: 240,
+              height: 120,
             },
             headerTintColor: '#fff',
             headerTitleStyle: {

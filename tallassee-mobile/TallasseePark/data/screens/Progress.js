@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, Button, SafeAreaView, ScrollView, Image, StatusBar, Alert } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, Image, StatusBar, Alert } from 'react-native';
+import { Button } from 'react-native-elements';
 import AsyncStorage from '@react-native-community/async-storage';
 import * as ProgressBar from 'react-native-progress';
 import MainStyle from '../styles/MainStyle';
@@ -7,8 +8,8 @@ import firestore from '@react-native-firebase/firestore';
 
 // Resources
 const styles = MainStyle;
-const exploreCategories = require('../sampleData/exploreList.json').categories;
-const progressData = require('../sampleData/progress.json');
+
+const ranksData = require('../sampleData/ranks.json');
 var exploreData = [];
 var categoryNames = ["Flora", "Fauna", "Earth Science", "Big Picture"]
 var currentFilter = '';
@@ -16,11 +17,9 @@ var currentFilter = '';
 class Progress extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
     const unsubscribe = firestore()
       .collection('explore')
       .onSnapshot((querySnapshot) => {
-        //console.log('Total explore entries', querySnapshot.size);
         const entries = querySnapshot.docs.map((documentSnapshot) => {
           return {
             ...documentSnapshot.data(),
@@ -43,7 +42,7 @@ class Progress extends React.Component {
   }
 
   filter(type) {
-    filteredData = exploreData.filter(function(el) {
+    filteredData = exploreData.filter(function (el) {
       return el.category == currentFilter;
     });
     this.state.currentData = filteredData;
@@ -63,6 +62,7 @@ class Progress extends React.Component {
       const completedActivities = JSON.parse(stringifiedArray);
       let completedActivitiesCount = 0;
       let allActivitiesCount = 0;
+      this.setState({ badges: [false, false, false, false] });
 
       for (let i = 0; i < categoryNames.length; i++) {
         currentFilter = categoryNames[i];
@@ -92,14 +92,14 @@ class Progress extends React.Component {
       let decimal = completedActivitiesCount / allActivitiesCount;
       let percentage = Math.round(100 * decimal);
 
-      let rankIndex = Math.ceil(decimal * progressData.ranks.length) - 1;
-      let rankTitle = progressData.ranks[rankIndex];
+      let rankIndex = Math.ceil(decimal * ranksData.ranks.length) - 1;
+      let rankTitle = ranksData.ranks[rankIndex];
 
       this.setState({ progressArray: stringifiedArray, rank: rankTitle, progessDecimal: decimal, progressPercentage: percentage });
 
     } catch (error) {
       // Error retrieving data
-      Alert.alert("Error", "getProgress(): " + error)
+      console.log("Error", "getProgress(): " + error)
     }
   }
 
@@ -115,7 +115,7 @@ class Progress extends React.Component {
           <ScrollView>
             <View style={styles.body}>
               <View style={styles.sectionContainer}>
-                <ProgressBar.Bar progress={this.state.progessDecimal} width={300} height={25} />
+                <ProgressBar.Bar progress={this.state.progessDecimal} color="#313c1a" width={300} height={25} />
                 <Text style={styles.sectionDescription}>{this.state.progressPercentage}%</Text>
               </View>
 
@@ -135,10 +135,10 @@ class Progress extends React.Component {
               </View>
 
               <View style={styles.sectionContainer}>
-                <Button title="Clear Progress" onPress={() =>
+                <Button buttonStyle={styles.clearProgressButton} titleStyle={{ fontSize: 18, fontFamily: 'OpenSans-Regular' }} title="Clear Progress" onPress={() =>
                   // Removes the completedActivities array from local storage
                   Alert.alert("Clear Progress", "Please confirm that you want to clear your progress.", [
-                    { text: "Confirm", onPress: () => AsyncStorage.removeItem('completedActivities') },
+                    { text: "Confirm", onPress: () => { AsyncStorage.removeItem('completedActivities'); this.getProgress(); } },
                     { text: "Cancel", style: "cancel" }
                   ],
                     { cancelable: "false" })

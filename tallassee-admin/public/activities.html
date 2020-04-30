@@ -4,7 +4,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Activities | Tallassee Park Admin</title>
+    <title>Activities | Tallassee Forest Admin</title>
+
+    <!-- ICONS & FAVICONS -->
+    <!-- Generic -->
+    <link rel="icon" href="favicons/favicon-32.png" sizes="32x32">
+    <link rel="icon" href="favicons/favicon-57.png" sizes="57x57">
+    <link rel="icon" href="favicons/favicon-76.png" sizes="76x76">
+    <link rel="icon" href="favicons/favicon-96.png" sizes="96x96">
+    <link rel="icon" href="favicons/favicon-128.png" sizes="128x128">
+    <link rel="icon" href="favicons/favicon-192.png" sizes="192x192">
+    <link rel="icon" href="favicons/favicon-228.png" sizes="228x228">
+    <!-- Android -->
+    <link rel="shortcut icon" sizes="196x196" href="favicons/favicon-196.png">
+    <!-- iOS -->
+    <link rel="apple-touch-icon" href="favicons/favicon-120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="favicons/favicon-152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="favicons/favicon-180.png" sizes="180x180">
+
     <script src="https://kit.fontawesome.com/9aef0c2001.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -26,8 +43,9 @@
             <div class="navbar-start"></div>
             <div class="navbar-end">
                 <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item" href="maps.html">Maps</a>
                 <a class="navbar-item" href="info.html">Park Info</a>
-                <a class="navbar-item" href="activities.html">Activities</a>
+                <a class="navbar-item is-active" href="activities.html">Activities</a>
                 <a class="navbar-item" href="explore.html">Explore</a>
             </div>
         </div>
@@ -54,6 +72,12 @@
                         <label class="label">Activity</label>
                         <div class="control">
                             <input class="input" name="newTitle" id="newTitle" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Short Description</label>
+                        <div class="control">
+                            <input class="input" name="newDesc" id="newDesc" type="text">
                         </div>
                     </div>
                     <div class="field">
@@ -103,7 +127,8 @@
                     <tr>
                         <th><abbr title="Unique Entry ID">ID</abbr></th>
                         <th>Activity</th>
-                        <th>Group Activity?</th>
+                        <th>Short Description</th>
+                        <th>Participants</th>
                         <th>Time</th>
                         <th>Supplies</th>
                         <th>Content</th>
@@ -114,7 +139,8 @@
                     <tr v-for="(entry,index) in allEntries">
                         <td><abbr :title="allIDs[index]">{{allIDs[index].substring(0,4)}}</abbr></td>
                         <td class="has-text-weight-bold">{{entry.title}}</td>
-                        <td class="">{{entry.group}}</td>
+                        <td>{{entry.desc.substring(0,30)}}</td>
+                        <td class=""><span v-if="entry.group">Group</span><span v-else>Solo</span></td>
                         <td>{{entry.time}}</td>
                         <td>{{entry.supplies.substring(0,30)}}</td>
                         <td>{{entry.content.substring(0,50)}}...</td>
@@ -162,6 +188,13 @@
                                                 <div class="control">
                                                     <input class="input" name="editTitle" id="editTitle" type="text"
                                                         :value="entry.title">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Short Description</label>
+                                                <div class="control">
+                                                    <input class="input" name="editDesc" id="editDesc" type="text"
+                                                        :value="entry.desc">
                                                 </div>
                                             </div>
                                             <div class="field">
@@ -229,6 +262,8 @@
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-storage.js"></script>
+
 
     <script>
         // Your web app's Firebase configuration

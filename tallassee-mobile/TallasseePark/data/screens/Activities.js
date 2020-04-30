@@ -1,26 +1,19 @@
 import React from 'react';
-import { SafeAreaView, View, Button, FlatList, StatusBar } from 'react-native';
+import { SafeAreaView, View, FlatList, StatusBar } from 'react-native';
+import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import MainStyle from '../styles/MainStyle';
 import firestore from '@react-native-firebase/firestore';
 
 // Resources
 const styles = MainStyle;
-//const activityList = require('../sampleData/activityList.json');
 
-var SOLO_DATA = [];
-var GROUP_DATA = [];
-var ALL_DATA = [];
-
-// Button that navigates to an Activity
-// renderItem={({ item }) => <Item id={item.key} title={item.title} group={item.group} supplies={item.supplies} time={item.time} content={item.content} />}
-
-function Item({ id,title,group,supplies,time,content }) {
+function Item({ id, title, desc, group, supplies, time, content }) {
   const navigation = useNavigation();
 
   return (
     <View style={styles.item}>
-      <Button style={styles.buttonTitle} title={title} onPress={() => navigation.navigate('ActivityDetails', { itemId: id, title: title, group: group, supplies: supplies, time: time, content: content })} />
+      <Button buttonStyle={styles.exploreListButton} titleStyle={{ fontSize: 18, fontFamily: 'OpenSans-Regular' }} title={title} onPress={() => navigation.navigate('ActivityDetails', { itemId: id, title: title, desc: desc, group: group, supplies: supplies, time: time, content: content })} />
     </View>
   );
 }
@@ -28,34 +21,39 @@ function Item({ id,title,group,supplies,time,content }) {
 class ActivityList extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {};
-    // Subscribe to user updates
-    const unsubscribe = firestore()
-      .collection('activities')
-      .onSnapshot((querySnapshot) => {
-        //console.log('Total activities entries', querySnapshot.size);
-        const entries = querySnapshot.docs.map((documentSnapshot) => {
-          return {
-            ...documentSnapshot.data(),
-            key: documentSnapshot.id,
-          }
-        });
-        ALL_DATA = entries;
-        GROUP_DATA = entries.filter(function(el) {
-          return el.group == true;
-        });
-        SOLO_DATA = entries.filter(function(el) {
-          return el.group == false;
-        });
-      });
-      this.state = {
-        data: ALL_DATA
-      }
-    /*
     this.state = {
-      data: ALL_DATA
-    }
-    */
+      SOLO_DATA: [],
+      GROUP_DATA: [],
+      ALL_DATA: [],
+      data: [],
+      soloStyle: styles.filterButtonOff,
+      groupStyle: styles.filterButtonOff,
+      allStyles: styles.filterButtonOn
+    };
+  }
+
+  async componentDidMount() {
+    // Subscribe to user updates
+    const unsubscribe = await firestore().collection('activities');
+    const querySnap = await unsubscribe.get();
+    const entries = querySnap.docs.map((documentSnapshot) => {
+      return {
+        ...documentSnapshot.data(),
+        key: documentSnapshot.id,
+      }
+    });
+    this.setState({ ALL_DATA: entries });
+    this.setState({
+      GROUP_DATA: entries.filter(function (el) {
+        return el.group == true;
+      })
+    });
+    this.setState({
+      SOLO_DATA: entries.filter(function (el) {
+        return el.group == false;
+      })
+    });
+    this.setState({ data: this.state.ALL_DATA });
   }
 
   render() {
@@ -65,14 +63,14 @@ class ActivityList extends React.Component {
           <StatusBar barStyle="light-content" />
           <View style={styles.body}>
             <View style={{ flexDirection: 'row' }}>
-              <Button title="Solo" onPress={() => this.setState({ data: SOLO_DATA })} />
-              <Button title="Group" onPress={() => this.setState({ data: GROUP_DATA })} />
-              <Button title="All" onPress={() => this.setState({ data: ALL_DATA })} />
+              <Button buttonStyle={this.state.soloStyle} titleStyle={{ fontSize: 14, fontFamily: 'OpenSans-Regular' }} title="Solo" onPress={() => this.setState({ data: this.state.SOLO_DATA, soloStyle: styles.filterButtonOn, groupStyle: styles.filterButtonOff, allStyles: styles.filterButtonOff })} />
+              <Button buttonStyle={this.state.groupStyle} titleStyle={{ fontSize: 14, fontFamily: 'OpenSans-Regular' }} title="Group" onPress={() => this.setState({ data: this.state.GROUP_DATA, soloStyle: styles.filterButtonOff, groupStyle: styles.filterButtonOn, allStyles: styles.filterButtonOff })} />
+              <Button buttonStyle={this.state.allStyles} titleStyle={{ fontSize: 14, fontFamily: 'OpenSans-Regular' }} title="All" onPress={() => this.setState({ data: this.state.ALL_DATA, soloStyle: styles.filterButtonOff, groupStyle: styles.filterButtonOff, allStyles: styles.filterButtonOn })} />
             </View>
 
             <FlatList
               data={this.state.data}
-              renderItem={({ item }) => <Item id={item.key} title={item.title} group={item.group} supplies={item.supplies} time={item.time} content={item.content} />}
+              renderItem={({ item }) => <Item id={item.key} title={item.title} desc={item.desc} group={item.group} supplies={item.supplies} time={item.time} content={item.content} />}
             />
           </View>
         </SafeAreaView>

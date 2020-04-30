@@ -1,7 +1,12 @@
 import React from 'react';
 import { FloatingAction } from "react-native-floating-action";
-import { View, Image, StatusBar } from 'react-native';
+import { View, Image, StatusBar, Dimensions } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import AsyncImage from './AsyncImage';
+import MainStyle from '../styles/MainStyle';
+
+// Resources
+const styles = MainStyle;
 
 // Navigation Floating Action
 const actions = [
@@ -31,21 +36,21 @@ const actions = [
 // Map Layers Floating Action
 const layers = [
   {
-    text: "Satellite",
+    text: "Ecology",
     icon: require('../icons/satellite.png'),
     name: "bt_satellite",
     position: 1,
     color: "#2a2428"
   },
   {
-    text: "Features",
+    text: "Trails",
     icon: require('../icons/map-pin.png'),
     name: "bt_features",
     position: 2,
     color: "#2a2428"
   },
   {
-    text: "Topo",
+    text: "Topography",
     icon: require('../icons/mountain.png'),
     name: "bt_topo",
     position: 3,
@@ -54,27 +59,38 @@ const layers = [
 ];
 
 // Map URLs
+/*
 const maps = [
-  'http://tallassee.mynmi.net/images/aerial-map.jpg',
-  'http://tallassee.mynmi.net/images/features-map.jpg',
-  'http://tallassee.mynmi.net/images/topo-map.jpg'
+  require('../testMaps/TallasseeMap_Ecology.png'),
+  require('../testMaps/TallasseeMap_Trails.png'),
+  require('../testMaps/TallasseeMap_Topo.png'),
+]*/
+
+//          <Image style={{ width: this.state.mapWidth, height: this.state.mapHeight }} source={maps[this.state.mapIndex]} />
+
+
+const maps = [
+  'maps/TallasseeMap_Ecology.jpg',
+  'maps/TallasseeMap_Trails.jpg',
+  'maps/TallasseeMap_Topo.jpg',
 ]
 
 // The Floating Action icon must come from a React Element
 const LayerIcon = () => {
   return (
-  <Image style={{width: 20, height: 20}} source={require('../icons/layer-group-white.png')}></Image>
-);
+    <Image style={{ width: 20, height: 20 }} source={require('../icons/layer-group-white.png')}></Image>
+  );
 }
 
 class Map extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      mapIndex: 0,
-      mapWidth: 1000, // causing errors
-      mapHeight: 1000, // causing errors
-      navigation: this.props.navigation
+      mapIndex: 2,
+      mapWidth: Dimensions.get('window').height,
+      mapHeight: Dimensions.get('window').height,
+      navigation: this.props.navigation,
+      firebaseImageRef: 'maps/TallasseeMap_Topo.jpg'
     }
   }
 
@@ -83,7 +99,7 @@ class Map extends React.Component {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <StatusBar barStyle="light-content" />
         <ScrollView minimumZoomScale={1} maximumZoomScale={5} showsHorizontalScrollIndicator={true} style={{ flex: 1 }} >
-          <Image style={{ width: this.state.mapWidth, height: this.state.mapHeight }} source={{ uri: maps[this.state.mapIndex] }} />
+          <AsyncImage image={this.state.firebaseImageRef} style={{ width: this.state.mapWidth, height: this.state.mapHeight }} refresh={this.state.refresh}></AsyncImage>    
         </ScrollView>
 
         <FloatingAction actions={actions} onPressItem={
@@ -96,11 +112,23 @@ class Map extends React.Component {
 
         <FloatingAction actions={layers} onPressItem={
           name => {
-            if (name == "bt_satellite") { this.setState({ mapIndex: 0 }) }
-            else if (name == "bt_features") { this.setState({ mapIndex: 1 }) }
-            else if (name == "bt_topo") { this.setState({ mapIndex: 2 }) }
+            if (name == "bt_satellite") { 
+              //console.log("Change image to ecology:");
+              this.setState({ mapIndex: 0 });
+              this.setState({firebaseImageRef: 'maps/TallasseeMap_Ecology.jpg'});
+            }
+            else if (name == "bt_features") { 
+              //console.log("Change image to trails:");
+              this.setState({ mapIndex: 1 });
+              this.setState({firebaseImageRef: 'maps/TallasseeMap_Trails.jpg'});
+            }
+            else if (name == "bt_topo") {
+              //console.log("Change image to topology:");
+              this.setState({ mapIndex: 2 });
+              this.setState({firebaseImageRef: 'maps/TallasseeMap_Topo.jpg'});
+            }
           }
-        } color="#2a2428" position="left" floatingIcon={<LayerIcon />}/>
+        } color="#2a2428" position="left" floatingIcon={<LayerIcon />} />
       </View>
     )
   }

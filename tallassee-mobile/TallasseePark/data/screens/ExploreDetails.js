@@ -1,12 +1,126 @@
 import React from 'react';
-import { View, Text, SafeAreaView, ScrollView, StatusBar } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, StatusBar, Image } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import MainStyle from '../styles/MainStyle';
-import firestore from '@react-native-firebase/firestore';
+import AsyncImage from './AsyncImage';
+import storage from '@react-native-firebase/storage';
 
 // Resources
 const styles = MainStyle;
-//const exploreData = require('../sampleData/exploreList.json');
+
+function ExploreDetailsScreen({ route, navigation }) {
+  console.log("Inside ExploreDetailsScreen");
+  const { itemId } = route.params;
+  const { title } = route.params;
+  const { subtitle } = route.params;
+  const { category } = route.params;
+  const { content } = route.params;
+  var typeId = 0;
+  if (category == 'Flora') {
+    typeId = 0;
+  } else if (category == 'Fauna') {
+    typeId = 1;
+  } else if (category == 'Earth Science') {
+    typeId = 2;
+  } else {
+    typeId = 3;
+  }
+  updateProgress(typeId, title);
+
+  return <ExploreDetails navigation={navigation} itemId={itemId} title={title} subtitle={subtitle} category={category} typeId={typeId} content={content} />
+  //return <ExploreDetails navigation={navigation} />
+}
+
+class ExploreDetails extends React.Component {
+  constructor(props) {
+    super(props);
+    //console.log("##### Inside ExploreDetails constructor");
+    this.state = {
+      navigation: this.props.navigation,
+      itemId: this.props.itemId,
+      title: this.props.title,
+      subtitle: this.props.subtitle,
+      category: this.props.category,
+      typeId: this.props.typeId,
+      content: this.props.content,
+      imageUrl: "https://www.positive.news/wp-content/uploads/2019/03/feat-1800x0-c-center.jpg",
+      firebaseImageRef: 'exploreimgs/' + this.props.itemId + '.jpg'
+    }
+    this.props.navigation.setOptions({
+      title: this.state.title,
+    });
+  }
+
+  /*
+  async componentDidMount() {
+    console.log("##### Top of componentDidMount()");
+    // Create a reference to the file we want to download
+    var imageRef = await storage().ref('exploreimgs/' + this.state.itemId + '.jpg').getDownloadURL().then(function(url) {
+      // Insert url into an <img> tag to "download"
+      //console.log("IMAGEURL --> " + url );
+      console.log("##### Inside getDownloadURL().then()");
+      this.setState({imageUrl: url});
+      forceUpdate();
+      this.forceUpdate();
+    }).catch(function(error) {
+    // A full list of error codes is available at
+    // https://firebase.google.com/docs/storage/web/handle-errors
+      switch (error.code) {
+        case 'storage/object-not-found':
+          // File doesn't exist
+          console.log("Doesn't Exist");
+          break;
+
+        case 'storage/unauthorized':
+          // User doesn't have permission to access the object
+          console.log("Incorrect Permissions");
+          break;
+
+        case 'storage/canceled':
+          // User canceled the upload
+          console.log("Cancelled");
+          break;
+
+        case 'storage/unknown':
+          // Unknown error occurred, inspect the server response
+          console.log("Unknown");
+          break;
+      }
+    });
+    console.log("##### Bottom of componentDidMount()");
+    this.forceUpdate();
+  }
+  */
+
+  render() {
+    //console.log("##### Inside Render, Before Return");
+    //console.log("IMAGEURL --> " + this.state.imageUrl );
+    return (
+      <SafeAreaView>
+        <StatusBar barStyle="light-content" />
+        
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          style={styles.scrollView}>
+          <View style={styles.body}>
+            <View style={styles.exploreContainer}>
+              <AsyncImage image={this.state.firebaseImageRef} style={styles.exploreImage} refresh={this.state.refresh}></AsyncImage>
+            </View>
+            <View style={styles.exploreContainer}>
+              <Text style={styles.exploreTitle}>{this.state.title}</Text>
+              <Text style={styles.exploreSubtitle}>{this.state.subtitle}</Text>
+            </View>
+            <View style={styles.exploreContainer}>
+              <Text style={styles.exploreContent}>{this.state.content}</Text>
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    )
+  }
+
+}
+
 
 // Updates the progress array currently on local storage
 async function updateProgress(typeId, title) {
@@ -29,9 +143,12 @@ async function updateProgress(typeId, title) {
   }
 }
 
+export default ExploreDetailsScreen;
+
+/*
+
 function ExploreDetailsScreen({ route, navigation }) {
-  //const { typeId } = route.params;
-  //const { itemId } = route.params;
+  // Get params from Navigation route
   const { itemId } = route.params;
   const { title } = route.params;
   const { subtitle } = route.params;
@@ -47,47 +164,17 @@ function ExploreDetailsScreen({ route, navigation }) {
   } else {
     typeId = 3;
   }
-
-  //const TYPE_DATA = exploreData.categories[typeId].items;
-  //var currentItem;
-
-  // Retrieves item info based on the passed itemId
-  /*
-  for (var item of TYPE_DATA) {
-    if (item.id == itemId) {
-      currentItem = item;
-      break;
-    }
-  }
-  */
-
+ 
+  // Update progress for 'discovered' entry
   updateProgress(typeId, title);
+  
+  console.log("CHECKPOINT 4");
 
   navigation.setOptions({
     title: title,
   });
-
-  return (
-    <>
-      <SafeAreaView>
-        <StatusBar barStyle="light-content" />
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>{title}</Text>
-              <Text style={styles.sectionSubtitle}>{subtitle}</Text>
-            </View>
-
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionDescription}>{content}</Text>
-            </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-}
+  console.log("CHECKPOINT 5");
 
 export default ExploreDetailsScreen;
+
+*/

@@ -7,7 +7,7 @@ var parkPws = "";
 var openDoc = db.collection("park").doc("open");
 openDoc.get().then(function (doc) {
     if (doc.exists) {
-        console.log("Document data:", doc.data());
+        //console.log("Document data:", doc.data());
         parkOpen = doc.data().open;
         parkPws = doc.data().password;
         $("#fieldAppPassword").prop("value", parkPws);
@@ -19,11 +19,11 @@ openDoc.get().then(function (doc) {
 });
 
 if (parkOpen) {
-    $("#statusParkOpen").text("open");
+    $("#statusParkOpen").text("to the public");
     $("#fieldAppPassword").prop("disabled", true);
     $("#fieldOpenPark").prop("checked", true);
 } else {
-    $("#statusParkOpen").text("closed");
+    $("#statusParkOpen").text("with permission");
     $("#fieldAppPassword").prop("disabled", false);
     $("#fieldOpenPark").prop("checked", false);
 }
@@ -33,11 +33,11 @@ if (parkOpen) {
 function toggleParkOpenStatus() {
     open = document.getElementById("fieldOpenPark").checked;
     if (open == false) {
-        $("#statusParkOpen").text("closed");
+        $("#statusParkOpen").text("with permission");
         $("#fieldAppPassword").prop("disabled", false);
         parkOpen = false;
     } else {
-        $("#statusParkOpen").text("open");
+        $("#statusParkOpen").text("to the public");
         $("#fieldAppPassword").prop("disabled", true);
         parkOpen = true;
     }
@@ -45,8 +45,8 @@ function toggleParkOpenStatus() {
 
 function saveChanges() {
     console.log("saving changes");
-    parkPws = $("#fieldAppPassword").val();
-    console.log(parkPws);
+    //parkPws = $("#fieldAppPassword").val();
+    //console.log(parkPws);
     db.collection("park").doc("open").set({
         open: parkOpen,
         password: parkPws,
